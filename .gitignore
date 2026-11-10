@@ -2,3 +2,64 @@
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# Entornos y archivos temporales
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# Modelos y checkpoints
+*.pt
+*.pth
+*.npy
+*.npz
+*.pkl
+*.joblib
+*.ckpt
+*.safetensors
+
+# Datos y resultados locales
+data/
+outputs/
+checkpoints/
+artifacts/
+notebooks/dataset_*.csv
+
+# Credenciales
+*.pem
+*.key
+
+# Entornos virtuales
+venv/
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Credenciales
+.env
+.env.*
+!.env.example
+*keyopenai*
+*.pem
+*.key
+
+# Modelos y matrices
+*.pt
+*.pth
+*.npy
+*.npz
+*.pkl
+*.qpy
+*.joblib
+
+# Datos y salidas
+data/
+outputs/
+artifacts/
+checkpoints/
+notebooks/dataset_*.csv
+
