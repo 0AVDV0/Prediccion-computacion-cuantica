@@ -1,7 +1,7 @@
 # H2B2A7 — INTEGRACIÓN-00: procedencia y reproducibilidad Pauli/QWC
 
-**Estado histórico certificado:**`REPLAY_PAULI_QWC_VERIFICADO_STUDENT_PENDIENTE`  
-**Fecha del replay:** 10 de noviembre de 2026 (UTC, según `INTEGRACION00_RESUMENjson`).  
+**Estado histórico certificado:** `REPLAY_PAULI_QWC_VERIFICADO_STUDENT_PENDIENTE`  
+**Fecha del replay:** 10 de noviembre de 2026 (UTC, según `INTEGRACION00_RESUMEN.json`).  
 **Rama de trabajo:** `feature/pauli-qwc`.
 
 ## 1. Qué es esta certificación
