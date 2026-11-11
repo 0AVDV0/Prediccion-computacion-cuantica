@@ -1,0 +1,93 @@
+{
+  "experimento": "H2B2A7-INTEGRACION-00-v1.2",
+  "productos_sha256": {
+    "INTEGRACION00_CERTIFICADO_COBERTURA_ORIGINAL_REFERENCIA.json": "0f29e9322d534db8faaea01d5dbd27fd8d16162b479bbccc9904dee98f8f2da4",
+    "INTEGRACION00_CHECKPOINTS.csv": "a13e590f2254e3cdcdfe0ef3e4d004fa0df00505414a0a5eca70542b1ca187dc",
+    "INTEGRACION00_COSTOS_POR_MATERIAL.csv": "04c3ac0b6e8fce6f7d2568f8118dcf8a150374f9f46d95ecd0d76f6d41226d04",
+    "INTEGRACION00_INFORME_CIENTIFICO.md": "10cf39e2971cd8f9e3c51030e39f275ee5c30d977696254c7f1f5a8cc5ea9eea",
+    "INTEGRACION00_REPRODUCIBILIDAD.csv": "f619bf1128d9edc5ce26935f2c038a0ed0014c1f5d5037162cd05188e4261fb8",
+    "INTEGRACION00_RESUMEN.json": "29c5c3f6850ca5613fb30d6c0193bd69bb5f988cecb5995108e036e277d48a09",
+    "INTEGRACION00_SCORES_OUTER_REPLAY_ARCHIVADO.csv": "68c5122cf45f48c82f0c683ab357a55b19c754f05e064fdafd62f8b1ce0bc01b"
+  },
+  "fuentes": {
+    "TEACHER_R3": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\ARCH4FH2B2A0_FREEZE_R3_TEACHER.npz",
+      "sha256": "0d851421e8ad0e370c3cc365dc053e9ad53b8a5ac5c0d437c72e61df67aa9b89"
+    },
+    "HEAD4": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\ARCH4FH2B2A2_BEST_JOINT_FOUR_HEAD_MODEL.npz",
+      "sha256": "c935e08fe03682788566c868ee8f8632fb8c55ab1407b95314a6576dd2264a09"
+    },
+    "SAFE_RANK2": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\ARCH4FH2B2A4_1D2_SAFE_LOCAL_MODEL.npz",
+      "sha256": "e203c6e3d36266b20b859bce8f2f4e157dd95e82dde41a656d580d1cdc39b256"
+    },
+    "X6_PAULI": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\ARCH4FH2B1D2_X6_PAULI_EXPECTATIONS.npy",
+      "sha256": "5c76826e8f2e64b3effb943beacbce8cb12f0e4f883afa14372a8f5fdbefaee4"
+    },
+    "QWC24": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\H2B2A7_PAULI_AUDIT\\H2B2A7_12_LOCAL_QWC_SWAPS\\MODELO_FINAL_CONGELADO.npz",
+      "sha256": "1003d1fab3c1551b6a28e568a19b71fb14d8bfd4cece813ce5de9377453aaba2"
+    },
+    "QWC24_CONTROL": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\H2B2A7_PAULI_AUDIT\\H2B2A7_10_QWC_FULL_PAULI\\congelado_K24_Ridge_var.npz",
+      "sha256": "4476f511b14b455220a94a60b775e37d857ff10991fc54457986a95494265ebb"
+    },
+    "QWC64": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\H2B2A7_PAULI_AUDIT\\H2B2A7_7_SHOT_BUDGET_SELECTION\\elegido_N10000.npz",
+      "sha256": "6f4390280aaea8ed584b974517032d3c440e7ec368d89d493ee82a457c7f861a"
+    },
+    "QWC_ORIG": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\H2B2A7_PAULI_AUDIT\\H2B2A7_3_GROUP_QWC\\modelo_QWC_G64.npz",
+      "sha256": "07ab76b787d8ca5e0036de695d12cdd5cb980fbbc38bd0a8df33d3656c452ccc"
+    },
+    "OUTER_SCORES": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\H2B2A7_PAULI_AUDIT\\H2B2A7_13_FINAL_OUTER_HOLD\\predicciones_OUTER_HOLD.csv",
+      "sha256": "5fdf3a9cdd5a50ef5e088c133ebd493be9400bb498f086584f692bcad7f08b1e"
+    },
+    "OUTER_REPORT": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\H2B2A7_PAULI_AUDIT\\H2B2A7_13_FINAL_OUTER_HOLD\\REPORTE_FINAL.json",
+      "sha256": "77ac6dd620c2d9447cd2d9fbf208bfaf7a8f7145c849adab6e6487012f2ddac6"
+    },
+    "OUTER_MANIFEST": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\H2B2A7_PAULI_AUDIT\\H2B2A7_13_FINAL_OUTER_HOLD\\MANIFEST_PREVIO.json",
+      "sha256": "06691934861b99898d302341894958ebfc724bb59adb8a621a3358286836f924"
+    },
+    "SAFE_ALGEBRA": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\H2B2A7_PAULI_AUDIT\\H2B2A7_14_AUDITORIA_RECURSOS\\coeficientes_algebraicos_congelados.npz",
+      "sha256": "5ec3171a32f0af85286a12cb93b64cfda37c4db010ba16be3a8d3544aefe3296"
+    },
+    "QWC365_COVERAGE": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\H2B2A7_PAULI_AUDIT\\H2B2A7_15_COBERTURA_QWC_OPTIMA\\certificado_cobertura.json",
+      "sha256": "a81caed79b988d42bf45d64b72c2a91e7ade8f3fb73c44be27b3a59aafff2a28"
+    },
+    "QWC365_BASES": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\H2B2A7_PAULI_AUDIT\\H2B2A7_15_COBERTURA_QWC_OPTIMA\\bases_CONSERVAR_24.npz",
+      "sha256": "1dfd5906fd96819812752f7b4b0f77154d1a22c4585a219b3794298cd2213b41"
+    },
+    "QWC_SHOTS_REFERENCE": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\H2B2A7_PAULI_AUDIT\\H2B2A7_16_VARIANZA_Y_SHOTS\\asignacion_referencia_100k_10k.npz",
+      "sha256": "b6a322954f9b77c0115ae3d7226374a2553f4f9fe4fc0be5071de0df1df44909"
+    },
+    "STUDENT_COMP": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\ARCH4FH2B2A5_1E_RANKING_SAFE_MODEL.npz",
+      "sha256": "aa18a34dca6284dd8ad17b9c2565d1132fa58f612fc59356eb9df4aa34d41bfd"
+    },
+    "STUDENT_COMP_QPY": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\ARCH4FH2B2A5_1E_RANKING_SAFE_CIRCUITS.qpy",
+      "sha256": "e6ef44e89f63624f3f0049d5dee45f0ff32e160e7bfb8ddd7d0752dfdd62f9ec"
+    },
+    "STUDENT_COMP_REPORT": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\ARCH4FH2B2A5_1E_RANKING_SAFE_SUMMARY.csv",
+      "sha256": "212afddce546ae6d26dc135177fb0f4151c744489e33f80e2372d7c732092ff1"
+    },
+    "STUDENT_PARENT_1C": {
+      "ruta": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\ARCH4FH2B2A5_1C_FIXED48_MATURE_MODEL.npz",
+      "sha256": "4ab797d9e8b0397eea24ec1779cff627fb5ae8a9baeaa1e04395eb5c32693036"
+    }
+  },
+  "sin_envios_ibm": true,
+  "sin_reentrenamiento": true,
+  "manifiesto_no_autoreferenciado": true
+}
