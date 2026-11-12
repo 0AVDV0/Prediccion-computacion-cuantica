@@ -1,0 +1,144 @@
+{
+  "experimento": "H2B2A7-INTEGRACION-00-v1.2",
+  "fecha_utc": "2026-11-10T23:29:33.076673+00:00",
+  "root": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4",
+  "carpeta_salida": "C:\\Users\\javie\\Tesis5_PAULI_QWC\\reports\\H2B2A7_INTEGRACION_00\\H2B2A7_INTEGRACION_00_AUDITORIA_DOS_RUTAS_20261110T232931050887Z",
+  "estado": "REPLAY_PAULI_QWC_VERIFICADO_STUDENT_PENDIENTE",
+  "sin_qiskit": true,
+  "sin_api_ibm": true,
+  "sin_qpu_shots": true,
+  "sin_entrenamiento": true,
+  "sin_seleccion_de_modelo_outer": true,
+  "out_hold_previamente_abierto": true,
+  "integridad_manifiesto_previo_13": "COINCIDE",
+  "divergencias_manifiesto": [],
+  "checkpoint_localizados": 19,
+  "checkpoint_catalogo_total": 20,
+  "faltantes_minimos_para_replay": [],
+  "replay": [
+    {
+      "arquitectura": "TEACHER_R3",
+      "split": "ARCHIVO_COMPLETO",
+      "estado": "REPRODUCIDO",
+      "n_materiales": 7483,
+      "error_max_abs": 2.7755575615628914e-17,
+      "nota": "baseline + sum(lambda_j*t_target_j)"
+    },
+    {
+      "arquitectura": "HEAD4_SAFE",
+      "split": "TRAIN",
+      "estado": "REPRODUCIDO",
+      "n_materiales": 4788,
+      "error_max_abs": 5.606596437113254e-09,
+      "nota": "Reconstruccion congelada 13, tolerancia 2e-3"
+    },
+    {
+      "arquitectura": "HEAD4_SAFE",
+      "split": "INNER_VAL",
+      "estado": "REPRODUCIDO",
+      "n_materiales": 1198,
+      "error_max_abs": 3.723073363492979e-09,
+      "nota": "Reconstruccion congelada 13, tolerancia 2e-3"
+    },
+    {
+      "arquitectura": "SAFE_ideal",
+      "split": "OUTER_HOLD_ARCHIVADO",
+      "estado": "REPRODUCIDO",
+      "n_materiales": 1497,
+      "error_max_abs": 1.3877787807814457e-17,
+      "nota": "Mismos indices y etiquetas, no reentrenamiento"
+    },
+    {
+      "arquitectura": "QWC24_ideal",
+      "split": "OUTER_HOLD_ARCHIVADO",
+      "estado": "REPRODUCIDO",
+      "n_materiales": 1497,
+      "error_max_abs": 5.551115123125783e-17,
+      "nota": "Mismos indices y etiquetas, no reentrenamiento"
+    },
+    {
+      "arquitectura": "QWC64_ideal",
+      "split": "OUTER_HOLD_ARCHIVADO",
+      "estado": "REPRODUCIDO",
+      "n_materiales": 1497,
+      "error_max_abs": 8.326672684688674e-17,
+      "nota": "Mismos indices y etiquetas, no reentrenamiento"
+    },
+    {
+      "arquitectura": "STUDENT_U_DEC_D",
+      "split": "INNER_VAL / OUTER",
+      "estado": "PARAMETROS_ENCONTRADOS_SCORE_NO_REPRODUCIDO",
+      "n_materiales": "",
+      "error_max_abs": "",
+      "nota": "Pendiente de reconstruir amplitudes/mezclas y circuitos U,D; no equivale a SAFE/QWC"
+    }
+  ],
+  "student_estado": "PARAMETROS_ENCONTRADOS_SCORE_NO_REPRODUCIDO",
+  "student_parametros": {
+    "rxx_angles_shape": [
+      2,
+      48
+    ],
+    "rxx_angles_numel": 96,
+    "diagonal_shape": [
+      2,
+      64
+    ],
+    "qpy_disponible": true
+  },
+  "replay_detalles": {
+    "max_err": {
+      "SAFE_ideal": 1.3877787807814457e-17,
+      "QWC24_ideal": 5.551115123125783e-17,
+      "QWC64_ideal": 8.326672684688674e-17
+    },
+    "n_outer": 1497,
+    "n_qwc24_bases": 24,
+    "n_qwc64_bases": 64
+  },
+  "costos": [
+    {
+      "ruta": "QWC24_ARCHIVADA",
+      "lecturas_bases": 24,
+      "shots_rho6_incrementales": 10000,
+      "shots_rho4": "",
+      "shots_totales_plan_logico": "",
+      "tipo": "INCREMENTAL_PARCIAL",
+      "evidencia": "H2B2A7-13: 10k shots solo lectura QWC24; 4 cabezales y SAFE residual ideales",
+      "advertencia": "NO es costo completo por material"
+    },
+    {
+      "ruta": "QWC64_ARCHIVADA",
+      "lecturas_bases": 64,
+      "shots_rho6_incrementales": 10000,
+      "shots_rho4": "",
+      "shots_totales_plan_logico": "",
+      "tipo": "INCREMENTAL_PARCIAL",
+      "evidencia": "H2B2A7-13: 10k shots solo lectura QWC64",
+      "advertencia": "NO es costo completo por material"
+    },
+    {
+      "ruta": "PAULI_QWC_COMPLETO_16_REFERENCIA",
+      "lecturas_bases": 365,
+      "shots_rho6_incrementales": 100000,
+      "shots_rho4": 10000,
+      "shots_totales_plan_logico": 110000,
+      "tipo": "PRESUPUESTO_LOGICO_DE_MEDICION_REFERENCIA",
+      "evidencia": "Asignacion H2B2A7-16: 365 bases; rho4 canales ponderados por costo de copias",
+      "advertencia": "No es tiempo QPU ni costo fisico total: requiere verificar preparaciones/ramas/layout/overhead"
+    },
+    {
+      "ruta": "STUDENT_DOS_DECODIFICADORES",
+      "lecturas_bases": "2 cabezales de correccion (parcial)",
+      "shots_rho6_incrementales": "",
+      "shots_rho4": "",
+      "shots_totales_plan_logico": "",
+      "tipo": "NO_CUANTIFICADO_TOTAL",
+      "evidencia": "H2B2A5-1E/1F: parametros U,D para correccion SAFE rank-2",
+      "advertencia": "Incluye otros 4 cabezales, mezclas, rho4 y shot allocation por definir; RXX no son shots"
+    }
+  ],
+  "errores_y_reservas": [],
+  "no_comparar_inner_val_con_outer_hold_como_test_pareado": true,
+  "nota_end_to_end": "Esta auditoria NO prepara estados ni ejecuta U_dec fisicamente. Los presupuestos del estudio 13 de 10k shots son parciales; los modelos del student no tienen costo completo certificado y su score solo se declara reproducido si hay auditoria equivalente."
+}

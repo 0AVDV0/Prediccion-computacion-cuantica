@@ -1,0 +1,16 @@
+{
+  "archivo": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4\\H2B2A7_PAULI_AUDIT\\H2B2A7_15_COBERTURA_QWC_OPTIMA\\certificado_cobertura.json",
+  "sha256": "a81caed79b988d42bf45d64b72c2a91e7ade8f3fb73c44be27b3a59aafff2a28",
+  "claves_raiz": [
+    "active_non_identity",
+    "cases",
+    "experiment",
+    "full_weight6",
+    "old_Q14_constructive",
+    "original_bases",
+    "source",
+    "source_sha256",
+    "tolerance_relative"
+  ],
+  "nota": "Se referencia el archivo original; no se copia ni se recalcula el MILP."
+}

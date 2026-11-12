@@ -1,0 +1,5 @@
+﻿ruta,lecturas_bases,shots_rho6_incrementales,shots_rho4,shots_totales_plan_logico,tipo,evidencia,advertencia
+QWC24_ARCHIVADA,24,10000,,,INCREMENTAL_PARCIAL,H2B2A7-13: 10k shots solo lectura QWC24; 4 cabezales y SAFE residual ideales,NO es costo completo por material
+QWC64_ARCHIVADA,64,10000,,,INCREMENTAL_PARCIAL,H2B2A7-13: 10k shots solo lectura QWC64,NO es costo completo por material
+PAULI_QWC_COMPLETO_16_REFERENCIA,365,100000,10000,110000,PRESUPUESTO_LOGICO_DE_MEDICION_REFERENCIA,Asignacion H2B2A7-16: 365 bases; rho4 canales ponderados por costo de copias,No es tiempo QPU ni costo fisico total: requiere verificar preparaciones/ramas/layout/overhead
+STUDENT_DOS_DECODIFICADORES,2 cabezales de correccion (parcial),,,,NO_CUANTIFICADO_TOTAL,"H2B2A5-1E/1F: parametros U,D para correccion SAFE rank-2","Incluye otros 4 cabezales, mezclas, rho4 y shot allocation por definir; RXX no son shots"
