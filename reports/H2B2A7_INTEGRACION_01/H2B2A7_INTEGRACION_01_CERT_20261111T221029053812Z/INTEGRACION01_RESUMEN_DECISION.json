@@ -1,0 +1,21 @@
+{
+  "experimento": "H2B2A7-INTEGRACION-01-CERT-v1.0",
+  "modo": "SOLO_LOCAL_CERTIFICACION_SIN_REENTRENAR",
+  "root": "C:\\Users\\javie\\OneDrive\\Escritorio\\Tesis4",
+  "salida": "C:\\Users\\javie\\Tesis5_STUDENT\\reports\\H2B2A7_INTEGRACION_01\\H2B2A7_INTEGRACION_01_CERT_20261111T221029053812Z",
+  "outer_hold_NO_evaluado": true,
+  "IBM_jobs": 0,
+  "QPU_shots": 0,
+  "QPY_1E_cotejado": true,
+  "1E_score_auc_cotejado": true,
+  "1F_score_auc_cotejado": true,
+  "fallos": [],
+  "reservas": [],
+  "estado": "PRUEBAS_NUMERICAS_SUPERADAS_VALIDACION_HISTORICA_PENDIENTE",
+  "limites": [
+    "1F y H2B2A6 carecen de SHA anterior comprobable en esta auditoria; huellas nuevas no certifican identidad historica",
+    "AUC coincidente no certifica igualdad por material si no existe score pareado original",
+    "Costo por material y layout ISA siguen pendientes",
+    "INNER_VAL ya examinado; no seleccion ni prueba externa"
+  ]
+}

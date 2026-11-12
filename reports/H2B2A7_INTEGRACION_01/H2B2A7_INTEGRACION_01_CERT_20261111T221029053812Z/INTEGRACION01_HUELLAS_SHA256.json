@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "experimento": "H2B2A7-INTEGRACION-01-CERT-v1.0",
+  "directorio_resultados": "reports/H2B2A7_INTEGRACION_01/H2B2A7_INTEGRACION_01_CERT_20261111T221029053812Z",
+  "codigo_fuente": {
+    "archivo": "experiments/INTEGRACION_01_CERT.ipynb",
+    "sha256_texto_celda": "089415d27e535700d5de2d56e78d4f255edc2c718d57141be125bd30ef9556d8"
+  },
+  "archivos_resultado_sha256": {
+    "INTEGRACION01_DETALLES_MATRICIALES.json": "e63d1f533eb71e50054834546ce2d6784eb809a9f0fb2bc826fdd1fcc88f1c23",
+    "INTEGRACION01_INFORME.md": "dbc0bfbcc9f717cfbde6c4b69d3db11089a8f48e6c82dca3097c2940c647e1ef",
+    "INTEGRACION01_INVENTARIO_Y_HUELLAS.csv": "b6280fa3e243a44971222791ac3cd06d173e00bdd4f9a9fd9221807306a3f281",
+    "INTEGRACION01_PRUEBAS_DE_CERTIFICACION.csv": "bae7aaeaac05ed2d805008a5b03ae8f2680f4ca0667a0e2c27ac0d698cd1efd7",
+    "INTEGRACION01_RESUMEN_DECISION.json": "e1c2de21fd56051bb46695ab3d2b30b12713219aff1741cf26d1921e281e373b",
+    "INTEGRACION01_SCORES_INNER_VAL_RECONSTRUIDOS.csv": "f776337e501c6b4507098757565d816e103490634a3a39a86ab55822bf3b7361"
+  },
+  "fuentes_historicas": {
+    "TEACHER": {
+      "sha256_observado": "0d851421e8ad0e370c3cc365dc053e9ad53b8a5ac5c0d437c72e61df67aa9b89",
+      "tiene_sha_previamente_fijado": true
+    },
+    "SAFE": {
+      "sha256_observado": "e203c6e3d36266b20b859bce8f2f4e157dd95e82dde41a656d580d1cdc39b256",
+      "tiene_sha_previamente_fijado": true
+    },
+    "OPS_B1B2": {
+      "sha256_observado": "5384b8c0f75bc844a55c2aa4cafe1a813a68754685dd517414f82a28dac37f2d",
+      "tiene_sha_previamente_fijado": false
+    },
+    "X6": {
+      "sha256_observado": "5c76826e8f2e64b3effb943beacbce8cb12f0e4f883afa14372a8f5fdbefaee4",
+      "tiene_sha_previamente_fijado": true
+    },
+    "STUDENT_1E": {
+      "sha256_observado": "aa18a34dca6284dd8ad17b9c2565d1132fa58f612fc59356eb9df4aa34d41bfd",
+      "tiene_sha_previamente_fijado": true
+    },
+    "QPY_1E": {
+      "sha256_observado": "e6ef44e89f63624f3f0049d5dee45f0ff32e160e7bfb8ddd7d0752dfdd62f9ec",
+      "tiene_sha_previamente_fijado": true
+    },
+    "STUDENT_1F": {
+      "sha256_observado": "b481799c5985d73d56254612264659dc73a60a0b31fe54be6b8b4d4675310d7b",
+      "tiene_sha_previamente_fijado": false
+    },
+    "A6_2B1": {
+      "sha256_observado": "4f1be2475d14c31bd547ff870eec632c7e917596a40e5e43e2c93d8a6b6d5181",
+      "tiene_sha_previamente_fijado": false
+    },
+    "A6_2B2": {
+      "sha256_observado": "985dd5531ea5fdf66b06fb67facc72a64b2e55d524bb1719a9c3fe91a541414f",
+      "tiene_sha_previamente_fijado": false
+    }
+  },
+  "certificacion": {
+    "pruebas_aprobadas": 94,
+    "pruebas_totales": 94,
+    "modelos": [
+      "STUDENT_1E",
+      "STUDENT_1F"
+    ],
+    "muestras_inner_val_por_modelo": 1198,
+    "outer_hold_evaluado_en_esta_ejecucion": false,
+    "hardware_IBM_ejecutado": false,
+    "estado": "PRUEBAS_NUMERICAS_SUPERADAS_VALIDACION_HISTORICA_PENDIENTE"
+  },
+  "limitaciones": [
+    "SHA observados ahora de cuatro fuentes no certifican su identidad histórica",
+    "El cotejo de AUC no implica igualdad score por material",
+    "QPY histórico cotejado para 1E; no para 1F",
+    "INNER VAL ya explorado; no evaluación externa nueva",
+    "Sin certificación de costo end-to-end ni layout ISA"
+  ],
+  "nota_manifest": "El archivo de manifiesto no se incluye en su propia lista de hashes (evita autorreferencia). Los seis archivos existentes se conservaron byte a byte."
+}
