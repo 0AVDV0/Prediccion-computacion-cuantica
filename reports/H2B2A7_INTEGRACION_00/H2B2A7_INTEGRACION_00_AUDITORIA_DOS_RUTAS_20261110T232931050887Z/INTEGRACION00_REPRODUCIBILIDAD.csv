@@ -1,0 +1,8 @@
+﻿arquitectura,split,estado,n_materiales,error_max_abs,nota
+TEACHER_R3,ARCHIVO_COMPLETO,REPRODUCIDO,7483,2.7755575615628914e-17,baseline + sum(lambda_j*t_target_j)
+HEAD4_SAFE,TRAIN,REPRODUCIDO,4788,5.606596437113254e-09,"Reconstruccion congelada 13, tolerancia 2e-3"
+HEAD4_SAFE,INNER_VAL,REPRODUCIDO,1198,3.723073363492979e-09,"Reconstruccion congelada 13, tolerancia 2e-3"
+SAFE_ideal,OUTER_HOLD_ARCHIVADO,REPRODUCIDO,1497,1.3877787807814457e-17,"Mismos indices y etiquetas, no reentrenamiento"
+QWC24_ideal,OUTER_HOLD_ARCHIVADO,REPRODUCIDO,1497,5.551115123125783e-17,"Mismos indices y etiquetas, no reentrenamiento"
+QWC64_ideal,OUTER_HOLD_ARCHIVADO,REPRODUCIDO,1497,8.326672684688674e-17,"Mismos indices y etiquetas, no reentrenamiento"
+STUDENT_U_DEC_D,INNER_VAL / OUTER,PARAMETROS_ENCONTRADOS_SCORE_NO_REPRODUCIDO,,,"Pendiente de reconstruir amplitudes/mezclas y circuitos U,D; no equivale a SAFE/QWC"
