@@ -1,0 +1,46 @@
+{
+  "STUDENT_1E_B1": {
+    "unitaria_error_max": 1.7763591109481908e-15,
+    "norma_diagonal_inf": 3.030561923980713,
+    "error_frobenius_vs_Bstar": 1.4728955308132405,
+    "diagonal_min": -3.030561923980713,
+    "diagonal_max": 2.880171298980713
+  },
+  "STUDENT_1E_B2": {
+    "unitaria_error_max": 2.3314917325049036e-15,
+    "norma_diagonal_inf": 3.0345404148101807,
+    "error_frobenius_vs_Bstar": 1.4890821146680067,
+    "diagonal_min": -3.0345404148101807,
+    "diagonal_max": 2.9236156940460205
+  },
+  "STUDENT_1E_INNER_VAL": {
+    "n": 1198,
+    "auc_recalculada": 0.913537480155041,
+    "auc_archivada": 0.913537480155041,
+    "error_auc": 0.0,
+    "score_por_material_archivado": false,
+    "nota": "AUC archivada coincide si supera prueba; NO hay vector pareado archivado para equivalencia de cada score."
+  },
+  "STUDENT_1F_B1": {
+    "unitaria_error_max": 3.108638044464756e-15,
+    "norma_diagonal_inf": 3.123879909515381,
+    "error_frobenius_vs_Bstar": 1.4924188057660734,
+    "diagonal_min": -3.123879909515381,
+    "diagonal_max": 2.9678187370300293
+  },
+  "STUDENT_1F_B2": {
+    "unitaria_error_max": 3.3306690738754696e-15,
+    "norma_diagonal_inf": 3.066967248916626,
+    "error_frobenius_vs_Bstar": 1.5104482536470902,
+    "diagonal_min": -3.066967248916626,
+    "diagonal_max": 2.9787473678588867
+  },
+  "STUDENT_1F_INNER_VAL": {
+    "n": 1198,
+    "auc_recalculada": 0.9159889583363131,
+    "auc_archivada": 0.915988958336313,
+    "error_auc": 1.1102230246251565e-16,
+    "score_por_material_archivado": false,
+    "nota": "AUC archivada coincide si supera prueba; NO hay vector pareado archivado para equivalencia de cada score."
+  }
+}
