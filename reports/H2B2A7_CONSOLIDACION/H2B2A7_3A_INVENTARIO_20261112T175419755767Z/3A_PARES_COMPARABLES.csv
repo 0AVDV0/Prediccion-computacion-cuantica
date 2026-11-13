@@ -1,0 +1,8 @@
+﻿modelo_a,modelo_b,split,n_indices_comunes,etiquetas_presentes,comparacion_permitida,aviso
+TEACHER_S3_REFERENCIA_OUTER,SAFE_ideal,OUTER_HOLD_ARCHIVADO,1497,SI,SOLO_DESCRIPTIVA_POST_APERTURA,No usar este OUTER HOLD ya abierto para ajustar o seleccionar arquitecturas
+TEACHER_S3_REFERENCIA_OUTER,QWC24_ideal,OUTER_HOLD_ARCHIVADO,1497,SI,SOLO_DESCRIPTIVA_POST_APERTURA,No usar este OUTER HOLD ya abierto para ajustar o seleccionar arquitecturas
+TEACHER_S3_REFERENCIA_OUTER,QWC64_ideal,OUTER_HOLD_ARCHIVADO,1497,SI,SOLO_DESCRIPTIVA_POST_APERTURA,No usar este OUTER HOLD ya abierto para ajustar o seleccionar arquitecturas
+SAFE_ideal,QWC24_ideal,OUTER_HOLD_ARCHIVADO,1497,SI,SOLO_DESCRIPTIVA_POST_APERTURA,No usar este OUTER HOLD ya abierto para ajustar o seleccionar arquitecturas
+SAFE_ideal,QWC64_ideal,OUTER_HOLD_ARCHIVADO,1497,SI,SOLO_DESCRIPTIVA_POST_APERTURA,No usar este OUTER HOLD ya abierto para ajustar o seleccionar arquitecturas
+QWC24_ideal,QWC64_ideal,OUTER_HOLD_ARCHIVADO,1497,SI,SOLO_DESCRIPTIVA_POST_APERTURA,No usar este OUTER HOLD ya abierto para ajustar o seleccionar arquitecturas
+STUDENT_1E,STUDENT_1F,INNER_VAL_YA_EXAMINADO,1198,NO_EN_ESTE_CSV,SCORES_PAREADOS_SIN_AUC_RECALCULADA,Las AUC archivadas proceden de INTEGRACIÓN-01; este CSV no trae etiquetas
