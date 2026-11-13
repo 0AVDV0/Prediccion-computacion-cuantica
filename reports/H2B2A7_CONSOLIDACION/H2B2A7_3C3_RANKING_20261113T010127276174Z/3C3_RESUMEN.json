@@ -1,0 +1,241 @@
+{
+  "etapa": "H2B2A7-FASE-3C3",
+  "estado": "DESCRIPTIVO_INNER_VAL_YA_EXAMINADO",
+  "fuente_3c": "reports\\H2B2A7_CONSOLIDACION\\H2B2A7_3C_OBSERVABLES_20261113T005505646168Z",
+  "n_materiales": 1198,
+  "n_pares": 717003,
+  "comparaciones": [
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1E",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "n_materiales": 1198,
+      "n_pares": 717003,
+      "concordantes": 625105,
+      "discordantes": 91818,
+      "empates_solo_primero": 0,
+      "empates_solo_segundo": 0,
+      "empates_ambos": 80,
+      "fraccion_inversiones_total": 0.12805804159815232,
+      "kendall_tau_b": 0.743855337323534,
+      "pearson": 0.9055794262503152,
+      "spearman": 0.9135851907499026,
+      "pares_margen_suficiente_a_posteriori": 481840,
+      "fraccion_margen_suficiente_a_posteriori": 0.6720195034051462,
+      "max_margen_objetivo_en_inversiones": 0.13394977077006426,
+      "p95_margen_objetivo_en_inversiones": 0.057127585453153766,
+      "nota_margen": "Condicion calculada con diferencias individuales OBSERVADAS; no certifica muestras nuevas."
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "n_materiales": 1198,
+      "n_pares": 717003,
+      "concordantes": 623483,
+      "discordantes": 93440,
+      "empates_solo_primero": 0,
+      "empates_solo_segundo": 0,
+      "empates_ambos": 80,
+      "fraccion_inversiones_total": 0.13032023575912513,
+      "kendall_tau_b": 0.7393304441341678,
+      "pearson": 0.9029697865444273,
+      "spearman": 0.9113972948954594,
+      "pares_margen_suficiente_a_posteriori": 470984,
+      "fraccion_margen_suficiente_a_posteriori": 0.656878702041693,
+      "max_margen_objetivo_en_inversiones": 0.13394977077006426,
+      "p95_margen_objetivo_en_inversiones": 0.0568940661546566,
+      "nota_margen": "Condicion calculada con diferencias individuales OBSERVADAS; no certifica muestras nuevas."
+    },
+    {
+      "comparacion": "STUDENT_1E vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "n_materiales": 1198,
+      "n_pares": 717003,
+      "concordantes": 696521,
+      "discordantes": 20402,
+      "empates_solo_primero": 0,
+      "empates_solo_segundo": 0,
+      "empates_ambos": 80,
+      "fraccion_inversiones_total": 0.02845455318875932,
+      "kendall_tau_b": 0.9430845432494145,
+      "pearson": 0.9954929286469462,
+      "spearman": 0.9955894025701642,
+      "pares_margen_suficiente_a_posteriori": null,
+      "fraccion_margen_suficiente_a_posteriori": null,
+      "max_margen_objetivo_en_inversiones": 0.026755569232145143,
+      "p95_margen_objetivo_en_inversiones": 0.010743567032445528,
+      "nota_margen": ""
+    }
+  ],
+  "topk": [
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1E",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MAYOR_SCORE",
+      "porcentaje": 5,
+      "k": 60,
+      "interseccion": 25,
+      "proporcion_interseccion": 0.4166666666666667
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1E",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MENOR_SCORE",
+      "porcentaje": 5,
+      "k": 60,
+      "interseccion": 30,
+      "proporcion_interseccion": 0.5
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1E",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MAYOR_SCORE",
+      "porcentaje": 10,
+      "k": 120,
+      "interseccion": 71,
+      "proporcion_interseccion": 0.5916666666666667
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1E",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MENOR_SCORE",
+      "porcentaje": 10,
+      "k": 120,
+      "interseccion": 76,
+      "proporcion_interseccion": 0.6333333333333333
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1E",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MAYOR_SCORE",
+      "porcentaje": 20,
+      "k": 240,
+      "interseccion": 183,
+      "proporcion_interseccion": 0.7625
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1E",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MENOR_SCORE",
+      "porcentaje": 20,
+      "k": 240,
+      "interseccion": 182,
+      "proporcion_interseccion": 0.7583333333333333
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MAYOR_SCORE",
+      "porcentaje": 5,
+      "k": 60,
+      "interseccion": 22,
+      "proporcion_interseccion": 0.36666666666666664
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MENOR_SCORE",
+      "porcentaje": 5,
+      "k": 60,
+      "interseccion": 30,
+      "proporcion_interseccion": 0.5
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MAYOR_SCORE",
+      "porcentaje": 10,
+      "k": 120,
+      "interseccion": 68,
+      "proporcion_interseccion": 0.5666666666666667
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MENOR_SCORE",
+      "porcentaje": 10,
+      "k": 120,
+      "interseccion": 78,
+      "proporcion_interseccion": 0.65
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MAYOR_SCORE",
+      "porcentaje": 20,
+      "k": 240,
+      "interseccion": 181,
+      "proporcion_interseccion": 0.7541666666666667
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MENOR_SCORE",
+      "porcentaje": 20,
+      "k": 240,
+      "interseccion": 184,
+      "proporcion_interseccion": 0.7666666666666667
+    },
+    {
+      "comparacion": "STUDENT_1E vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MAYOR_SCORE",
+      "porcentaje": 5,
+      "k": 60,
+      "interseccion": 52,
+      "proporcion_interseccion": 0.8666666666666667
+    },
+    {
+      "comparacion": "STUDENT_1E vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MENOR_SCORE",
+      "porcentaje": 5,
+      "k": 60,
+      "interseccion": 56,
+      "proporcion_interseccion": 0.9333333333333333
+    },
+    {
+      "comparacion": "STUDENT_1E vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MAYOR_SCORE",
+      "porcentaje": 10,
+      "k": 120,
+      "interseccion": 106,
+      "proporcion_interseccion": 0.8833333333333333
+    },
+    {
+      "comparacion": "STUDENT_1E vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MENOR_SCORE",
+      "porcentaje": 10,
+      "k": 120,
+      "interseccion": 110,
+      "proporcion_interseccion": 0.9166666666666666
+    },
+    {
+      "comparacion": "STUDENT_1E vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MAYOR_SCORE",
+      "porcentaje": 20,
+      "k": 240,
+      "interseccion": 229,
+      "proporcion_interseccion": 0.9541666666666667
+    },
+    {
+      "comparacion": "STUDENT_1E vs STUDENT_1F",
+      "split": "INNER_VAL_YA_EXAMINADO",
+      "extremo": "MENOR_SCORE",
+      "porcentaje": 20,
+      "k": 240,
+      "interseccion": 229,
+      "proporcion_interseccion": 0.9541666666666667
+    }
+  ],
+  "observaciones": [
+    "Ranking objetivo es el score B congelado de 3C, NO una etiqueta FM/AFM.",
+    "No se recalcula AUC; sin etiquetas en CSV.",
+    "No se compara INNER VAL contra OUTER HOLD.",
+    "Correlacion Student 1E vs 1F no mide fidelidad al objetivo.",
+    "Margen suficiente se verifica a posteriori con deltas observados.",
+    "No es validacion independiente ni prueba de ventaja cuantica."
+  ]
+}

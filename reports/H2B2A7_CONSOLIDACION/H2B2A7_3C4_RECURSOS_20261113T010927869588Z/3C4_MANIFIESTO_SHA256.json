@@ -1,0 +1,11 @@
+{
+  "etapa": "H2B2A7-3C4",
+  "productos_sha256": {
+    "3C4_COSTOS_ARCHIVADOS.csv": "e1615f761ca098d707f1ef8e0b90d2cfcabf7d90f6dce0ecc70d504b7419c5db",
+    "3C4_CIRCUITOS_STUDENT.csv": "c8b16a27d590ee4058a33e8536adc71b5c117bbaa7d77c8e16365cdd5b999ab8",
+    "3C4_COMPARABILIDAD.csv": "f50b48221929e7cf93dac1e23f67825a7be8d8a112c3f3e439d73fdf2ad77611",
+    "3C4_RESUMEN.json": "96328cd0a8e26cc723880cad2472cbceb9d9e5a79e884100c3266cd10d439141",
+    "3C4_INFORME.md": "b58d03c70fc676b8123ee7c13d1429da874bbcdc041b9a1c4bcb9eae61adfd84"
+  },
+  "nota": "El manifiesto no incluye su propia huella."
+}
