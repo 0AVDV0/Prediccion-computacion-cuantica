@@ -1,0 +1,10 @@
+{
+  "etapa": "H2B2A7-FASE-3C",
+  "productos_sha256": {
+    "3C_ERRORES_POR_MATERIAL.csv": "4e2ece42ce74772a252d57065bfd690bd75dfd5be8f2f8b163aec7d2f571e551",
+    "3C_INFORME.md": "1a2824b1f8958d2684eeb75c3cd1ef355b47a60c18dbf817788a24185da881af",
+    "3C_NORMAS_OPERADORES.csv": "9f7ad0de4e769b53fe204da3e196fdaae428b128f629acef3c4401ffa30bac1f",
+    "3C_RESUMEN.json": "037cf652cb662e8e21ea495c5f2628c7e7ef9f9288aa27fcd337b9bc8bdea1e1"
+  },
+  "nota": "El manifiesto no se incluye en su propia lista."
+}

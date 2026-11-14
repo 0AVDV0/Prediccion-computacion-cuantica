@@ -1,0 +1,5 @@
+﻿comparacion,permitida,metrica,justificacion
+QWC24 vs QWC64,SI_PARCIAL,bases rho6 y shots incrementales,Dos presupuestos parciales con 10000 shots incrementales rho6; no equivalen al costo completo.
+QWC24 o QWC64 vs QWC365,NO_HOMOGENEA,ningun costo total directamente comparable,"Los primeros son parciales; QWC365 es presupuesto lógico más completo, sin QPU."
+Student 1E vs Student 1F,SI_TOPOLOGIA_CONGELADA,puertas U y parámetros D,Misma topología de 2 decodificadores; diferentes valores de ángulos y diagonal.
+Student vs QWC,NO_END_TO_END,ninguna métrica total homogénea certificada,Student carece de shots y total de cabezales; QWC24/64 son parciales.

@@ -1,0 +1,5 @@
+﻿ruta,tipo,lecturas_bases,shots_rho6_incrementales,shots_rho4,shots_totales_plan_logico,certificacion_alcance,advertencia
+QWC24_ARCHIVADA,INCREMENTAL_PARCIAL,24,10000,,,INCREMENTAL_PARCIAL,NO es costo completo por material
+QWC64_ARCHIVADA,INCREMENTAL_PARCIAL,64,10000,,,INCREMENTAL_PARCIAL,NO es costo completo por material
+PAULI_QWC_COMPLETO_16_REFERENCIA,PRESUPUESTO_LOGICO_DE_MEDICION_REFERENCIA,365,100000,10000,110000,PLAN_LOGICO_REFERENCIA_SIN_QPU,No es tiempo QPU ni costo fisico total: requiere verificar preparaciones/ramas/layout/overhead
+STUDENT_DOS_DECODIFICADORES,NO_CUANTIFICADO_TOTAL,2 cabezales de correccion (parcial),,,,DOS_CABEZALES_SIN_COSTO_TOTAL,"Incluye otros 4 cabezales, mezclas, rho4 y shot allocation por definir; RXX no son shots"

@@ -1,0 +1,57 @@
+{
+  "esquema": "H2B2A7_3D_SINTESIS_v1",
+  "alcance": "OFFLINE_DESCRIPTIVO_SIN_EVALUACION_NUEVA",
+  "n_etapas": 5,
+  "n_productos_sha_esperados": 22,
+  "n_productos_sha_verificados": 22,
+  "n_locales_exactos": 22,
+  "n_blob_git_por_conversion_checkout": 0,
+  "outer_hold_previamente_abierto": true,
+  "auc_retrospectivas": {
+    "TEACHER_S3_REFERENCIA_OUTER": 0.9289981903833896,
+    "SAFE_ideal": 0.9250849860432403,
+    "QWC24_ideal": 0.912489102005231,
+    "QWC64_ideal": 0.9177970665162316
+  },
+  "ranking_inner_val": [
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1E",
+      "spearman": 0.9135851907499026,
+      "kendall_tau_b": 0.743855337323534,
+      "fraccion_inversiones_total": 0.12805804159815232
+    },
+    {
+      "comparacion": "OBJETIVO_B vs STUDENT_1F",
+      "spearman": 0.9113972948954594,
+      "kendall_tau_b": 0.7393304441341678,
+      "fraccion_inversiones_total": 0.13032023575912513
+    },
+    {
+      "comparacion": "STUDENT_1E vs STUDENT_1F",
+      "spearman": 0.9955894025701642,
+      "kendall_tau_b": 0.9430845432494145,
+      "fraccion_inversiones_total": 0.02845455318875932
+    }
+  ],
+  "score_error_abs_medio_inner": {
+    "STUDENT_1E": 0.014909868263097408,
+    "STUDENT_1F": 0.015590873319717435
+  },
+  "recursos": {
+    "student_puertas_dos_U": 504,
+    "student_RXX_dos_U": 96,
+    "qwc24_bases": 24,
+    "qwc64_bases": 64,
+    "qwc_shots_incrementales": 10000,
+    "qwc_referencia_shots_logicos": 110000
+  },
+  "limites": [
+    "Los resultados OUTER son retrospectivos y el conjunto ya habia sido abierto.",
+    "Las AUC OUTER no se comparan directamente con AUC INNER VAL de Student.",
+    "Las 22 huellas verifican productos archivados, no una reevaluacion independiente.",
+    "El ranking del score objetivo B no es una etiqueta FM/AFM.",
+    "Los shots parciales de QWC y las puertas de dos U Student no son costos end-to-end equivalentes.",
+    "No hubo ejecucion QPU ni entrenamiento nuevo."
+  ],
+  "fecha_creacion_utc": "2026-11-13T18:48:50.524067+00:00"
+}

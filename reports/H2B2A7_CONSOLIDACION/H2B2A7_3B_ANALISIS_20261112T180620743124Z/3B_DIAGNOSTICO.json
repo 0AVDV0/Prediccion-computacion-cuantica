@@ -1,0 +1,26 @@
+{
+  "etapa": "H2B2A7-FASE-3B",
+  "estado": "DESCRIPTIVO_POST_APERTURA",
+  "fuente_3a": "reports/H2B2A7_CONSOLIDACION/H2B2A7_3A_INVENTARIO_20261112T175419755767Z",
+  "fuente_scores_outer": "reports/H2B2A7_INTEGRACION_00/H2B2A7_INTEGRACION_00_AUDITORIA_DOS_RUTAS_20261110T232931050887Z/INTEGRACION00_SCORES_OUTER_REPLAY_ARCHIVADO.csv",
+  "fuente_scores_student": "reports/H2B2A7_INTEGRACION_01/H2B2A7_INTEGRACION_01_CERT_20261111T221029053812Z/INTEGRACION01_SCORES_INNER_VAL_RECONSTRUIDOS.csv",
+  "n_pares": 7,
+  "n_outer": 1497,
+  "n_inner_por_student": 1198,
+  "n_bootstrap": 1000,
+  "seed": 20261112,
+  "auc_out": {
+    "TEACHER_S3_REFERENCIA_OUTER": 0.9289981903833896,
+    "SAFE_ideal": 0.9250849860432403,
+    "QWC24_ideal": 0.912489102005231,
+    "QWC64_ideal": 0.9177970665162316
+  },
+  "limitaciones": [
+    "OUTER HOLD previamente abierto: análisis retrospectivo, NO evidencia de generalización nueva",
+    "Intervalos bootstrap condicionales a la muestra, sin corrección por selección/modelado previos",
+    "INNER VAL sin etiquetas en CSV Student: NO se recalculó AUC ni su incertidumbre",
+    "No se infirió identidad entre TEACHER_S3_REFERENCIA_OUTER y TEACHER_R3",
+    "Errores absolutos entre scores requieren cautela por sus escalas",
+    "NO se entrenaron modelos, usaron OUTER para selección, ni ejecutaron QPU"
+  ]
+}

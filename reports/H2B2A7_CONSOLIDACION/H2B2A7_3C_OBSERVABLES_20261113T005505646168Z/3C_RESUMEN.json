@@ -1,0 +1,81 @@
+{
+  "etapa": "H2B2A7-FASE-3C1-3C2",
+  "estado": "DESCRIPTIVO_INNER_VAL_YA_EXAMINADO",
+  "n_materiales": 1198,
+  "n_filas": 2396,
+  "x6_shape": [
+    7483,
+    4096
+  ],
+  "max_error_x6_vs_z_objetivo": 4.440892098500626e-16,
+  "resultado_por_modelo": {
+    "STUDENT_1E": {
+      "n_inner_val": 1198,
+      "error_expectativa_B1": {
+        "media": 0.07917054852507584,
+        "mediana": 0.05680645703493496,
+        "p95": 0.22860468774084727,
+        "max": 0.45909984590467223
+      },
+      "error_expectativa_B2": {
+        "media": 0.07359446994076692,
+        "mediana": 0.05820756414648459,
+        "p95": 0.1980290696592653,
+        "max": 0.4890580373181036
+      },
+      "error_absoluto_score": {
+        "media": 0.014909868263097408,
+        "mediana": 0.01045698054392694,
+        "p95": 0.040315277083153356,
+        "max": 0.09202518603128973
+      },
+      "cota_absoluta_score": {
+        "media": 1.0390966793741114,
+        "mediana": 1.0736171749549617,
+        "p95": 1.1622924437844229,
+        "max": 1.3016946184382052
+      },
+      "error_max_score_vs_integracion01": 8.326672684688674e-17,
+      "max_error_identidad_delta_score": 5.551115123125783e-17,
+      "exceso_max_sobre_cota_teorica": -0.6886943201199024
+    },
+    "STUDENT_1F": {
+      "n_inner_val": 1198,
+      "error_expectativa_B1": {
+        "media": 0.08203037554624554,
+        "mediana": 0.05879761518950548,
+        "p95": 0.23143831853718622,
+        "max": 0.4865110897662317
+      },
+      "error_expectativa_B2": {
+        "media": 0.07580187002223712,
+        "mediana": 0.060023181522236436,
+        "p95": 0.19902412950769777,
+        "max": 0.5326070740172385
+      },
+      "error_absoluto_score": {
+        "media": 0.015590873319717435,
+        "mediana": 0.011407526056409018,
+        "p95": 0.041621728686958875,
+        "max": 0.09512062372595843
+      },
+      "cota_absoluta_score": {
+        "media": 1.0575351491330682,
+        "mediana": 1.0958414228364903,
+        "p95": 1.190059947620089,
+        "max": 1.3251495804770783
+      },
+      "error_max_score_vs_integracion01": 6.245004513516506e-17,
+      "max_error_identidad_delta_score": 3.122502256758253e-17,
+      "exceso_max_sobre_cota_teorica": -0.6954351347259607
+    }
+  },
+  "alcance": "error operator vs expectativa sobre INNER_VAL, descomposicion de score congelado",
+  "limites": [
+    "Sin nueva evaluacion independiente",
+    "No se calcularon AUC ni ranking; no se ajustaron parametros",
+    "No se calcularon recursos fisicos ni shots",
+    "SHA de 1F y OPS solo observados previamente, no hashes historicos originales",
+    "Requiere acceso a checkpoints fuera de Git"
+  ]
+}

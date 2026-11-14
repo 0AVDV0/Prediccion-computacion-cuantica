@@ -1,0 +1,11 @@
+{
+  "etapa": "H2B2A7-3C3",
+  "productos_sha256": {
+    "3C3_COMPARACIONES_RANKING.csv": "c1f71c4788e06198ae1f718cdc68f99cf5fa9948f6fd33130091a25b6408ebf1",
+    "3C3_INFORME.md": "dfef3c5e0596611504feed71cda5254ceba7ea3a301bf48f28f3f76ce8017b76",
+    "3C3_RANKING_POR_MATERIAL.csv": "b0f37c4ce97eee4a77fcaf00f2c3847d632acff796dbd2fda5700f583c3697b7",
+    "3C3_RESUMEN.json": "63c7adc865fcd1529868fc95d69fef06c4915b19f3acb79d06bf043b56390af1",
+    "3C3_SOLAPAMIENTOS_TOPK.csv": "df452e27badd5ff830e3c77ef7c267abba3abeda871eb44dd04036af1b409a78"
+  },
+  "nota": "Este manifiesto no se incluye en su propia lista."
+}

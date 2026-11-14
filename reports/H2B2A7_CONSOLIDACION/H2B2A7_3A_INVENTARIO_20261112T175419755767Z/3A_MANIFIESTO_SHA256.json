@@ -1,0 +1,14 @@
+{
+  "etapa": "H2B2A7-FASE-3A",
+  "fuentes": [
+    "INTEGRACION-00",
+    "INTEGRACION-01"
+  ],
+  "productos_sha256": {
+    "3A_MATRIZ_COBERTURA.csv": "050b829740d112fa5cad2f91f4bee1a9dedff65a1ad6b44bcb063e6fdc273f67",
+    "3A_PARES_COMPARABLES.csv": "53fbb4c1a67f5513cd7031925861202f34c9eb55c3af69b028402add3618b34f",
+    "3A_DIAGNOSTICO.json": "7ea6d0b0de6c337f241c7ccf1f813ccd2638c0bb98230cfabc6ad42a4b108f59",
+    "3A_INFORME.md": "e69a469c997bd778bbf607dd51aa6059bd36067dbce12c36a35ea252528a7176"
+  },
+  "nota": "Manifiesto no se certifica a sí mismo"
+}

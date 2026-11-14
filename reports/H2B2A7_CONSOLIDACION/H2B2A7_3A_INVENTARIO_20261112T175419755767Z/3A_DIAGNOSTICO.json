@@ -1,0 +1,28 @@
+{
+  "metodologia": "FASE 3A: inventario de evidencia, no una evaluación adicional",
+  "archivos_con_SHA_verificado": {
+    "integracion00": 7,
+    "integracion01": 6
+  },
+  "codigo_notebooks_sha_verificado": 2,
+  "filas_scores_outer": 1497,
+  "filas_scores_student": 2396,
+  "inner_por_modelo": {
+    "STUDENT_1E": 1198,
+    "STUDENT_1F": 1198
+  },
+  "pares_comparables_descriptivamente": 7,
+  "interseccion_indices_inner_y_outer": 0,
+  "aviso_cruce": "No se encontraron índices comunes en los CSV",
+  "etiquetas_en_csv_outer": true,
+  "etiquetas_en_csv_student": false,
+  "limites": [
+    "INNER VAL y OUTER HOLD NO son el mismo split, aunque sus métricas puedan tener el mismo nombre",
+    "OUTER HOLD ya estaba abierto: cualquier comparación es retrospectiva/descriptiva",
+    "HEAD4_SAFE tiene solo resumen en la evidencia disponible, no score individual para comparación pareada",
+    "Las AUC Student son históricas, no fueron recalculadas por esta fase de inventario",
+    "No se mide costo QPU ni se entrena un modelo",
+    "No hay etiquetas de INNER VAL en el CSV Student consolidado",
+    "La identidad de Student 1F sigue sin hash histórico anterior ni QPY original cotejado"
+  ]
+}

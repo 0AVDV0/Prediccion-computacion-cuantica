@@ -1,0 +1,10 @@
+{
+  "etapa": "H2B2A7-FASE-3B",
+  "productos_sha256": {
+    "3B_AUC_OUTER_RETROSPECTIVAS.csv": "1e4d03ee26cf89b8f2322a9834d035348fe725702926aaa794ca71144bd3f2b7",
+    "3B_COMPARACION_PAREADA.csv": "9190ad30a9908f51b95f725874399db1a2bda50b7b4e86edaccc94bc9f10d171",
+    "3B_DIAGNOSTICO.json": "697222d3e82694826097a332d3cf8fcd261489f2356f20298b5a2a8add7a2910",
+    "3B_INFORME.md": "436e30cf54b95a308513caa9c34cc608cc88d5759fe60df669a866f68a473e64"
+  },
+  "nota": "El manifiesto no se autocertifica"
+}

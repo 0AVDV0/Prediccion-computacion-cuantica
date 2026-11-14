@@ -1,0 +1,4 @@
+﻿componente,qubits_por_circuito,capas_locales_por_circuito,rondas_rxx_por_circuito,puertas_RZ,puertas_RY,puertas_RXX,puertas_logicas_totales,valores_diagonal_D,tipo_conteo,costo_end_to_end
+DECODIFICADOR_B1,6,17,16,102,102,48,252,64,CIRCUITO_U_SIN_TRANSPILAR,NO_CUANTIFICADO
+DECODIFICADOR_B2,6,17,16,102,102,48,252,64,CIRCUITO_U_SIN_TRANSPILAR,NO_CUANTIFICADO
+SUMA_DOS_DECODIFICADORES,6,17,16,204,204,96,504,128,CIRCUITO_U_SIN_TRANSPILAR,NO_CUANTIFICADO
