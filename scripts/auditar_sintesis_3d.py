@@ -58,8 +58,16 @@ def check_sha(root: Path, file_path: Path, expected: str):
         return "ARCHIVO_LOCAL"
     rel = file_path.relative_to(root)
     git_data = committed_bytes(root, rel)
-    if git_data is not None and sha(git_data) == expected:
-        return "BLOB_GIT_COINCIDE_LOCAL_DIFIERE"  # requires reporting distinction
+    if git_data is not None:
+        if sha(git_data) == expected:
+            return "BLOB_GIT_COINCIDE_LOCAL_DIFIERE"
+        # Git may normalize CRLF to LF in tracked text files. We accept only
+        # a byte-for-byte reconstruction that matches the ORIGINAL manifest.
+        if file_path.suffix.lower() in {".csv", ".json", ".md"}:
+            if b"\r" not in git_data and b"\n" in git_data:
+                restored = git_data.replace(b"\n", b"\r\n")
+                if sha(restored) == expected:
+                    return "BLOB_GIT_CRLF_RECONSTRUIDO_SHA_ORIGINAL"
     raise AuditError(f"SHA NO COINCIDE: {rel} (manifiesto={expected}, local={sha(disk)})")
 
 

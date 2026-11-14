@@ -4,6 +4,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location('h2b2a7_3d', ROOT/'scripts'/'auditar_sintesis_3d.py')
@@ -42,6 +43,27 @@ class Auditoria3DTests(unittest.TestCase):
             path=root/'evidencia.csv';path.write_bytes(b'contenido')
             with self.assertRaises(mod.AuditError):
                 mod.check_sha(root,path,'0'*64)
+
+    def test_git_lf_reconstruye_sha_crlf_original(self):
+        with tempfile.TemporaryDirectory() as base:
+            root = Path(base)
+            path = root / 'evidencia.csv'
+            git_blob = b'columna\nvalor\n'
+            path.write_bytes(git_blob)
+            original = b'columna\r\nvalor\r\n'
+            with mock.patch.object(mod, 'committed_bytes', return_value=git_blob):
+                self.assertEqual(mod.check_sha(root, path, mod.sha(original)),
+                                 'BLOB_GIT_CRLF_RECONSTRUIDO_SHA_ORIGINAL')
+
+    def test_git_lf_rechaza_contenido_alterado(self):
+        with tempfile.TemporaryDirectory() as base:
+            root = Path(base)
+            path = root / 'evidencia.csv'
+            altered = b'columna\nvalor_alterado\n'
+            path.write_bytes(altered)
+            with mock.patch.object(mod, 'committed_bytes', return_value=altered):
+                with self.assertRaises(mod.AuditError):
+                    mod.check_sha(root, path, mod.sha(b'columna\r\nvalor\r\n'))
 
     def test_integracion_sintetica_22_productos(self):
         with tempfile.TemporaryDirectory() as base:
