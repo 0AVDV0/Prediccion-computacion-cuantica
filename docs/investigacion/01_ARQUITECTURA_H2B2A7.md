@@ -1,6 +1,6 @@
 # Arquitectura física y matemática H2B2A7
 
-> - **Estado:** borrador científico v0.3, ampliado con derivación de ALS R3 cotejada con código histórico; descripción de las piezas sustentadas por evidencia integrada, no especificación final certificada de extremo a extremo.
+> - **Estado:** borrador científico v0.4; incorporada la reducción 21→8 por trazas parciales y la descomposición exacta 16→10 sobre la variedad B8, además de ALS R3; descripción de las piezas sustentadas por evidencia integrada, no especificación final certificada de extremo a extremo.
 > - **Rama documental:** `feature/h2b2a7-documentacion-cientifica`.
 > - **Procedencia:** documento derivado de `00_MAPA_CIENTIFICO.md`, INTEGRACIÓN-00, INTEGRACIÓN-01 y síntesis 3D.
 > - **Regla editorial:** separar identidades algebraicas, implementaciones verificadas, resultados retrospectivos y dependencias por verificar.
@@ -16,69 +16,236 @@ El objetivo de este documento es explicar **cómo se conectan los objetos matem�
 | Objeto | Forma o dimensión respaldada | Papel | Reserva |
 |---|---|---|---|
 | Estado de referencia de siete qubits | \(\lvert\psi_7(x)\rangle\in(\mathbb C^2)^{\otimes 7}\) | Codificación previa empleada en el desarrollo multicopia | Documentar el circuito exacto, normalizaciones y transformaciones de entrada desde el notebook original |
-| Estado multicopia previo | \(\lvert\psi_7(x)\rangle^{\otimes 3}\) (21 qubits) | Punto de partida conceptual de la reducción del sistema | La derivación exacta que conduce al espacio efectivo debe cotejarse con las fuentes históricas |
+| Estado multicopia previo | \(\lvert\psi_7(x)\rangle^{\otimes 3}\) (21 qubits) | Construcción de tres copias de la codificación de siete qubits | La traza parcial es exacta para los subsistemas retenidos, sin preservar todos los observables 21q |
 | Observable \(O_f^\star\) de H2B1A | Matriz compleja 256 × 256 para cada uno de cinco folds | Referencia de discriminación en un espacio de ocho qubits | Falta certificar qué entradas y etiquetas se usaron para ajustarlo originalmente |
-| Diez canales efectivos H2B1E1 | 10 términos de una descomposición física de `O*_f` | Descomponer el score preservando la reconstrucción numérica histórica | Reconstrucción algebraica no implica selección confirmatoria |
+| Diez canales efectivos H2B1E1 | Cuatro términos diagonales y seis pares Pauli simétricos; operadores \(64\times64\) | Reproducir exactamente el *score* de \(O_f^\star\) sobre \(\rho_6\otimes\rho_4\otimes\rho_4\) | Equivalencia de expectativas sobre B8, no igualdad universal de las matrices 256×256 |
 | Configuración C5 de H2B1E3 | `II`, `IY`, `IZ`, `XY`, `ZZ` | Cinco canales fijos para la representación reducida | Su elección global pertenece al desarrollo exploratorio de arquitectura |
 | Teacher R3 | \(\widehat s_r=f^\top a+f^\top Q_rg\), con \(Q_r\in\mathbb R^{5\times5}\) y \(\operatorname{rank}(Q_r)\le r\) | Destilación bilineal del score C5; R3 utiliza \(r=3\) | MSE sin penalización explícita, pero la elección global del rango no es una validación confirmatoria |
 | Operadores Student 1E/1F | `O_j = U_j† D_j U_j`, con `D_j` diagonal de 64 entradas | Observables efectivos implementados en seis qubits | No se ha certificado el costo físico end-to-end ni el QPY original de 1F |
 
-**Nota de alcance:** las dimensiones anteriores describen piezas documentadas; la identidad completa entre el modelo matemático de veintiún qubits, la representación reducida y las implementaciones posteriores debe desarrollarse en una derivación independiente, con referencias de código.
+**Nota de alcance:** las secciones 3 y 4 demuestran algebraicamente el mapa de reducción de estados y de scores dentro de la familia B8. Queda por certificar la procedencia original de los arreglos reducidos, la construcción inicial de \(O_f^\star\) y la equivalencia de recursos físicos de una implementación real.
 
-## 3. Antecedente multicopia y reducción física
+## 3. Antecedente multicopia y reducción física 21→8
 
-Para un material `x`, la construcción multicopia previa puede escribirse como
+### 3.1. Estado de siete qubits y tres copias
+
+Para cada material \(x\), la codificación previa asigna un vector de amplitudes normalizado \(|\psi_7(x)\rangle\in\mathbb C^{128}\) y una matriz densidad pura:
 
 $$
-|\Psi_{21}(x)\rangle = |\psi_7(x)\rangle_A \otimes |\psi_7(x)\rangle_B \otimes |\psi_7(x)\rangle_C.
+\rho_7(x)=|\psi_7(x)\rangle\langle\psi_7(x)|.
 $$
 
-El espacio de Hilbert completo tiene dimensión `2^21`. La línea H2B1 trabaja posteriormente con un observable **B8** (`256 = 2^8`) y con operadores efectivos de **seis qubits** para ciertos canales. El objetivo documental es demostrar, a partir del código histórico, las hipótesis y transformaciones que hacen legítima esa reducción. **No debe inferirse equivalencia de toda observable de 21 qubits con cualquier observable de 8 qubits**: se trata de la representación efectiva usada en esta investigación bajo restricciones particulares.
+El antecedente multicopia está descrito por
 
-**Pendiente de certificación:** ecuación completa de la reducción, convenciones de orden de qubits, trazas parciales y relación exacta entre `ρ₆`, los factores restantes y el observable B8.
+$$
+\rho_{21}(x)=\rho_7^A(x)\otimes\rho_7^B(x)\otimes\rho_7^C(x)
+\in\mathbb C^{2^{21}\times2^{21}}.
+$$
 
-## 4. Cadena comprobada de procedencia del observable
+Son **tres copias preparadas de forma independiente** del mismo estado codificado; la independencia entre copias no implica que los siete qubits *dentro* de cada copia estén separables.
 
-Las salidas históricas conservadas permiten establecer la siguiente secuencia concreta:
+### 3.2. Subestados que se conservan
 
-```text
-H2B1A  O_FOLDS_H2B1A
-   ↓
-H2B1E0 OSTAR_FOLDS_H2B1E0
-   ↓
-H2B1E1 OSTAR_FOLDS_H2B1E1
-   ↓
-Descomposición física en diez canales
-   ↓
-H2B1E3 cinco canales fijos: II, IY, IZ, XY, ZZ
-   ↓
-Factorización / aproximación R3
-   ↓
-H2B2A0 y línea posterior H2B2A7
+La celda histórica 77, **H2B2A7-19A**, lee el vector original \(\psi_7\) de forma explícita; no acepta reconstruirlo desde expectativas de seis qubits, porque éstas no determinan una purificación única (`L00149–L00270`). Para examinar los subestados, ejecutaría (si se corriera) las operaciones:
+
+```python
+rho6 = partial_trace(state, [6])
+rho4 = partial_trace(state, [0, 1, 2, 3, 5, 6])
 ```
 
-La ejecución histórica conservada en el notebook indica que H2B1E0 leyó `O_FOLDS_H2B1A` desde memoria; H2B1E1 leyó `OSTAR_FOLDS_H2B1E0` desde memoria. Esto **resuelve la fuente inmediata**, pero todavía no prueba que el `O*_f` original se haya construido sin etiquetas del hold correspondiente.
-
-### 4.1. Score por canales
-
-De manera esquemática, la descomposición permite representar un score como una suma de contribuciones:
+**Fuente primaria:** celda 77, `L00414–L00427`. Bajo la convención Qiskit del índice de qubit, las definiciones son
 
 $$
-s_f(x) = \sum_{c\in\mathcal C_{10}} s_{f,c}(x),
-\qquad s_{f,c}(x)=F_{f,c}(x)G_{f,c}(x),
+\rho_6(x):=\operatorname{Tr}_{q_6}[\rho_7(x)]\in\mathbb C^{64\times64}
 $$
 
-Aquí \(F_{f,c}\) y \(G_{f,c}\) representan, esquemáticamente, los dos factores de cada contribución; sus normalizaciones y la correspondencia exacta con los arreglos del notebook deben conservarse al ampliar la derivación. La expresión no debe confundirse con la factorización posterior de rango tres mediante ALS. En H2B1E1 se verificó numéricamente la equivalencia entre el score del observable heredado y la reconstrucción con diez canales. La configuración reducida C5 retiene únicamente el subconjunto fijo
+y
 
 $$
-\mathcal C_5=\{II,IY,IZ,XY,ZZ\}.
+\rho_4(x):=\operatorname{Tr}_{q_0,q_1,q_2,q_3,q_5,q_6}[\rho_7(x)]
+\in\mathbb C^{2\times2}.
 $$
 
-**Advertencia:** conservar un subconjunto de canales no es una identidad universal de reconstrucción exacta del operador original; su suficiencia discriminativa se investigó empíricamente.
+El subíndice **4** de \(\rho_4\) identifica el *qubit original* \(q_4\); **no** denota una matriz densidad de cuatro qubits. La primera reducción conserva \(q_0,\ldots,q_5\). En \(\rho_6\), el registro local se indexa como esos mismos seis qubits.
 
-### 4.2. Selección exploratoria de C5
+### 3.3. Identidad exacta de traza parcial y dimensión B8
 
-H2B1E1 examinó los `2^10−1=1023` subconjuntos no vacíos y produjo comparaciones por tamaño. Si bien la orientación y la selección de subconjuntos dentro del fold se describen mediante cantidades de entrenamiento, en el desarrollo posterior se consultaron fronteras de AUC sobre *hold* para estudiar tamaños y rangos. Así, la elección global de C5 **no debe calificarse retrospectivamente como independiente del hold** sin evidencia documental adicional.
+Conservemos los seis qubits \(q_0,\ldots,q_5\) de la copia \(A\), el qubit original \(q_4\) de \(B\) y el qubit original \(q_4\) de \(C\). Se descartan respectivamente \(1+6+6=13\) qubits. Por la propiedad de factorización de la traza parcial,
+
+$$
+\begin{aligned}
+\operatorname{Tr}_{\rm desc}\!\left[\rho_7^A\otimes\rho_7^B\otimes\rho_7^C\right]
+&=\operatorname{Tr}_{q_6^A}[\rho_7^A]\otimes
+\operatorname{Tr}_{\{q_0,q_1,q_2,q_3,q_5,q_6\}^B}[\rho_7^B]
+\otimes\operatorname{Tr}_{\{q_0,q_1,q_2,q_3,q_5,q_6\}^C}[\rho_7^C]\\
+&=\boxed{\rho_6\otimes\rho_4\otimes\rho_4}\equiv\rho_{\mathrm{B8}}.
+\end{aligned}
+$$
+
+La dimensión retenida es \(2^6\cdot2\cdot2=256=2^8\). La celda 9 construye de manera explícita esta matriz (`L01362–L01389`) mediante
+
+```python
+R = torch.einsum("nij,nab,ncd->niacjbd", r6, r4, r4)
+R = R.reshape(n_muestras, 256, 256)
+```
+
+La celda 10 repite la misma contracción en NumPy (`L00587–L00641`), fija **\(q_0\) como bit menos significativo** y declara que \(q_0,q_1\) de B8 son los dos factores finales, mientras \(q_2,\ldots,q_7\) representan el bloque \(\rho_6\) (`L00242–L00251`). Así, el orden de matriz de izquierda a derecha es \(\rho_6\otimes\rho_4\otimes\rho_4\), sin confundir los nombres locales de los qubits B8 con los índices originales de \(\psi_7\).
+
+Esta reducción es una **identidad exacta de estados reducidos** y no requiere aproximación de rango ni aprendizaje. La traza parcial, sin embargo, puede convertir el estado puro original en un estado mixto: no afirmamos que conserve su pureza ni su espectro. No hay una identidad que transforme cualquier observable de 21 qubits en uno de ocho: para \(O_8\) sobre los subsistemas conservados,
+
+$$
+\operatorname{Tr}[O_8\rho_{\mathrm{B8}}]
+=\operatorname{Tr}[(O_8\otimes I_{\mathrm{desc}})\rho_{21}],
+$$
+
+a condición de respetar la permutación de factores que lleva los subsistemas retenidos al orden B8.
+
+**Límite físico:** ocho qubits describen el soporte efectivo del *score* examinado; no prueban que la preparación de tres copias, estados mixtos reducidos, descargas/ancillas o lectura sean realizables con solo ocho qubits físicos y menor costo integral.
+
+### 3.4. Tipo de evidencia y pendiente de procedencia
+
+La identidad de traza parcial es un resultado matemático, y las convenciones de implementación están explícitas en las celdas 9, 10 y 77. **Estas fuentes son código inspeccionado, no una nueva ejecución histórica.** En particular, la celda 77 es una auditoría posterior de preparación de \(\psi_7\), no por sí sola la celda que creó originalmente `RHO6_H2B1A` y `RHO4_H2B1A`. Sus índices, hashes de arrays y proceso generador inicial deben reconstruirse antes de proclamar la trazabilidad completa de esos objetos.
+
+## 4. Procedencia y descomposición exacta del observable B8
+
+### 4.1. Cadena documental y convención de producto tensorial
+
+La secuencia observada de objetos inmediatos es:
+
+```text
+H2B1A  O_FOLDS_H2B1A                  (5 × 256 × 256)
+   ↓  recuperado por H2B1E0 (celda 10; alternativa: artefacto/objeto previo)
+H2B1E0 OSTAR_FOLDS_H2B1E0
+   ↓  recuperado por H2B1E1 (celda 11; alternativas de RAM y disco)
+H2B1E1 OSTAR_FOLDS_H2B1E1
+   ↓  descomposición de matriz en 16 bloques Pauli 6|1|1
+H2B1E1 diez canales simétricos EXACTOS para scores sobre B8
+   ↓  selección exploratoria; ya no es identidad general
+H2B1E3 C5 = (II, IY, IZ, XY, ZZ)
+   ↓  destilación bilineal ALS, aproximación de rango r=3
+H2B1E3 Teacher R3 → H2B2A0 y etapas posteriores
+```
+
+**Fuente inmediata:** celda 10, `L00368–L00472`; celda 11, `L00297–L00490`. Existen rutas alternativas de recuperación desde RAM o un archivo NPZ; el recorrido concreto de la ejecución histórica está documentado en las auditorías de linaje previas. **Ninguna de estas dos celdas certifica por sí sola cómo fue optimizado y supervisado originalmente `O_FOLDS_H2B1A`.**
+
+La celda 11 trabaja con el operador hermítico \(O_f^\star\in\mathbb C^{256\times256}\) de cada fold y con los tres bloques físicos \(6|1|1\). La celda 10, por su parte, investiga geometría y entrelazamiento de operadores (Schmidt/MPO/Pauli), pero **no es la fuente primaria de la reducción 16→10**: esa reducción está implementada en la celda 11.
+
+### 4.2. Descomposición completa del operador: 16 bloques
+
+Definimos \(\sigma_0=I\), \(\sigma_1=X\), \(\sigma_2=Y\) y \(\sigma_3=Z\). Por completitud y ortogonalidad Hilbert–Schmidt de la base Pauli de dos qubits, todo operador \(O_f^\star\) sobre \(\mathbb C^{64}\otimes\mathbb C^2\otimes\mathbb C^2\) se escribe exactamente como
+
+$$
+\boxed{O_f^\star=\sum_{\mu,\nu=0}^{3}B_{f,\mu\nu}\otimes\sigma_\mu\otimes\sigma_\nu},
+\qquad B_{f,\mu\nu}\in\mathbb C^{64\times64},
+$$
+
+con la proyección de coeficientes
+
+$$
+\boxed{B_{f,\mu\nu}=\frac14\,\operatorname{Tr}_{\mathrm{últimos}\;2}
+\left[O_f^\star(I_{64}\otimes\sigma_\mu\otimes\sigma_\nu)\right].}
+$$
+
+El factor \(1/4\) procede de \(\operatorname{Tr}(\sigma_\mu\sigma_\alpha)=2\delta_{\mu\alpha}\) para cada uno de los dos qubits. El código construye esos bloques por contracción de índices (`decompose_611_h2b1e1`, celda 11, `L00744–L00848`) y reconstruye el operador 256×256 sumando sus 16 términos (`reconstruct_16_h2b1e1`, `L00849–L00897`).
+
+Ésta sí es una **identidad de operadores** en el espacio B8 completo; no depende todavía de que las dos copias \(\rho_4\) sean iguales.
+
+### 4.3. Simetría de las copias idénticas y 10 canales visibles
+
+Para \(\rho_{\mathrm{B8}}(x)=\rho_6(x)\otimes\rho_4(x)\otimes\rho_4(x)\), definamos los momentos Pauli reales de un qubit
+
+$$
+m_\mu(x):=\operatorname{Tr}[\sigma_\mu\rho_4(x)],\quad
+m_0=1,\quad \mu=0,1,2,3.
+$$
+
+La linealidad y la factorización de la traza dan
+
+$$
+\begin{aligned}
+s_f^\star(x)&:=\operatorname{Tr}[O_f^\star\rho_{\mathrm{B8}}(x)]\\
+&=\sum_{\mu,\nu=0}^3
+m_\mu(x)m_\nu(x)\operatorname{Tr}[B_{f,\mu\nu}\rho_6(x)].
+\end{aligned}
+$$
+
+Dado que ambos factores \(\rho_4\) son idénticos, \(m_\mu m_\nu=m_\nu m_\mu\). Definimos entonces **diez** operadores efectivos hermíticos sobre seis qubits:
+
+$$
+\boxed{A_{f,\mu\nu}=\begin{cases}
+B_{f,\mu\mu},&\mu=\nu,\\
+B_{f,\mu\nu}+B_{f,\nu\mu},&\mu<\nu,
+\end{cases}}
+\qquad 0\le\mu\le\nu\le3.
+$$
+
+Así, sin descartar ninguna contribución al score dentro de B8,
+
+$$
+\boxed{s_f^\star(x)=\sum_{0\le\mu\le\nu\le3}
+\underbrace{m_\mu(x)m_\nu(x)}_{f_{\mu\nu}(x)}
+\underbrace{\operatorname{Tr}[A_{f,\mu\nu}\rho_6(x)]}_{g_{f,\mu\nu}(x)}.}
+$$
+
+Son \(4+\binom42=10\) pares no ordenados. La lista literal del código (`CHANNEL_PAIRS_H2B1E1`, celda 11, `L00680–L00743`) es
+
+$$
+\mathcal C_{10}=(II,IX,IY,IZ,XX,XY,XZ,YY,YZ,ZZ).
+$$
+
+**Normalización importante:** para \(\mu<\nu\) el operador de canal que multiplica al único producto de momentos es la **suma**, no el promedio, \(A_{\mu\nu}=B_{\mu\nu}+B_{\nu\mu}\). El promedio aparece en cambio al reconstruir el observable *simetrizado* \(O_{\mathrm{visible}}\): cada uno de los dos Pauli strings recibe \((B_{\mu\nu}+B_{\nu\mu})/2\). Estas dos convenciones son compatibles pero no intercambiables (`build_visible_operator_h2b1e1`, `L00897–L01025`; `effective_channels_h2b1e1`, `L01200–L01343`).
+
+### 4.4. Qué se conserva: score sobre la variedad física, no el operador global
+
+Sea \(S\) el operador SWAP sobre los dos últimos qubits (y la identidad sobre los primeros seis). El componente visible de cualquier observable es
+
+$$
+O_{f,\mathrm{visible}}=\tfrac12(O_f^\star+S O_f^\star S),
+\qquad O_{f,\mathrm{invisible}}=\tfrac12(O_f^\star-S O_f^\star S).
+$$
+
+Como \(S\rho_{\mathrm{B8}}S=\rho_{\mathrm{B8}}\) para todo estado de la forma \(\rho_6\otimes\rho_4\otimes\rho_4\), se deduce
+
+$$
+\operatorname{Tr}[O_{f,\mathrm{invisible}}\rho_{\mathrm{B8}}]
+=0,
+\quad\text{y}\quad
+\boxed{\operatorname{Tr}[O_f^\star\rho_{\mathrm{B8}}]
+=\operatorname{Tr}[O_{f,\mathrm{visible}}\rho_{\mathrm{B8}}].}
+$$
+
+Por lo tanto, la reducción 16→10 es una **equivalencia exacta de funcionales de score sobre la familia de estados B8**; en general, \(O_f^\star\ne O_{f,\mathrm{visible}}\) como matrices de 256×256. La celda 11 mide explícitamente la fracción de energía de Frobenius del operador invisible (`L01500–L01730`), sin afirmar que tal energía sea cero.
+
+El código contiene controles con los siguientes criterios (`L01700–L01900`): error máximo de reconstrucción de los 16 bloques no mayor que \(10^{-8}\); error de score a diez canales y de score del operador visible no mayor que \(2\times10^{-7}\); y diferencia AUC en *hold* no mayor que \(10^{-10}\). Son **umbrales programados**, no nuevas mediciones efectuadas durante esta revisión documental. La prueba de 16 bloques corresponde a identidad global; las dos pruebas con diez canales corresponden a igualdad de scores evaluados en estados B8. No se infiere nueva validez predictiva independiente.
+
+### 4.5. Del conjunto exacto C10 al subconjunto exploratorio C5
+
+La etapa H2B1E1 enumera los \(2^{10}-1=1023\) subconjuntos no vacíos. Para cada tamaño, los subconjuntos y el signo del score se eligen por AUC de **TRAIN dentro de cada fold**, se informa la AUC en *hold* y los coeficientes heredados de \(O_f^\star\) no se reoptimizan (`L01344–L01483`, `L02000–L02375`, `L02593–L02710`). Sin embargo, la función `first_k_reaching_h2b1e1` utiliza explícitamente `mean_hold_AUC` para analizar las fronteras globales de complejidad (`L02843–L02965`). La elección posterior de un tamaño fijo y de C5 debe tratarse como **desarrollo exploratorio condicionado por las evaluaciones históricas**.
+
+El subconjunto C5 utilizado por R3 es
+
+$$
+\mathcal C_5=(II,IY,IZ,XY,ZZ).
+$$
+
+En particular, la correspondencia de factores locales es
+
+| Canal | \(f_c(x)\) | Operador 6q efectivo \(A_{f,c}\) |
+|---|---|---|
+| `II` | \(1\) | \(B_{f,II}\) |
+| `IY` | \(\langle Y\rangle\) | \(B_{f,IY}+B_{f,YI}\) |
+| `IZ` | \(\langle Z\rangle\) | \(B_{f,IZ}+B_{f,ZI}\) |
+| `XY` | \(\langle X\rangle\langle Y\rangle\) | \(B_{f,XY}+B_{f,YX}\) |
+| `ZZ` | \(\langle Z\rangle^2\) | \(B_{f,ZZ}\) |
+
+Esto enlaza **exactamente la convención de los diez canales** con el vector de características \(\mathbf f=(1,\langle Y\rangle,\langle Z\rangle,\langle X\rangle\langle Y\rangle,\langle Z\rangle^2)^\top\) utilizado en §5 para R3. No convierte el *score* C5 en una reconstrucción universalmente exacta de \(O_f^\star\): eliminar los otros cinco canales es una **ablación aproximada**, y ALS R3 introduce una **segunda aproximación distinta** sobre el score C5.
+
+### 4.6. Alcance físico, estadístico y de ejecución
+
+- **Matemática:** 21→8 es exacto por traza parcial para los subsistemas indicados; 16 bloques es una expansión exacta del operador 8q; 16→10 es exacto para scores sobre B8; 10→5 y C5→R3 no son identidades globales.
+- **Trazabilidad:** las celdas heredaron estados reducidos y observables que existían previamente; resta localizar/cotejar la generación inicial y los datos usados para ajustar \(O_f^\star\).
+- **Validación histórica:** el código define comparaciones y pruebas, pero esta extracción no incluye sus *outputs*. Mantener separadas las identidades matemáticas demostrables y las tolerancias que el experimento habría verificado al ejecutarse.
+- **Recursos físicos:** canales de operadores hermíticos 6q no equivalen automáticamente a seis qubits físicos suficientes para toda la preparación multicopia, a diez circuitos, ni a diez bases Pauli. El costo real exige un plan de preparación, bases, shots y transpilación común a las alternativas.
 
 ## 5. Teacher R3: formulación y ajuste ALS cotejados con código histórico
 
@@ -133,7 +300,7 @@ $$
 
 **Fuentes:** comentario inicial de la celda, `L00007–L00031`; canales `L00203–L00218`; recuperación de operadores `L00470–L00575`; matrices `F` y `G` `L00584–L00659`; cómputo del teacher `L01815–L01833`.
 
-La notación de valores esperados es la declarada por el código; la construcción detallada de \(\rho_4\), \(\rho_6\), el orden de qubits y la correspondencia integral con el espacio B8 **siguen pendientes** de una derivación independiente.
+La convención de las matrices reducidas, el orden de qubits y la deducción exacta de los cinco factores del score C5 quedan ahora desarrollados en §§3–4. Aún debe certificarse la procedencia histórica de los arreglos originales, no confundida con estas identidades algebraicas.
 
 ### 5.3. Modelo de compresión bilineal de rango restringido
 
@@ -301,7 +468,7 @@ La AUC de ese teacher R3 en inner val pertenece a una partición cuyos ejemplos 
 
 **Resuelto por inspección de fuente:** modelo matemático \(\widehat s=f^\top a+f^\top Qg\), objetivo MSE de destilación C5, restricción de rango, dos subproblemas ALS, ausencia de regularizador penalizado explícito, control numérico, inicializaciones, límite de tres combinaciones 6q para R3 y usos locales de TRAIN/HOLD.
 
-**No resuelto por esta extracción:** origen y ajuste creador de `O_FOLDS_H2B1A`; derivación completa de \(\rho_4,\rho_6\) desde las tres copias de siete qubits; reproducibilidad de los valores finales sin ejecutar ni cotejar *outputs*; identificación integral de checkpoints; independencia confirmatoria de la elección C5/R3; ventaja de recursos físicos end-to-end.
+**Resuelto en §§3–4 mediante lectura de celdas 9, 10, 11 y 77:** identidades y convenciones del mapa \(21\to 8\), expansión 16 bloques, simetrización 16→10 sobre B8 y factores locales C5. **Sigue pendiente:** procedencia original de `O_FOLDS_H2B1A` y de los arreglos `RHO6/RHO4_H2B1A`; reproducibilidad de los valores finales sin cotejar *outputs*; identidad integral de checkpoints; independencia confirmatoria de C5/R3; ventaja de recursos físicos end-to-end.
 
 ## 6. Observables estudiante y rutas de medición
 
@@ -329,8 +496,9 @@ La síntesis 3D documenta presupuestos de recursos **parciales**: 504 puertas l�
 | Afirmación | Estado documental | Acción antes de tesis final |
 |---|---|---|
 | Cadena inmediata H2B1A → H2B1E0 → H2B1E1 | Respaldada por salidas históricas | Incorporar referencia o anexo selectivo sin datos sensibles |
-| Reconstrucción del score B8 por diez canales | Verificación numérica histórica identificada | Citar fórmula y tolerancia exactas desde la fuente |
-| Identidad y uso de los cinco canales C5 | Respaldado por el código histórico | Explicar que su selección global fue exploratoria |
+| Reducción 21→8 por trazas parciales | **Identidad algebraica y convenciones cotejadas con código** | Certificar el origen histórico de `RHO6/RHO4_H2B1A` y su alineación fila a fila |
+| Descomposición 16→10 en la variedad B8 | **Identidad matemática exacta de scores; controles numéricos identificados en código** | Conservar distinción respecto de identidad global del operador y cotejar *outputs* históricos |
+| Relación C10→C5→R3 | **Factores y normalización cotejados en celdas 11 y 13** | C5 es subconjunto exploratorio y R3 es aproximación bilineal; no presentar ninguna como identidad de O* |
 | Función objetivo y pasos ALS R3 | **Derivación reconstruida del código de la celda 13** | Mantener hashes y líneas fuente; verificar artefactos congelados sin alterar las ejecuciones |
 | ALS R3: fit con TRAIN, orientación con etiquetas TRAIN y frontera de rango con HOLD | **Respaldado localmente por el código; decisión de rango exploratoria** | No atribuir independencia confirmatoria a C5 o al rango elegido |
 | Independencia del teacher R3 sobre inner val | **No establecida** | No citar la AUC inner val como prueba independiente del teacher |
@@ -341,7 +509,7 @@ La síntesis 3D documenta presupuestos de recursos **parciales**: 504 puertas l�
 ## 9. Pendientes para la versión matemática definitiva
 
 1. Localizar la construcción de `O_FOLDS_H2B1A` y establecer qué etiquetas e índices fueron utilizados para ajustar cada observable.
-2. Precisar la fórmula completa del mapa de estados de siete qubits al espacio efectivo B8 y los operadores de seis qubits, con convenciones de indexación.
+2. **Resuelto algebraicamente en §§3–4:** trazas parciales desde tres copias 7q, tensor B8, 16 bloques Pauli y 10 canales 6q exactos sobre la variedad B8. Falta auditar la **creación original** de los arreglos reducidos y contrastar las salidas numéricas históricas.
 3. **Resuelto por lectura de código de la celda 13:** ecuaciones de ALS R3, ausencia de regularización penalizada explícita y parámetros numéricos documentados en §5. Resta cotejar productos de ejecución y checkpoints históricos si se requiere certificación adicional.
 4. Separar arquitectónicamente las versiones Student 1E, 1F, SAFE y QWC, y documentar qué componentes son comunes y cuáles son alternativas.
 5. Establecer cuál es la arquitectura congelada final de H2B2A7, sin equipararla automáticamente a todos los candidatos explorados.
@@ -357,6 +525,14 @@ La síntesis 3D documenta presupuestos de recursos **parciales**: 504 puertas l�
 - [Fase 3C.4: recursos](../H2B2A7_FASE_3C4_GUIA.md)
 - [Síntesis científica 3D](../../reports/H2B2A7_CONSOLIDACION/H2B2A7_3D_SINTESIS_20261113T184850523066Z/3D_INFORME.md)
 
-**Fuente primaria de esta actualización (aún fuera de Git):** `FUENTE_PRIMARIA_H2B1E3_R3_H2B2A7.txt`, extracción de solo lectura del código de la celda histórica 13, con SHA-256 del texto `79dc041745f32efc063d3d527603934d991570c712ad5c6768afb0a0b269fad1`. El extracto no debe copiarse íntegro al repositorio sin revisar privacidad y pertinencia.
+**Fuentes primarias de la reducción física y la descomposición (aún fuera de Git):**
+
+- `FUENTE_REDUCCION_21A8_ETAPA1.txt`, celdas 9 (**SHA-256 código `8ff545f9dbf5db55b66679935fd2eddc8cb468ecc8529e363793b03053a19a3b`**) y 77 (**`b2bf31aa8051d45304d9ec06f2deee67feff57200562afdbd1d3f1ebc53fce4e`**).
+- `FUENTE_REDUCCION_8A6_CANALES_ETAPA2.txt`, celdas 10 (**`688efbd8570d64b93a05510c37e47e65e30e8cf2a3d3754f86ca905b43c2c8ff`**) y 11 (**`bdedd84be142d6c4cbe1aacce898187630763af6c84fda5360974eebe67397fc`**).
+- Todas esas extracciones identifican el notebook `ContinuacionnuevaModelosdataset2.ipynb` con SHA-256 consignado `706319a4375e37098bcd35ec08428fa30e551679f370015f53a5f6977f99c20c`. Los hashes proceden de los encabezados del extractor y no constituyen por sí mismos una segunda verificación independiente del notebook original.
+
+**Fuente primaria de ALS R3 (también fuera de Git):** `FUENTE_PRIMARIA_H2B1E3_R3_H2B2A7.txt`, celda histórica 13, SHA-256 de código `79dc041745f32efc063d3d527603934d991570c712ad5c6768afb0a0b269fad1`.
+
+Los extractos completos no deben copiarse al repositorio sin revisar privacidad, rutas locales, tamaño y pertinencia. No se ejecutaron las celdas históricas durante esta revisión.
 
 **Otras fuentes históricas fuera de Git:** informes de cierre `CIERRE_ORIGEN_OSTAR_Y_SELECCION_CANALES_H2B2A7.txt` y `CIERRE_FINAL_FUENTE_OSTAR_Y_DECISION_C5_H2B2A7.txt`, junto con auditorías XIV–XXIV, conservados en el worktree de consolidación como archivos sin seguimiento. Versionar solo después de seleccionar y revisar la evidencia necesaria.
