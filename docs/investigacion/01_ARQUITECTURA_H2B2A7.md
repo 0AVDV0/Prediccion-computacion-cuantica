@@ -1,6 +1,6 @@
 # Arquitectura física y matemática H2B2A7
 
-> - **Estado:** borrador científico v0.4; incorporada la reducción 21→8 por trazas parciales y la descomposición exacta 16→10 sobre la variedad B8, además de ALS R3; descripción de las piezas sustentadas por evidencia integrada, no especificación final certificada de extremo a extremo.
+> - **Estado:** borrador científico v0.5; incorporada la certificación numérica de origen H2-A4→H2-B0 y la reducción 21→8 por trazas parciales y la descomposición exacta 16→10 sobre la variedad B8, además de ALS R3; descripción de las piezas sustentadas por evidencia integrada, no especificación final certificada de extremo a extremo.
 > - **Rama documental:** `feature/h2b2a7-documentacion-cientifica`.
 > - **Procedencia:** documento derivado de `00_MAPA_CIENTIFICO.md`, INTEGRACIÓN-00, INTEGRACIÓN-01 y síntesis 3D.
 > - **Regla editorial:** separar identidades algebraicas, implementaciones verificadas, resultados retrospectivos y dependencias por verificar.
@@ -126,11 +126,59 @@ H2B1E3 C5 = (II, IY, IZ, XY, ZZ)
 H2B1E3 Teacher R3 → H2B2A0 y etapas posteriores
 ```
 
-**Fuente inmediata:** celda 10, `L00368–L00472`; celda 11, `L00297–L00490`. Existen rutas alternativas de recuperación desde RAM o un archivo NPZ; el recorrido concreto de la ejecución histórica está documentado en las auditorías de linaje previas. **Ninguna de estas dos celdas certifica por sí sola cómo fue optimizado y supervisado originalmente `O_FOLDS_H2B1A`.**
+**Fuente inmediata:** celda 10, `L00368–L00472`; celda 11, `L00297–L00490`. Existen rutas alternativas de recuperación desde RAM o un archivo NPZ; el recorrido concreto de la ejecución histórica está documentado en las auditorías de linaje previas. **El origen H2-A4→H2-B0 está ahora certificado numéricamente sin HOLD (§4.2); estas celdas posteriores por sí solas no certifican la identidad de cada objeto en RAM durante todas las transferencias.**
 
 La celda 11 trabaja con el operador hermítico \(O_f^\star\in\mathbb C^{256\times256}\) de cada fold y con los tres bloques físicos \(6|1|1\). La celda 10, por su parte, investiga geometría y entrelazamiento de operadores (Schmidt/MPO/Pauli), pero **no es la fuente primaria de la reducción 16→10**: esa reducción está implementada en la celda 11.
 
-### 4.2. Descomposición completa del operador: 16 bloques
+### 4.2. Certificación numérica de origen H2-A4 → H2-B0 (17-11-2026)
+
+**Resultado verificado:** la reconstrucción independiente de los cinco observables de ocho qubits desde los coeficientes originales `B_LABEL_KRR` reproduce las matrices archivadas `O_folds` de H2-B0 con diferencias compatibles con precisión simple, **sin consultar etiquetas, predicciones ni AUC de `OUTER HOLD`, y sin corrección de signo**. Este cierre es de **proveniencia matricial**, no de independencia confirmatoria de la selección global de arquitectura.
+
+**Fuente creadora:** `ModelosDataset2.ipynb`, SHA-256 del notebook `da4c720fa3af1ce13d88184a703aa214cc7d243961e56e12617af9631532a9fd`; celda 312 `4F-H2A4` (SHA-256 de código `fa20d0b6d33d3696210abe1a7c485bef8698ada9ddea24d3ffab2185df596ca8`) y celda 313 `4F-H2B0` (SHA-256 de código `4e2a7acbe0114e728624cdfcae04d1351cc035adeb0b871c84c74738c4f9da26`). La celda 314 identifica la transferencia por RAM/NPZ hacia `O_FOLDS_H2B1A`; la ruta concretamente ejecutada para todas las etapas posteriores y sus hashes de RAM no se autentican por esta prueba.
+
+**Archivos históricos identificados por SHA-256:**
+
+| Archivo | SHA-256 |
+|---|---|
+| `ARCH4FH2A4_LINEAR_OBSERVABLE_MODELS.npz` | `3eee4d0712b22b688635667eeeb9a8bfb1bdff1a29a929c0924850953254edf2` |
+| `ARCH4FH2B0_FOLD_OBSERVABLES.npz` | `2de96b09df0d8150b26801f116dd86ed4a1cdd8e2af1ff28a6a9719cb09d4d5c` |
+| `PSI7_ALL_3S.npy` | `85761c0a7df704e46d5e75ff6ac858b7c8c8335dc84506bde5cc9d33d8ebe362` |
+| `ARCH4FH2A4_LINEAR_OBSERVABLE_REPORT.json` | `e50a0136df55eb2216aa3826fd2e1757ba62604f70b6f2f2e7e34ceda2552a96` |
+
+**Ajuste original de los coeficientes:** H2-A4 implementa por fold una partición `OUTER TRAIN`/`OUTER HOLD`. `B_LABEL_KRR` escoge el parámetro $\lambda$ mediante un `StratifiedShuffleSplit` interno con 22 % de validación *dentro* de `OUTER TRAIN`, luego reajusta el modelo sobre todo `OUTER TRAIN`. Resuelve
+
+$$
+\bigl(K_{T_f,T_f}+|T_f|\lambda_f I\bigr)\alpha_f=2y_{T_f}-1,
+$$
+
+con núcleo de Hilbert–Schmidt $K_{ij}=\operatorname{Tr}(\rho_{6,i}\rho_{6,j})[\operatorname{Tr}(\rho_{4,i}\rho_{4,j})]^2$. Los arrays archivados contienen `train_idx_f0...f4` y `alpha_B_LABEL_KRR_f0...f4`: 5.986 entradas en folds 0–2, 5.987 en folds 3–4. Los 7.483 índices forman cinco conjuntos HOLD complementarios **disjuntos y exhaustivos** (cada muestra aparece en HOLD exactamente una vez). No se detectó un vector de coeficientes con soporte explícito en HOLD.
+
+**Reconstrucción sin etiquetas de HOLD:** dados $T_f$ y $\alpha_f$ recuperados directamente del NPZ, se calculó
+
+$$
+O_f^{\mathrm{raw}}=\sum_{i\in T_f}\alpha_{f,i}
+\bigl(\rho_{6,i}\otimes\rho_{4,i}\otimes\rho_{4,i}\bigr),\quad
+c_f=\frac{\operatorname{Tr} O_f^{\mathrm{raw}}}{256},\quad
+O_f^{\mathrm{recon}}=\frac{O_f^{\mathrm{raw}}-c_f I}{\lVert O_f^{\mathrm{raw}}-c_fI\rVert_\infty}.
+$$
+
+La fuente `PSI7_ALL_3S.npy` contiene `(7483,128)` amplitudes `complex64`. La comparación del kernel inducido desde los estados de siete qubits con el kernel guardado `ARCH4FH2A4_B8_HS_KERNEL_FLOAT32.npy` produjo **diferencia máxima $1.115\times10^{-7}$ en 40 pares muestreados**; no equivale a verificar las $7483^2$ entradas. La desviación máxima de la norma cuadrada de los estados respecto de la unidad fue $2.086\times10^{-7}$.
+
+| Fold | $|T_f|$ | $\|O_f^{\mathrm{recon}}-O_f^{\mathrm{guardado}}\|_{\max}$ | Error Frobenius relativo | Signo necesario |
+|---:|---:|---:|---:|---|
+| 0 | 5.986 | $3.505765\times10^{-7}$ | $2.407770\times10^{-7}$ | Original |
+| 1 | 5.986 | $1.619781\times10^{-7}$ | $1.650668\times10^{-7}$ | Original |
+| 2 | 5.986 | $1.697563\times10^{-7}$ | $1.641059\times10^{-7}$ | Original |
+| 3 | 5.987 | $2.948927\times10^{-7}$ | $1.771284\times10^{-7}$ | Original |
+| 4 | 5.987 | $2.514801\times10^{-7}$ | $2.191255\times10^{-7}$ | Original |
+
+Las comparaciones con **signo invertido** dieron errores máximos de orden $0.54$–$0.67$ y error Frobenius relativo $2.0$, descartando una coincidencia obtenida por inversión de signo. Los cinco `O_folds` también verifican hermiticidad al nivel almacenado, traza normalizada cercana a cero y norma espectral cercana a uno; el orden físico es `[5,4,3,2,1,0,11,18]`.
+
+**Límite metodológico crucial:** el H2-A4 original elige **entre** objetivos `A_TEACHER_KRR`, `B_LABEL_KRR` y `C_PAIRWISE_RANKRLS` ordenando sus AUC promedio sobre los cinco `OUTER HOLD`. H2-B0 permite escoger y orientar vectores candidatos para reconstrucción usando AUC HOLD y norma $\ell_1$; **la reconstrucción directa aquí auditada demuestra que ese paso no era necesario para obtener ninguna de las cinco matrices archivadas**. Ello no convierte en confirmatoria la selección histórica del método, ni las decisiones posteriores de canales C5, rango R3 o estudiantes basadas en evaluaciones ya consultadas. La AUC original `B_LABEL_KRR` media por fold `0.9236863323397297` y OOF combinada `0.9234362199284905` son métricas históricas retrospectivas, **no** nuevas AUC calculadas en esta auditoría.
+
+**Evidencia local primaria:** `FUENTE_ENTRENAMIENTO_H2A4_ORIGEN_OSTAR_H2B2A7.txt`, `FUENTE_CREADORA_OSTAR_C313_C314_H2B2A7.txt`, `AUDITORIA_ESTRUCTURAL_OSTAR_H2B2A7.txt` y `AUDITORIA_NUMERICA_H2A4_A_H2B0_SIN_HOLD.txt`. Fueron examinados el código y los informes de ejecución externa del auditor; no se reprodujo ni volvió a entrenar H2-A4 ni se ejecutaron las celdas del notebook histórico.
+
+### 4.3. Descomposición completa del operador: 16 bloques
 
 Definimos \(\sigma_0=I\), \(\sigma_1=X\), \(\sigma_2=Y\) y \(\sigma_3=Z\). Por completitud y ortogonalidad Hilbert–Schmidt de la base Pauli de dos qubits, todo operador \(O_f^\star\) sobre \(\mathbb C^{64}\otimes\mathbb C^2\otimes\mathbb C^2\) se escribe exactamente como
 
@@ -150,7 +198,7 @@ El factor \(1/4\) procede de \(\operatorname{Tr}(\sigma_\mu\sigma_\alpha)=2\delt
 
 Ésta sí es una **identidad de operadores** en el espacio B8 completo; no depende todavía de que las dos copias \(\rho_4\) sean iguales.
 
-### 4.3. Simetría de las copias idénticas y 10 canales visibles
+### 4.4. Simetría de las copias idénticas y 10 canales visibles
 
 Para \(\rho_{\mathrm{B8}}(x)=\rho_6(x)\otimes\rho_4(x)\otimes\rho_4(x)\), definamos los momentos Pauli reales de un qubit
 
@@ -195,7 +243,7 @@ $$
 
 **Normalización importante:** para \(\mu<\nu\) el operador de canal que multiplica al único producto de momentos es la **suma**, no el promedio, \(A_{\mu\nu}=B_{\mu\nu}+B_{\nu\mu}\). El promedio aparece en cambio al reconstruir el observable *simetrizado* \(O_{\mathrm{visible}}\): cada uno de los dos Pauli strings recibe \((B_{\mu\nu}+B_{\nu\mu})/2\). Estas dos convenciones son compatibles pero no intercambiables (`build_visible_operator_h2b1e1`, `L00897–L01025`; `effective_channels_h2b1e1`, `L01200–L01343`).
 
-### 4.4. Qué se conserva: score sobre la variedad física, no el operador global
+### 4.5. Qué se conserva: score sobre la variedad física, no el operador global
 
 Sea \(S\) el operador SWAP sobre los dos últimos qubits (y la identidad sobre los primeros seis). El componente visible de cualquier observable es
 
@@ -218,7 +266,7 @@ Por lo tanto, la reducción 16→10 es una **equivalencia exacta de funcionales 
 
 El código contiene controles con los siguientes criterios (`L01700–L01900`): error máximo de reconstrucción de los 16 bloques no mayor que \(10^{-8}\); error de score a diez canales y de score del operador visible no mayor que \(2\times10^{-7}\); y diferencia AUC en *hold* no mayor que \(10^{-10}\). Son **umbrales programados**, no nuevas mediciones efectuadas durante esta revisión documental. La prueba de 16 bloques corresponde a identidad global; las dos pruebas con diez canales corresponden a igualdad de scores evaluados en estados B8. No se infiere nueva validez predictiva independiente.
 
-### 4.5. Del conjunto exacto C10 al subconjunto exploratorio C5
+### 4.6. Del conjunto exacto C10 al subconjunto exploratorio C5
 
 La etapa H2B1E1 enumera los \(2^{10}-1=1023\) subconjuntos no vacíos. Para cada tamaño, los subconjuntos y el signo del score se eligen por AUC de **TRAIN dentro de cada fold**, se informa la AUC en *hold* y los coeficientes heredados de \(O_f^\star\) no se reoptimizan (`L01344–L01483`, `L02000–L02375`, `L02593–L02710`). Sin embargo, la función `first_k_reaching_h2b1e1` utiliza explícitamente `mean_hold_AUC` para analizar las fronteras globales de complejidad (`L02843–L02965`). La elección posterior de un tamaño fijo y de C5 debe tratarse como **desarrollo exploratorio condicionado por las evaluaciones históricas**.
 
@@ -240,7 +288,7 @@ En particular, la correspondencia de factores locales es
 
 Esto enlaza **exactamente la convención de los diez canales** con el vector de características \(\mathbf f=(1,\langle Y\rangle,\langle Z\rangle,\langle X\rangle\langle Y\rangle,\langle Z\rangle^2)^\top\) utilizado en §5 para R3. No convierte el *score* C5 en una reconstrucción universalmente exacta de \(O_f^\star\): eliminar los otros cinco canales es una **ablación aproximada**, y ALS R3 introduce una **segunda aproximación distinta** sobre el score C5.
 
-### 4.6. Alcance físico, estadístico y de ejecución
+### 4.7. Alcance físico, estadístico y de ejecución
 
 - **Matemática:** 21→8 es exacto por traza parcial para los subsistemas indicados; 16 bloques es una expansión exacta del operador 8q; 16→10 es exacto para scores sobre B8; 10→5 y C5→R3 no son identidades globales.
 - **Trazabilidad:** las celdas heredaron estados reducidos y observables que existían previamente; resta localizar/cotejar la generación inicial y los datos usados para ajustar \(O_f^\star\).
@@ -468,7 +516,7 @@ La AUC de ese teacher R3 en inner val pertenece a una partición cuyos ejemplos 
 
 **Resuelto por inspección de fuente:** modelo matemático \(\widehat s=f^\top a+f^\top Qg\), objetivo MSE de destilación C5, restricción de rango, dos subproblemas ALS, ausencia de regularizador penalizado explícito, control numérico, inicializaciones, límite de tres combinaciones 6q para R3 y usos locales de TRAIN/HOLD.
 
-**Resuelto en §§3–4 mediante lectura de celdas 9, 10, 11 y 77:** identidades y convenciones del mapa \(21\to 8\), expansión 16 bloques, simetrización 16→10 sobre B8 y factores locales C5. **Sigue pendiente:** procedencia original de `O_FOLDS_H2B1A` y de los arreglos `RHO6/RHO4_H2B1A`; reproducibilidad de los valores finales sin cotejar *outputs*; identidad integral de checkpoints; independencia confirmatoria de C5/R3; ventaja de recursos físicos end-to-end.
+**Resuelto en §§3–4 mediante lectura de celdas 9, 10, 11 y 77:** identidades y convenciones del mapa \(21\to 8\), expansión 16 bloques, simetrización 16→10 sobre B8 y factores locales C5. **Ahora resuelto:** procedencia H2-A4→H2-B0 por reconstrucción numérica sin HOLD de los cinco observables guardados (§4.2). **Sigue pendiente:** cotejar byte a byte o con tolerancia justificada el objeto efectivamente transferido en RAM a `O_FOLDS_H2B1A` y estados específicos posteriores; identidad integral de checkpoints; independencia confirmatoria de la selección de objetivos/C5/R3; ventaja de recursos físicos end-to-end.
 
 ## 6. Observables estudiante y rutas de medición
 
@@ -495,7 +543,8 @@ La síntesis 3D documenta presupuestos de recursos **parciales**: 504 puertas l�
 
 | Afirmación | Estado documental | Acción antes de tesis final |
 |---|---|---|
-| Cadena inmediata H2B1A → H2B1E0 → H2B1E1 | Respaldada por salidas históricas | Incorporar referencia o anexo selectivo sin datos sensibles |
+| Origen H2-A4 → H2-B0: cinco observables B8 reconstruidos sin etiquetas HOLD | **CERTIFICADO NUMÉRICAMENTE: máximo error elemento $3.506\times10^{-7}$; signo original en 5/5 folds** | Conservar hashes, reporte y distinción respecto de independencia estadística |
+| Cadena inmediata H2B1A → H2B1E0 → H2B1E1 | Respaldada por salidas históricas | Falta cotejo matricial directo de las transferencias en RAM |
 | Reducción 21→8 por trazas parciales | **Identidad algebraica y convenciones cotejadas con código** | Certificar el origen histórico de `RHO6/RHO4_H2B1A` y su alineación fila a fila |
 | Descomposición 16→10 en la variedad B8 | **Identidad matemática exacta de scores; controles numéricos identificados en código** | Conservar distinción respecto de identidad global del operador y cotejar *outputs* históricos |
 | Relación C10→C5→R3 | **Factores y normalización cotejados en celdas 11 y 13** | C5 es subconjunto exploratorio y R3 es aproximación bilineal; no presentar ninguna como identidad de O* |
@@ -508,7 +557,7 @@ La síntesis 3D documenta presupuestos de recursos **parciales**: 504 puertas l�
 
 ## 9. Pendientes para la versión matemática definitiva
 
-1. Localizar la construcción de `O_FOLDS_H2B1A` y establecer qué etiquetas e índices fueron utilizados para ajustar cada observable.
+1. **Resuelto parcialmente con certificación fuerte:** construcción H2-A4→H2-B0, índices TRAIN de cinco folds, coeficientes `B_LABEL_KRR`, reconstrucción numérica de los cinco $O_f^\star$ sin HOLD. Resta autenticación directa del objeto en memoria de H2B1A y del resto del pipeline; la selección histórica del método ganador sobre outer HOLD sigue siendo exploratoria.
 2. **Resuelto algebraicamente en §§3–4:** trazas parciales desde tres copias 7q, tensor B8, 16 bloques Pauli y 10 canales 6q exactos sobre la variedad B8. Falta auditar la **creación original** de los arreglos reducidos y contrastar las salidas numéricas históricas.
 3. **Resuelto por lectura de código de la celda 13:** ecuaciones de ALS R3, ausencia de regularización penalizada explícita y parámetros numéricos documentados en §5. Resta cotejar productos de ejecución y checkpoints históricos si se requiere certificación adicional.
 4. Separar arquitectónicamente las versiones Student 1E, 1F, SAFE y QWC, y documentar qué componentes son comunes y cuáles son alternativas.
@@ -536,3 +585,5 @@ La síntesis 3D documenta presupuestos de recursos **parciales**: 504 puertas l�
 Los extractos completos no deben copiarse al repositorio sin revisar privacidad, rutas locales, tamaño y pertinencia. No se ejecutaron las celdas históricas durante esta revisión.
 
 **Otras fuentes históricas fuera de Git:** informes de cierre `CIERRE_ORIGEN_OSTAR_Y_SELECCION_CANALES_H2B2A7.txt` y `CIERRE_FINAL_FUENTE_OSTAR_Y_DECISION_C5_H2B2A7.txt`, junto con auditorías XIV–XXIV, conservados en el worktree de consolidación como archivos sin seguimiento. Versionar solo después de seleccionar y revisar la evidencia necesaria.
+
+**Nuevas evidencias locales, v0.5:** `AUDITORIA_ESTRUCTURAL_OSTAR_H2B2A7.txt` y `AUDITORIA_NUMERICA_H2A4_A_H2B0_SIN_HOLD.txt`; referencias de integridad en §4.2. No requieren copiar matrices grandes ni datos sensibles al Git.

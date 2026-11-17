@@ -1,6 +1,6 @@
 # Linaje experimental del proyecto H2B2A7
 
-> **Estado:** borrador documental v0.1 para revisión; no constituye una certificación experimental nueva.
+> **Estado:** borrador documental v0.2 (revisado tras certificación numérica de O★) para revisión; no constituye una certificación experimental nueva.
 > **Rama:** `feature/h2b2a7-documentacion-cientifica`.
 > **Base de integración:** `develop` en `ed94433` (PR #4, 14-11-2026).
 > **Regla:** distinguir antecedentes, dependencias computacionales, variantes exploratorias, reproducciones numéricas y evaluaciones independientes. El orden de presentación no prueba una dependencia causal ni equivale al orden temporal completo de cada experimento.
@@ -39,7 +39,7 @@ La implementación H1 contiene ajuste por fold de un operador Helstrom empleando
 
 ### 3.3. H2A3/H2A4: transferencia y reducción física
 
-H2A3/H2A4 reutilizaron el vector teacher de H1. En H2A4, el kernel B8 de Hilbert–Schmidt se contrastó con su evaluación directa con una diferencia histórica de aproximadamente `8,5 × 10⁻⁸`. La ruta `B_LABEL_KRR` presenta un AUC OOF histórico cercano a **0,923436**, sujeto a sus propias reglas de partición y selección.
+H2A3/H2A4 reutilizaron el vector teacher de H1. En H2A4, el kernel B8 de Hilbert–Schmidt se contrastó con su evaluación directa con una diferencia histórica de aproximadamente `8,5 × 10⁻⁸`. La ruta `B_LABEL_KRR` presenta AUC OOF histórica **0,9234362199284905** y AUC media por fold **0,9236863323397297**, sujetas a las reglas históricas de selección del método sobre los cinco holds. Los cinco observables conservados H2-B0 ya se reconstruyeron directamente desde sus coeficientes originales sin consultar HOLD, con errores máximos de matriz entre $1.620\times10^{-7}$ y $3.506\times10^{-7}$.
 
 **Interpretación:** la equivalencia numérica del kernel es una propiedad de implementación; el AUC no prueba que todas las decisiones de investigación anteriores fueran independientes de las evaluaciones observadas ni que se generalice a composiciones no vistas.
 
@@ -64,7 +64,7 @@ Descomposición en diez canales efectivos
 
 En H2B1E0, la salida histórica indica `O* source = O_FOLDS_H2B1A in RAM`. H2B1E1 informa `O* source = OSTAR_FOLDS_H2B1E0 in RAM`. La forma es `(5, 256, 256)`, correspondiente a cinco observables sobre el espacio B8.
 
-**Dependencia comprobada:** la transferencia inmediata de las matrices. **Pendiente específico:** la construcción original de `O_FOLDS_H2B1A`, incluidos estados, etiquetas, índices de entrenamiento y eventuales decisiones guiadas por el hold. No identificar una asignación en un notebook no demuestra que ese ajuste haya sido seguro o inseguro.
+**Actualización documental (17-11-2026):** la fuente original está localizada en las celdas 312–314 de `ModelosDataset2.ipynb`. H2-A4 ajusta `B_LABEL_KRR` dentro del outer TRAIN, eligiendo $\lambda$ en validación interna; los cinco vectores de coeficientes guardados y sus índices TRAIN cubren los 7.483 ejemplos con HOLD complementarios disjuntos. La reconstrucción H2-A4→H2-B0 reproduce los cinco observables `O_folds` con error máximo de elemento $3.506\times10^{-7}$ y orientación original sin usar etiquetas ni AUC HOLD. **Pendiente específico:** autenticación directa de la transferencia H2-B0→H2B1A en RAM/checkpoint, así como independencia estadística de la selección de la familia de objetivos, C5/R3 y del pipeline anterior a los estados codificados.
 
 ### 4.2. Diez canales efectivos: identidad de reconstrucción
 
@@ -171,7 +171,7 @@ La matriz local `MATRIZ_EVIDENCIA_H2B2A7_CIERRE_OSTAR_C5_20261116.md` aún **no 
 |---|---|---|
 | Crear referencias de discriminación Helstrom | Celdas históricas de 3K y H1; auditorías XXII/XXIV | Dos protocolos de supervisión distintos; métricas no intercambiables. |
 | Estudiar reducción del sistema y kernels B8 | H2A3/H2A4; cotejo del kernel | Antecedente con verificación numérica; separar de desempeño nuevo. |
-| Descomponer `O*` en diez canales | H2B1E1; cierre de fuente O* | Reconstrucción física del score respaldada; origen del ajuste inicial pendiente. |
+| Descomponer `O*` en diez canales | H2B1E1; cierre de fuente O* | Reconstrucción física del score respaldada; origen H2-A4→H2-B0 reproducido sin HOLD; selección global del método exploratoria y transferencias en RAM aún no cotejadas. |
 | Utilizar C5 `II/IY/IZ/XY/ZZ` | Celda H2B1E3 y análisis de 1.023 subconjuntos | Configuración fija identificada; selección global exploratoria. |
 | Ajustar R3 con ALS | H2B1E3; entrenamiento externo identificado | Ajuste localizado, no independencia completa de todas sus fuentes. |
 | Reutilizar R3 en piloto H2B2A0 | Celda piloto y particiones archivadas | Teacher congelado antes del split interno; AUC `inner_val` del teacher no independiente. |
@@ -212,3 +212,7 @@ La matriz local `MATRIZ_EVIDENCIA_H2B2A7_CIERRE_OSTAR_C5_20261116.md` aún **no 
 - `CIERRE_FINAL_FUENTE_OSTAR_Y_DECISION_C5_H2B2A7.txt`
 
 Estas fuentes se conservan en `Tesis5_CONSOLIDACION`; **no** se han movido ni incorporado automáticamente. Se prevé que una futura matriz de evidencia incluya referencias y huellas estables, no una copia indiscriminada de todo el material local.
+
+## 8. Anexo de proveniencia numérica H2-A4 → H2-B0 (incorporación v0.2)
+
+La prueba primaria de esta actualización está en `AUDITORIA_NUMERICA_H2A4_A_H2B0_SIN_HOLD.txt`, complementada por `AUDITORIA_ESTRUCTURAL_OSTAR_H2B2A7.txt`. `PSI7_ALL_3S.npy` y el kernel H2-A4 fueron contrastados en 40 parejas con error máximo $1.115\times10^{-7}$; la prueba de matriz completa fue realizada para los **cinco** observables de 256×256. Los hashes SHA-256 de los artefactos, la fórmula de reconstrucción y el cuadro por fold están recogidos en [arquitectura §4.2](01_ARQUITECTURA_H2B2A7.md). Esta validación no reemplaza un test prospectivo por composición nueva.

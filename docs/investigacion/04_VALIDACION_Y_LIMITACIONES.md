@@ -1,6 +1,6 @@
 # H2B2A7 — Validación científica, amenazas a la validez y criterios de confirmación
 
-> **Estado:** borrador metodológico v0.1, preparado el 17 de noviembre de 2026. **No describe una nueva evaluación ejecutada ni certifica generalización o ventaja cuántica.**
+> **Estado:** borrador metodológico v0.2, preparado el 17 de noviembre de 2026. **No describe una nueva evaluación ejecutada ni certifica generalización o ventaja cuántica.**
 >
 > **Rama de destino:** `feature/h2b2a7-documentacion-cientifica`.
 >
@@ -8,7 +8,7 @@
 
 ## 1. Alcance y relación con la documentación existente
 
-Este documento complementa, sin sustituir, la [arquitectura](01_ARQUITECTURA_H2B2A7.md), el [linaje experimental](02_LINEAJE_EXPERIMENTAL.md) y la [matriz de evidencia](03_MATRIZ_DE_EVIDENCIA.md). Los identificadores `E01`–`E18` corresponden a la matriz; conservan sus reservas y no se elevan de categoría por estar mencionados aquí.
+Este documento complementa, sin sustituir, la [arquitectura](01_ARQUITECTURA_H2B2A7.md), el [linaje experimental](02_LINEAJE_EXPERIMENTAL.md) y la [matriz de evidencia](03_MATRIZ_DE_EVIDENCIA.md). Los identificadores `E01`–`E21` corresponden a la matriz; conservan sus reservas y no se elevan de categoría por estar mencionados aquí.
 
 Los procedimientos estudiados emplearon varias representaciones, particiones y estrategias de medición. **No existe una única AUC «de H2B2A7» que pueda agruparlas sin identificar el modelo, la fuente de supervisión, las muestras y el protocolo.**
 
@@ -65,11 +65,11 @@ H1 presenta evidencia más fuerte de ajuste Helstrom específico de cada fold y 
 
 ### 3.2. Selección retrospectiva de complejidad (E05–E10)
 
-La transferencia observada del observable es `O_FOLDS_H2B1A` → `OSTAR_FOLDS_H2B1E0` → `OSTAR_FOLDS_H2B1E1`. La ejecución conservada identifica esa fuente inmediata, **pero no autentica el conjunto de etiquetas e índices utilizado para ajustar el O★ original** (E05).
+La transferencia observada del observable es `O_FOLDS_H2B1A` → `OSTAR_FOLDS_H2B1E0` → `OSTAR_FOLDS_H2B1E1`. **Actualización:** los cinco $O_f^\star$ archivados en H2-B0 se reconstruyeron desde `B_LABEL_KRR` H2-A4, usando exclusivamente vectores de coeficientes TRAIN, con error máximo de elemento $3.506\times10^{-7}$ y sin consulta de etiquetas/AUC HOLD; los cinco conjuntos HOLD complementarios son disjuntos y exhaustivos (E19–E20). Esta evidencia identifica y reproduce el origen H2-A4→H2-B0, pero no verifica directamente la memoria de todas las transferencias ni autentica integralmente la procedencia de la preparación *upstream*.
 
 La descomposición de diez canales presenta verificaciones de reconstrucción de score dentro de la representación implementada (E07). La configuración fija C5 se compone de `II`, `IY`, `IZ`, `XY` y `ZZ` (E08). La exploración de 1.023 subconjuntos incluyó una frontera por `mean_hold_AUC` para estudiar complejidad. Aunque seleccionar un subconjunto dentro de cada fold mediante entrenamiento es diferente de usar su hold para tomar decisiones globales, **la posterior elección de C5 no debe describirse como confirmatoria sin una historia de decisión independiente del hold** (E09).
 
-El fragmento de ALS R3 examinado utiliza factores y objetivos sobre índices del entrenamiento externo. Esto limita el riesgo de uso **directo** del hold en ese ajuste, pero no resuelve la supervisión previa del observable ni el carácter exploratorio de canales, rango y variantes (E10).
+El fragmento de ALS R3 examinado utiliza factores y objetivos sobre índices del entrenamiento externo. Esto limita el riesgo de uso **directo** del hold en ese ajuste. Sin embargo, H2-A4 eligió el *método ganador* entre A/B/C utilizando la media AUC de OUTER HOLD, y H2-B0 disponía de una ruta de recuperación/orientación de coeficientes guiada por esa AUC (E21). El cotejo independiente E20 muestra que la orientación HOLD **no era necesaria para reproducir las matrices observadas**, pero no hace confirmatorios los resultados del ganador ni el carácter exploratorio de canales, rango y variantes (E10).
 
 ### 3.3. Solapamiento químico entre particiones (E01, E18)
 
