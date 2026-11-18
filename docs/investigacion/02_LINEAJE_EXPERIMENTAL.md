@@ -134,6 +134,36 @@ Archivos de referencia: [documentación INTEGRACIÓN-01](../H2B2A7_INTEGRACION_0
 
 `Student 1E`, `Student 1F`, `SAFE` y `QWC` representan componentes o estrategias evaluadas bajo **protocolos diferentes**. Las rutas de medición no son necesariamente cuatro modelos entrenados de idéntica forma. Hasta reconciliar checkpoints, código de preparación, cabezales, composición del score y protocolo elegido, evitar afirmar que *todos* constituyen la arquitectura congelada final H2B2A7.
 
+<!-- H2B2-A0-A4-LINAJE-INICIO -->
+### 5.5. Línea exploratoria auditada H2B2A0–A4-1A: de cabezales restringidos a observables generales
+
+Las verificaciones retrospectivas posteriores a `0493958` permiten reconstruir el **linaje técnico** de este tramo sin volver a entrenar ni consultar etiquetas de `OUTER HOLD`. Las AUC citadas a continuación son **históricas de `INNER VAL`** (1.198 muestras) y se utilizaron para el desarrollo: no constituyen una prueba independiente de generalización.
+
+| Etapa | Cambio respecto de su base | Mejor AUC histórica INNER VAL | Decisión o explicación respaldada |
+|---|---|---:|---|
+| **A0** | Tres cabezales RY/RXX/RYY/RZZ sobre seis qubits; lectura afín; teacher R3 congelado | 0.838085 | Los circuitos y el objetivo completo se reprodujeron en checkpoints archivados; queda brecha de destilación |
+| **A1** | Decodificador cuadrático con las tres características Z congeladas | 0.842985 | Parte de la información podía aprovecharse mediante una lectura clásica más flexible |
+| **A2-0** | Se añade H4, raíz q1, manteniendo congelados H1–H3 | 0.843357 | La cuarta expectativa aportó una característica adicional |
+| **A2-1** | Refinamiento conjunto de los cuatro cabezales | 0.846775 | Mejor barrido 2; el barrido 3 disminuyó la pérdida, pero no mejoró la AUC |
+| **A3-0** | RZ intercaladas sobre A2-1 | 0.846775 | El mejor checkpoint mantiene ángulos nuevos en cero: no supera al punto de partida |
+| **A3-1** | Interacciones Cartan entre ramas sobre A2-1 | 0.847376 | Incremento AUC de solo 0.000601; no prueba superioridad generalizable |
+| **A4-0** | Quinto cabezal jerárquico H5 sobre A2-1 | 0.847482 | Mejor resultado en barrido 0 (`DECODER_ONLY`); no mejora atribuible al entrenamiento de H5 |
+| **A4-1A** | Quinto observable hermítico general de seis qubits, con 4095 coeficientes Pauli disponibles, sobre A2-1 | 0.939362 | Mayor expresividad de medición; no implementación de un único circuito binario ni costo QPU certificado |
+
+**Estructura de ramas:** A1 deriva de A0; A2-0 y A2-1 construyen la línea de cuatro cabezales; **A3-0, A3-1, A4-0 y A4-1A son alternativas que parten de A2-1**, no pasos consecutivos donde cada etapa herede necesariamente el ganador anterior. El contraste con Student 1E/1F y con SAFE/QWC exige alinear arquitecturas, checkpoints, particiones y protocolo.
+
+La evidencia matemática de A0/A2/A3/H5 incluye simulaciones independientes de expectativas desde `PSI7`, reconstrucciones de objetivos de entrenamiento/validación y pruebas locales de la forma de Fourier del objetivo cuadrático con el decodificador congelado. Las auditorías A4-1A verificaron que
+
+$$
+z_5(x)=\sum_{P\ne I}\beta_P\operatorname{Tr}[\rho_6(x)P]
+=\operatorname{Tr}[\rho_6(x)B_5]
+$$
+
+reproduce las características archivadas y coincide con la matriz hermítica correspondiente. No obstante, el espectro del operador normalizado (aproximadamente `[-2.31722036, 2.16332237]`) impide identificarlo sin más con $U^\dagger ZU$ de valores propios ±1. Su ganancia descriptiva frente a circuitos restringidos motiva estudiar **capacidad de medición y recursos físicos**, no proclamar ventaja cuántica.
+
+**Detalle de evidencia, fuentes, tolerancias y reservas:** [Resultados y auditorías A0–A4](05_RESULTADOS_Y_AUDITORIAS_H2B2.md), §§2–11. Las auditorías y sus hashes deben conservarse de manera selectiva; no incorporar automáticamente datos, checkpoints, carpetas locales ni resultados A4-1B/1C/1D todavía no certificados.
+<!-- H2B2-A0-A4-LINAJE-FIN -->
+
 ## 6. Integración científica 3A–3D ya realizada
 
 Las fases 3A–3D no crearon un nuevo modelo supervisado. Organizaron y comprobaron evidencias históricas de las dos integraciones anteriores.
