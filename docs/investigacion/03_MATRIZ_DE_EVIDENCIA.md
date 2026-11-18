@@ -1,6 +1,6 @@
 # H2B2A7 — Matriz de evidencia y alcance de las afirmaciones
 
-> **Estado:** borrador documental v0.1 para revisión científica. **No constituye una nueva evaluación, auditoría ejecutada ni certificación experimental.**
+> **Estado:** borrador documental v0.2, ampliado con E22–E27 para revisión científica. **No constituye una nueva evaluación, auditoría ejecutada ni certificación experimental.**
 >
 > **Base:** integraciones INTEGRACIÓN-00/01, síntesis 3D en `develop` y cierres de procedencia posteriores conservados fuera de Git.
 >
@@ -45,6 +45,13 @@ Una evidencia del primer o segundo tipo **no implica** automáticamente las del 
 | E20 | La reconstrucción de los cinco $O_f^\star$ desde coeficientes H2-A4 y estados de 7q coincide con `O_folds` H2-B0 sin etiquetas ni AUC HOLD y sin inversión de signo. | `AUDITORIA_NUMERICA_H2A4_A_H2B0_SIN_HOLD.txt`; [arquitectura §4.2](01_ARQUITECTURA_H2B2A7.md). Error máximo de elemento $3.506\times10^{-7}$; comparación de kernel en 40 pares con error $1.115\times10^{-7}$. | **CERTIFICADO NUMÉRICAMENTE para H2-A4→H2-B0** | No autentica RAM H2B1A→H2B1E1 ni prueba independencia confirmatoria de selección de objetivo/C5/R3. |
 | E21 | H2-A4 escoge $\lambda$ de `B_LABEL_KRR` dentro de TRAIN, pero el ganador `B_LABEL_KRR` se determinó comparando AUC media de los cinco OUTER HOLD; H2-B0 tenía una recuperación opcional guiada por AUC HOLD. | `FUENTE_ENTRENAMIENTO_H2A4_ORIGEN_OSTAR_H2B2A7.txt`, celda 312; `FUENTE_CREADORA_OSTAR_C313_C314_H2B2A7.txt`, celda 313. | **ENTRENAMIENTO LOCAL RESPALDADO; SELECCIÓN GLOBAL EXPLORATORIA** | El cotejo sin HOLD E20 elimina la necesidad de esa orientación para reproducir matrices, pero no hace independiente la elección histórica de la familia de objetivos. |
 
+| E22 | A0: tres cabezales de 6q, checkpoint y objetivo TRAIN/VAL reproducidos desde fuentes congeladas. | `AUDITORIA_INDEPENDIENTE_CIRCUITOS_A0.txt`; `AUDITORIA_A0_OBJETIVO_COMPLETO_FOURIER.txt`; [resultados §4](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **CERTIFICADO NUMÉRICAMENTE en el alcance auditado** | Simulación física sobre submuestras; 15 coordenadas Fourier, no reejecución completa; teacher R3 ya había usado `INNER VAL` en el ajuste previo. |
+| E23 | A1 conserva exactamente las expectativas de A0 y reconstruye los decodificadores lineal y cuadrático elegidos. | `AUDITORIA_INDEPENDIENTE_H2B2A1.txt`; [resultados §5](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **CERTIFICADO NUMÉRICAMENTE en decodificadores congelados** | AUC `INNER VAL` retrospectiva; estacionariedad del decodificador no prueba optimalidad global de todos los parámetros. |
+| E24 | A2 incorpora H4, verifica continuidad A0→A2-0→A2-1, objetivos y expectativas de cuatro circuitos. | `AUDITORIA_H2B2A2_H4_JOINT4_V2.txt`; [resultados §6](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **CERTIFICADO NUMÉRICAMENTE en el alcance auditado** | Cuatro heads con RZZ terminal inactiva; 20 controles Fourier muestreados; AUC de desarrollo no confirmatoria. |
+| E25 | A3 anida A2 mediante RZ/Cartan, conserva los 84 parámetros antiguos y reconstruye checkpoints y expectativas. | `AUDITORIA_H2B2A3_RZ_CARTAN_V2.txt`; [resultados §7](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **CERTIFICADO NUMÉRICAMENTE en el alcance auditado** | El mejor RZ es el baseline; la mejora Cartan es diminuta; ciertas métricas son diagnósticos reconstruidos porque faltan columnas en el CSV. |
+| E26 | A4-0: quinto cabezal jerárquico H5 con cuatro cabezales base congelados; gana `DECODER_ONLY` inicial. | `AUDITORIA_INDEPENDIENTE_H2B2A4_H5.txt`; [resultados §8.1](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **CERTIFICADO NUMÉRICAMENTE en el alcance auditado** | No se atribuye la AUC al entrenamiento de H5; simulación y Fourier en submuestras; no hay `val_objective` histórico para cotejo. |
+| E27 | A4-1A reconstruye el quinto observable Pauli de 6q y su quinta expectativa desde los estados y una matriz hermítica. | `AUDITORIA_A4_1A_RESULTADO.txt`; [resultados §8.2](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **CERTIFICADO NUMÉRICAMENTE en Pauli, checkpoint y gauge** | 4095 Pauli; falta coste de medición y comprobación independiente de índices FIT/TUNE; AUC histórica de desarrollo no implica generalización ni ventaja física. |
+
 ## 3. Métricas que no deben mezclarse
 
 | Fuente / método | Conjunto | Cantidad | Valor histórico | Uso permitido |
@@ -66,9 +73,9 @@ Una evidencia del primer o segundo tipo **no implica** automáticamente las del 
 
 | Dependencia | Situación actual | Decisión en la tesis |
 |---|---|---|
-| Construcción original `O_FOLDS_H2B1A` | Fuente de uso ya identificada; el ajuste creador no se recuperó en las evidencias inspeccionadas. | No describirlo como *fold-safe* plenamente certificado. Si no se conserva, registrar imposibilidad de certificación retrospectiva. |
-| Reducción multicopia 21 → 8 y observables efectivos 6q | Dimensiones y algunas comprobaciones físicas identificadas, derivación completa todavía pendiente. | Conservar como desarrollo matemático pendiente en [arquitectura](01_ARQUITECTURA_H2B2A7.md). |
-| Función objetivo y regularización exactas ALS | Ajuste local de R3 identificado; fórmula completa todavía por cotejar con código original. | No completar con una pérdida genérica inventada. |
+| Construcción `O_FOLDS_H2B1A` | Origen H2-A4→H2-B0 reconstruido numéricamente; transferencias históricas intermedias por RAM y procedencia *upstream* no autentificadas integralmente. | Describir la procedencia demostrada y dejar pendiente la identidad de todos los objetos transferidos; no alegar *fold safety* universal. |
+| Reducción multicopia 21 → 8 y observables efectivos 6q | Derivación condicionada de trazas parciales y canales 16→10 ya incorporada en [arquitectura](01_ARQUITECTURA_H2B2A7.md), §§3–4. | Pendiente cotejar creación y alineación de arrays históricos y determinar recursos físicos end-to-end; no extender la identidad a todos los observables 21q. |
+| Función objetivo y regularización exactas ALS | Ecuaciones y subproblemas cotejados con celda histórica 13 e incorporados en [arquitectura §5](01_ARQUITECTURA_H2B2A7.md). | Conservar la formulación histórica, sin inferir seguridad de selección del rango ni optimalidad de todos los checkpoints. |
 | Identidad de la arquitectura final congelada | Hay variantes Student 1E/1F, SAFE y QWC bajo protocolos distintos. | No declarar que la mejor AUC entre variantes equivale a una arquitectura final preregistrada. |
 | Procedencia histórica QPY de 1F | Implementación numérica reconstruida; QPY histórico propio no cotejado. | Citar únicamente el alcance realmente verificado de INTEGRACIÓN-01. |
 | Presupuesto físico end-to-end | Faltan preparación, compilación, medición y lectura homogéneas. | No reivindicar ventaja de recursos ni velocidad QPU. |
@@ -101,6 +108,6 @@ Este protocolo es **una propuesta**, no un experimento ejecutado ni una reparaci
 
 ---
 
-**Próxima revisión de este documento:** cotejar la matriz con las auditorías locales seleccionadas, incorporar identificadores y huellas verificables, y resolver las discrepancias de nomenclatura sin alterar retrospectivamente los artefactos históricos.
+**Próxima revisión de este documento:** reconciliar SHA256 verificables de las fuentes locales seleccionadas con un manifiesto publicable; E22–E27 describen el alcance auditado, no evaluaciones confirmatorias.
 
 **Actualización de procedencia v0.2:** hashes de los artefactos históricos y cuadro de errores por fold en la sección §4.2 del documento de arquitectura. La reconstrucción del observable queda certificada; la evaluación final del pipeline continúa siendo retrospectiva.

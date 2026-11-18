@@ -1,8 +1,8 @@
 # H2B2A7 — Resultados históricos y auditorías independientes de H2B2A0–A4-1A
 
-> **Estado:** borrador documental v0.1, 18 de noviembre de 2026; listo para revisión, **no integrado todavía en Git**.  
-> **Base documental verificada:** `0493958d5bba55e791ec3f5d606cef7da5f888ff` de `feature/h2b2a7-documentacion-cientifica`.  
-> **Alcance:** reconstrucciones retrospectivas, sin reentrenar, sin consultar etiquetas ni `OUTER HOLD` en los verificadores aquí considerados.  
+> **Estado:** borrador documental v0.1, 18 de noviembre de 2026; listo para revisión, **incorporado al historial de Git mediante el commit `68c047f`**.
+> **Base documental verificada:** `0493958d5bba55e791ec3f5d606cef7da5f888ff` de `feature/h2b2a7-documentacion-cientifica`.
+> **Alcance:** reconstrucciones retrospectivas, sin reentrenar, sin consultar etiquetas ni `OUTER HOLD` en los verificadores aquí considerados.
 > **Advertencia metodológica:** las AUC enumeradas son **registros históricos de `INNER VAL`**, no un test independiente nuevo. Los informes de auditoría prueban identidades numéricas y correspondencia con checkpoints, no ausencia general de filtración en toda la cadena creadora.
 
 ## 1. Propósito y documentos relacionados
@@ -14,7 +14,7 @@ Documentos complementarios:
 - [Mapa científico](00_MAPA_CIENTIFICO.md): dependencias entre familias y antecedentes.
 - [Arquitectura y matemática](01_ARQUITECTURA_H2B2A7.md): estados, operadores, reducciones y definiciones.
 - [Linaje experimental](02_LINEAJE_EXPERIMENTAL.md): motivaciones, bifurcaciones y decisiones.
-- [Matriz de evidencia](03_MATRIZ_DE_EVIDENCIA.md): afirmaciones y fuente verificable (E01–E21 al momento del corte; E22–E27 propuestas en §9 de este informe).
+- [Matriz de evidencia](03_MATRIZ_DE_EVIDENCIA.md): afirmaciones y fuente verificable (E01–E27 tras esta actualización; E22–E27 están detalladas en §9 de este informe).
 - [Validación y limitaciones](04_VALIDACION_Y_LIMITACIONES.md): independencia estadística, selección retrospectiva y requisitos de confirmación.
 
 La fuente primaria del tramo auditado es el notebook histórico `ContinuacionnuevaModelosdataset2.ipynb`, con checkpoints archivados bajo los prefijos `ARCH4FH2B2A*`. Este documento no reconstruye su ejecución cronológica completa; distingue **resultado guardado**, **código fuente inspeccionado** y **auditoría nueva no invasiva**.
@@ -186,11 +186,11 @@ La normalización $\|\boldsymbol\beta\|_2=1$ **no** implica espectro ±1. La mat
 
 El contraste entre A2/A3/H5 y A4-1A **sugiere** que los estados de seis qubits contienen información discriminativa cuya extracción se ve limitada por los observables variacionales ensayados. Esta hipótesis está motivada por resultados reproducidos numéricamente, pero una diferencia histórica de AUC por sí sola **no identifica causalmente la fuente del límite**: difieren la capacidad, la regularización, la selección de hiperparámetros y la complejidad de medición. Antes de reivindicar una arquitectura superior o realizable se requiere comparación predefinida, coste físico homogéneo y validación independiente.
 
-## 9. Matriz breve de fuentes y evidencia propuesta para E22–E27
+## 9. Fuentes y evidencia E22–E27 incorporadas a la matriz
 
-Estos identificadores **todavía no se incorporaron a `03_MATRIZ_DE_EVIDENCIA.md`**. Se proponen para la siguiente entrega documental, tras reconciliar las fuentes y huellas en la rama Git.
+Estos identificadores **se incorporan a `03_MATRIZ_DE_EVIDENCIA.md` en esta revisión**. Las huellas de las fuentes archivadas siguen pendientes de un manifiesto publicable, sin alterar las auditorías ejecutadas.
 
-| ID propuesto | Afirmación que puede respaldarse | Informe de auditoría primaria | Límite explícito |
+| ID | Afirmación que puede respaldarse | Informe de auditoría primaria | Límite explícito |
 |---|---|---|---|
 | E22 | A0: objetivos de checkpoints y simulación de tres circuitos | `AUDITORIA_INDEPENDIENTE_CIRCUITOS_A0.txt`; `AUDITORIA_A0_OBJETIVO_COMPLETO_FOURIER.txt` | Fourier parcial; teacher ajustado antes de `INNER VAL` |
 | E23 | A1: Z congeladas, decodificadores estacionarios y métricas archivadas | `AUDITORIA_INDEPENDIENTE_H2B2A1.txt` | AUC solo histórica de `INNER VAL` |

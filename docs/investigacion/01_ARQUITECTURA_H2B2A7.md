@@ -1,6 +1,6 @@
 # Arquitectura física y matemática H2B2A7
 
-> - **Estado:** borrador científico v0.5; incorporada la certificación numérica de origen H2-A4→H2-B0 y la reducción 21→8 por trazas parciales y la descomposición exacta 16→10 sobre la variedad B8, además de ALS R3; descripción de las piezas sustentadas por evidencia integrada, no especificación final certificada de extremo a extremo.
+> - **Estado:** borrador científico v0.6 (documentación de estudiantes A0–A4-1A); incorporada la certificación numérica de origen H2-A4→H2-B0 y la reducción 21→8 por trazas parciales y la descomposición exacta 16→10 sobre la variedad B8, además de ALS R3; descripción de las piezas sustentadas por evidencia integrada, no especificación final certificada de extremo a extremo.
 > - **Rama documental:** `feature/h2b2a7-documentacion-cientifica`.
 > - **Procedencia:** documento derivado de `00_MAPA_CIENTIFICO.md`, INTEGRACIÓN-00, INTEGRACIÓN-01 y síntesis 3D.
 > - **Regla editorial:** separar identidades algebraicas, implementaciones verificadas, resultados retrospectivos y dependencias por verificar.
@@ -534,6 +534,59 @@ con `U_j` unitario y `D_j` diagonal de `2^6 = 64` entradas. La certificación nu
 Son resultados sobre **inner val previamente examinado** y no certifican por sí mismos generalización independiente. Se cotejó un QPY original del Student 1E, pero no un QPY histórico propio de 1F en esa auditoría. La igualdad de AUC agregadas no prueba por sí sola igualdad fila a fila de los scores frente a un archivo histórico no cotejado.
 
 Por otra parte, INTEGRACIÓN-00 reproduce scores congelados de referencias Teacher y rutas de medición SAFE/Pauli-QWC, incluyendo evaluaciones archivadas sobre **outer hold (n = 1497)**. Esas AUC no son directamente comparables con las de Student inner val como si pertenecieran a un mismo test pareado.
+
+### 6.1. Línea piloto A0: circuitos de seis qubits y lectura latente
+
+La ruta experimental A0–A4 analizada retrospectivamente **no debe identificarse automáticamente** con las variantes Student 1E/1F documentadas arriba. Se basa en el teacher R3 congelado y emplea expectativas de observables unitariamente conjugados:
+
+$$
+z_h(x;\theta_h)=\operatorname{Tr}\!\left[\rho_6(x)U_h(\theta_h)^\dagger Z_{r_h}U_h(\theta_h)\right].
+$$
+
+A0 utiliza tres cabezales con raíces $r_h\in\{q_0,q_2,q_4\}$. Cada circuito contiene seis RY y cinco bloques de tres rotaciones de Pauli (RXX, RYY, RZZ), para **21 parámetros nominales por cabezal**. Las expectativas se transforman mediante un decodificador afín hacia las tres respuestas latentes del teacher. La pérdida archivada suma una MSE de score normalizada, una MSE latente ponderada normalizada y una penalización $10^{-6}\Vert A\Vert_F^2$ sobre la lectura, con peso latente $\alpha=0.25$ en el checkpoint final de A0:
+
+$$
+\mathcal L=\mathcal L_{\mathrm{score}}+\alpha\mathcal L_{\mathrm{latent}}+10^{-6}\Vert A\Vert_F^2,
+\quad D_{\mathrm{score}}=0.002296306926438,\quad D_{\mathrm{latent}}=0.002672843134841.
+$$
+
+Los denominadores proceden de `INNER TRAIN` y se mantienen constantes en VAL. El informe [05, §4](05_RESULTADOS_Y_AUDITORIAS_H2B2.md) detalla la pérdida y sus comprobaciones; la MSE latente conserva los pesos históricos, que no se deben reemplazar por una MSE genérica sin cotejar la fuente.
+
+### 6.2. Ampliaciones de lectura y de cabezales: A1, A2 y A3
+
+En **A1**, los parámetros cuánticos y sus características $Z$ permanecieron congelados. Se comparó la lectura lineal con un mapa cuadrático de nueve características:
+
+$$
+\phi(z_1,z_2,z_3)=(z_1,z_2,z_3,z_1^2,z_2^2,z_3^2,z_1z_2,z_1z_3,z_2z_3).
+$$
+
+El mejor ajuste cuadrático archivado obtuvo AUC `INNER VAL` **0.842985254**, frente a **0.838085158** de A0. Esa ganancia mide capacidad de lectura clásica sobre características congeladas, no mejora del circuito.
+
+**A2-0** incorporó un cuarto cabezal con raíz $q_1$, inicialmente manteniendo congelados los tres anteriores. El cuarto circuito tiene 21 parámetros nominales y 20 coordenadas observables efectivas, porque la RZZ terminal conmuta con la lectura $Z_{q_1}$ y no altera su expectativa. **A2-1** refinó conjuntamente los cuatro cabezales: 84 parámetros nominales y 80 efectivos bajo la misma convención. La mejor AUC histórica `INNER VAL` fue **0.846775462**. Los informes verificaron la continuidad de checkpoints, los objetivos y expectativas sobre muestras independientes de simulación; no reprodujeron todos los barridos históricos.
+
+**A3-0** intercaló tres RZ nuevos en cada cabezal de A2-1 (12 ángulos en total); el checkpoint seleccionado conservó los ángulos en cero y el modelo A2-1. **A3-1** añadió tres bloques Cartan entre ramas por cabezal (RXX/RYY/RZZ por bloque; 36 nuevos ángulos). Su mejor AUC `INNER VAL` fue **0.847376175**, una diferencia de `+0.000600712` frente a A2-1. Las dos ramas parten de la misma referencia A2 y no son etapas obligatorias de una única arquitectura final.
+
+### 6.3. Dos alternativas de quinta característica en A4
+
+**A4-0** ensayó un quinto cabezal jerárquico de seis qubits con 24 parámetros nominales y 23 observables efectivos; conservó congelados los cuatro cabezales de A2-1. El checkpoint elegido por AUC histórica fue **el barrido 0**, con las puertas inicializadas y **solo un reajuste del decodificador**. Su AUC fue **0.847482014**. No debe atribuirse esa pequeña ganancia al entrenamiento de las nuevas puertas.
+
+**A4-1A** es una alternativa distinta: conserva cuatro expectativas de A2-1 y añade un observable hermítico y sin traza general de seis qubits, expresado en la base de Pauli:
+
+$$
+B_5=\sum_{P\in\mathcal P_6\setminus\{I\}}\beta_P P,\qquad z_5(x)=\operatorname{Tr}[\rho_6(x)B_5],\qquad 4^6-1=4095.
+$$
+
+Su «rango uno» es el rango de la **nueva contribución al espacio de lectura de características**, no el rango matricial de $B_5$. La auditoría reprodujo $z_5$ mediante la caché Pauli para todos los **4.788 TRAIN y 1.198 VAL**, y directamente desde `PSI7` en submuestras. La AUC `INNER VAL` **0.939362387** es **histórica y exploratoria**; los índices FIT/TUNE no quedaron disponibles para una certificación independiente de esa selección.
+
+### 6.4. Distinción entre observable hermítico general y medición dicotómica
+
+Un circuito de la forma $U^\dagger Z_rU$ tiene espectro $\{-1,+1\}$. Por el contrario, $B_5$ es un hermítico general de $64\times64$ con espectro no dicotómico: bajo la normalización archivada $\|\beta\|_2=1$, sus extremos calculados fueron **−2.31722036** y **+2.16332237**. Por ello, **no representa directamente** una lectura binaria $U^\dagger ZU$ ejecutable con un único circuito. Para implementarlo se tendría que especificar y presupuestar una estrategia física de medición y estimación del observable.
+
+La renormalización de $\beta$ junto con la compensación inversa en el decodificador deja invariantes las puntuaciones, **pero no necesariamente el término de regularización ridge**. La evidencia de capacidad expresiva no equivale a una demostración de menor coste de circuitos, shots o ejecución QPU.
+
+### 6.5. Alcance de la nueva verificación de A0–A4-1A
+
+Los auditores contrastaron archivos con huellas SHA256, checkpoints, objetivos y ciertas expectativas reconstruidas desde `PSI7`. La certificación Fourier fue local sobre coordenadas y submuestras, no una repetición completa del proceso de optimización. Las **AUC solo se leyeron de los registros históricos de `INNER VAL`**, sin volver a utilizar etiquetas ni `OUTER HOLD`; no son un test confirmatorio. Véase [05: resultados y auditorías](05_RESULTADOS_Y_AUDITORIAS_H2B2.md), [03: evidencia](03_MATRIZ_DE_EVIDENCIA.md) (E22–E27) y [04: limitaciones](04_VALIDACION_Y_LIMITACIONES.md).
 
 ## 7. Recursos y límites físicos
 

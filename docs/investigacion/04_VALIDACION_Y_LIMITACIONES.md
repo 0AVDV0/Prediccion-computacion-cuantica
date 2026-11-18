@@ -1,6 +1,6 @@
 # H2B2A7 — Validación científica, amenazas a la validez y criterios de confirmación
 
-> **Estado:** borrador metodológico v0.2, preparado el 17 de noviembre de 2026. **No describe una nueva evaluación ejecutada ni certifica generalización o ventaja cuántica.**
+> **Estado:** borrador metodológico v0.3, actualizado el 18 de noviembre de 2026. **No describe una nueva evaluación ejecutada ni certifica generalización o ventaja cuántica.**
 >
 > **Rama de destino:** `feature/h2b2a7-documentacion-cientifica`.
 >
@@ -8,7 +8,7 @@
 
 ## 1. Alcance y relación con la documentación existente
 
-Este documento complementa, sin sustituir, la [arquitectura](01_ARQUITECTURA_H2B2A7.md), el [linaje experimental](02_LINEAJE_EXPERIMENTAL.md) y la [matriz de evidencia](03_MATRIZ_DE_EVIDENCIA.md). Los identificadores `E01`–`E21` corresponden a la matriz; conservan sus reservas y no se elevan de categoría por estar mencionados aquí.
+Este documento complementa, sin sustituir, la [arquitectura](01_ARQUITECTURA_H2B2A7.md), el [linaje experimental](02_LINEAJE_EXPERIMENTAL.md) y la [matriz de evidencia](03_MATRIZ_DE_EVIDENCIA.md). Los identificadores `E01`–`E27` corresponden a la matriz; conservan sus reservas y no se elevan de categoría por estar mencionados aquí.
 
 Los procedimientos estudiados emplearon varias representaciones, particiones y estrategias de medición. **No existe una única AUC «de H2B2A7» que pueda agruparlas sin identificar el modelo, la fuente de supervisión, las muestras y el protocolo.**
 
@@ -105,6 +105,25 @@ La [fase 3C.4](../H2B2A7_FASE_3C4_GUIA.md) registra 504 puertas lógicas en dos 
 
 La matriz de evidencia menciona resultados del programa histórico 19X, cuyos artefactos completos aún **no están integrados a esta rama documental**. En consecuencia, aquí solo se conserva el dictamen de alcance: **no hay base documental integrada para afirmar una ventaja cuántica confirmada**. Cualquier valor de significación o resultado QPU específico deberá citar su protocolo, artefacto y versión antes de incorporarse como conclusión.
 
+### 4.5. Certificaciones no invasivas A0–A4-1A (E22–E27)
+
+La nueva consolidación [05_RESULTADOS_Y_AUDITORIAS_H2B2.md](05_RESULTADOS_Y_AUDITORIAS_H2B2.md) distingue explícitamente cuatro tipos de constatación:
+
+1. **Identidad de artefacto y checkpoint:** cotejo SHA256, parámetros congelados y arrays correspondientes a cada barrido seleccionado.
+2. **Reconstrucción matemática y física:** recomputación de objetivos en `INNER TRAIN/VAL`, expectativas desde `PSI7` sobre submuestras y controles Fourier locales con coeficientes fijos.
+3. **AUC histórica:** lectura de resultados guardados de `INNER VAL`, que se había empleado para seleccionar variantes y no constituye prueba nueva.
+4. **Hipótesis de expresividad:** el contraste entre cabezales restringidos y el observable Pauli general *sugiere* información adicional accesible, pero no aísla causalmente capacidad, regularización, selección y coste físico.
+
+La auditoría A1 mostró una mejoría retrospectiva al añadir no linealidad en el decodificador **sin cambiar circuitos**. A2 aportó un cuarto cabezal, A3 añadió puertas RZ/Cartan, y A4-0 ensayó H5; sus ganancias AUC frente a A2 fueron modestas. A4-1A alcanzó históricamente AUC `0.939362387` frente a `0.846775462` de A2; ambas métricas corresponden a `INNER VAL`, no a OUTER HOLD ni a un test prospectivo. Es inválido presentar esta diferencia como ventaja cuántica implementada.
+
+El observable $B_5$ de A4-1A tiene **4095 coeficientes Pauli** y espectro diferente de ±1, de modo que **no** puede identificarse con una sola lectura dicotómica $U^\dagger ZU$. Un presupuesto de recursos deberá especificar descomposición, mediciones compatibles, precisión estadística y shots. La invariancia de la puntuación ante reescalado del operador no implica invariancia de la regularización ridge. Los índices FIT/TUNE completos no se archivaron en la evidencia examinada: la corrección del aislamiento interno procede del código fuente, no de una reconstrucción independiente de sus índices.
+
+### 4.6. Reconciliación de avances matemáticos y reservas abiertas
+
+La derivación condicionada **21→8 mediante trazas parciales** y la descomposición exacta **16→10 en la familia B8** ya están incorporadas en [arquitectura §§3–4](01_ARQUITECTURA_H2B2A7.md). Esto **no** resuelve la procedencia fila a fila de todos los estados reducidos originales ni demuestra equivalencia universal de recursos físicos. La formulación y los subproblemas ALS de R3 también se transcribieron desde la celda histórica 13 en [arquitectura §5](01_ARQUITECTURA_H2B2A7.md); ello no acredita independencia global de su selección ni todos sus checkpoints.
+
+Estas actualizaciones corrigen el estado **documental** de L02 y L03 sin declarar resueltas las amenazas a la validez estadística. La identificación exacta de las variantes Student 1E/1F y de una eventual configuración final H2B2A7 continúa pendiente.
+
 ## 5. Protocolo propuesto para comprobar composiciones inéditas (no ejecutado)
 
 ### 5.1. Congelamiento previo a cualquier evaluación
@@ -147,20 +166,21 @@ El simple número de puertas de dos decodificadores, el número de bases QWC o l
 
 | ID | Reserva no resuelta | Efecto directo en la tesis | Condición de cierre |
 |---|---|---|---|
-| L01 | Ajuste creador de `O_FOLDS_H2B1A` no autenticado en fuentes inspeccionadas | No declarar *fold safety* completa de toda la cadena | Código creador con entradas, índices, etiquetas y procedencia verificables; si no existe, limitación explícita |
-| L02 | Reducción multicopia 21→8 sin derivación completa incorporada | No afirmar equivalencia universal de espacios | Derivación condicionada y cotejo con implementación |
-| L03 | Objetivo y regularización exactos ALS R3 sin transcripción certificada | No sustituir por pérdida genérica | Cita de celda original y símbolos cotejados |
+| L01 | Origen H2-A4→H2-B0 reproducido numéricamente; falta cotejo de las transferencias intermedias en RAM H2B1A/E0/E1 y de la preparación *upstream* | No atribuir seguridad completa a toda la cadena ni independencia de selección | Identidad de transferencias y entradas históricas, o reserva permanente explícita |
+| L02 | Reducción 21→8 derivada algebraicamente en `01` para subsistemas conservados; procedencia exacta de arrays y recursos físicos pendiente | No extender la identidad condicionada a todos los observables ni al costo físico | Trazabilidad de reducción en arrays históricos y presupuesto físico, si se reclama ahorro |
+| L03 | Ecuaciones ALS R3 cotejadas con fuente histórica en `01`, pero faltan verificaciones integrales de selección y procedencia de algunos checkpoints | Evitar afirmar seguridad global o convergencia/óptimo no comprobados | Mantener referencias a celda 13, hashes y reservas de selección retrospectiva |
 | L04 | Variante final exacta y sus componentes congelados no reconciliados | No describir Student 1E, 1F, SAFE y QWC como si fueran idénticos | Lista fechada de componentes y checkpoints, con protocolo |
 | L05 | Hold y inner val consultados históricamente | AUC observadas retrospectivas, no confirmatorias nuevas | Prueba predefinida sobre grupos/datos nuevos |
 | L06 | Generalización a composiciones inéditas sin entrenamiento agrupado prospectivo | No atribuir extrapolación química | Experimento nuevo completo con grupos disjuntos |
 | L07 | Falta de recursos físicos end-to-end homogéneos | No afirmar menor costo QPU o ventaja física | Presupuesto y/o medición homologados |
 | L08 | Cotejo histórico QPY de 1F y ciertos artefactos incompleto | Limitar la afirmación de identidad histórica | Fuentes anteriores autenticadas o reserva permanente |
+| L09 | A4-1A: índices exactos FIT/TUNE y coste de medición del observable Pauli general no certificados | No declarar independencia FIT/TUNE demostrada por índices ni ventaja de recursos | Índices archivados o reserva explícita; protocolo de medición con shots/precisión |
 
 El objetivo no es abrir nuevas auditorías generales. Una dependencia irrecuperable se registra con una **limitación precisa**, y la documentación avanza.
 
 ## 8. Próxima decisión científica
 
-La siguiente entrega sustantiva **no** debe ser otro inventario retrospectivo. Debe ser una revisión matemática focalizada de [01_ARQUITECTURA_H2B2A7.md](01_ARQUITECTURA_H2B2A7.md): especificar qué versión H2B2A7 se documentará como configuración congelada, separar ramas de medición, formalizar la pérdida ALS y condicionar correctamente la reducción 21→8. La matriz E01–E18 y los límites L01–L08 servirán como lista de control.
+La base algebraica 21→8, los canales visibles y las ecuaciones ALS R3 están redactadas en `01`; las auditorías A0–A4-1A quedan documentadas como evidencia numérica retrospectiva en `05` y clasificadas en `03` como E22–E27. El siguiente avance exige reconciliar las variantes del sistema final y auditar selectivamente A4-1B/1C, sin dar por confirmatorios resultados de `INNER VAL` ni mezclar Student 1E/1F, SAFE y QWC. Antes de evaluar nueva generalización, se necesita un protocolo por composición previamente fijado. Las reservas L01–L09 siguen vigentes según su alcance actualizado.
 
 ## 9. Fuentes versionadas
 
