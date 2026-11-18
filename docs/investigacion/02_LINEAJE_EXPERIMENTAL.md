@@ -1,6 +1,6 @@
 # Linaje experimental del proyecto H2B2A7
 
-> **Estado:** borrador documental v0.2 (revisado tras certificación numérica de O★) para revisión; no constituye una certificación experimental nueva.
+> **Estado:** borrador documental v0.3 (ampliado con auditorías A4-1B–A4-1D2) para revisión; no constituye una certificación experimental nueva.
 > **Rama:** `feature/h2b2a7-documentacion-cientifica`.
 > **Base de integración:** `develop` en `ed94433` (PR #4, 14-11-2026).
 > **Regla:** distinguir antecedentes, dependencias computacionales, variantes exploratorias, reproducciones numéricas y evaluaciones independientes. El orden de presentación no prueba una dependencia causal ni equivale al orden temporal completo de cada experimento.
@@ -161,8 +161,21 @@ $$
 
 reproduce las características archivadas y coincide con la matriz hermítica correspondiente. No obstante, el espectro del operador normalizado (aproximadamente `[-2.31722036, 2.16332237]`) impide identificarlo sin más con $U^\dagger ZU$ de valores propios ±1. Su ganancia descriptiva frente a circuitos restringidos motiva estudiar **capacidad de medición y recursos físicos**, no proclamar ventaja cuántica.
 
-**Detalle de evidencia, fuentes, tolerancias y reservas:** [Resultados y auditorías A0–A4](05_RESULTADOS_Y_AUDITORIAS_H2B2.md), §§2–11. Las auditorías y sus hashes deben conservarse de manera selectiva; no incorporar automáticamente datos, checkpoints, carpetas locales ni resultados A4-1B/1C/1D todavía no certificados.
+**Detalle de evidencia, fuentes, tolerancias y reservas:** [Resultados y auditorías A0–A4](05_RESULTADOS_Y_AUDITORIAS_H2B2.md), §§2–11. Las auditorías y sus hashes deben conservarse de manera selectiva; no incorporar automáticamente datos, checkpoints, carpetas locales ni archivos históricos sin auditoría o revisión previa de publicación.
 <!-- H2B2-A0-A4-LINAJE-FIN -->
+
+### 5.6. Oráculos y refinamientos A4-1B → A4-1D2: rutas distintas, no una sucesión de ganancias
+
+Estas variantes utilizan el estado de seis qubits y la base de cuatro cabezales A2-1; **las AUC proceden de registros históricos de `INNER VAL`, no se recalcularon**.
+
+| Etapa | Construcción y relación con la anterior | AUC histórica INNER VAL | Resultado de auditoría |
+|---|---|---:|---|
+| **A4-1B** | Oráculo lineal $X_6W+d$ de rango hasta tres; SVD posajuste | **0.974961740** (rango 3) | SVD, predicciones internas y truncamientos reconstruidos; CG no convergió estrictamente |
+| **A4-1C** | Ajuste ALS directo $W_2=BC$, rango dos, distinto del truncamiento SVD de A4-1B | **0.961331293** | Geometría, características y checkpoints coherentes; residuos del bloque $B$ no estacionarios |
+| **A4-1D** | Optimización supervisada *task-aware* de dos direcciones para clasificación/ranking | **0.951493914** | Checkpoint y tablas cotejados; pérdida supervisada de pares no reconstruida |
+| **A4-1D2** | Selección SAFE entre inicializaciones y refinamientos, ganador `POSTHOC_FULL` + `REFINED` | **0.967329834** | Regla de TUNE, checkpoint, expectativas físicas y desviación local cotejados |
+
+**Dependencia clave:** `POSTHOC_FULL` deriva del truncamiento posajuste del oráculo A4-1B. Aunque A4-1D2 es posterior a A4-1D en el desarrollo histórico, **no debe describirse como un entrenamiento continuo del mismo checkpoint de A4-1D**. La selección y las ganancias se observaron durante el desarrollo, y las familias difieren en objetivo y procedimiento. Véanse [resultados §12](05_RESULTADOS_Y_AUDITORIAS_H2B2.md) y evidencias E28–E31.
 
 ## 6. Integración científica 3A–3D ya realizada
 

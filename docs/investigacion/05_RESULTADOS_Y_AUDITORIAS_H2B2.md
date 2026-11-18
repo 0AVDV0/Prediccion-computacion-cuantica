@@ -1,13 +1,13 @@
-# H2B2A7 — Resultados históricos y auditorías independientes de H2B2A0–A4-1A
+# H2B2A7 — Resultados históricos y auditorías independientes de H2B2A0–A4-1D2
 
-> **Estado:** borrador documental v0.1, 18 de noviembre de 2026; listo para revisión, **incorporado al historial de Git mediante el commit `68c047f`**.
+> **Estado:** borrador documental v0.2, 18 de noviembre de 2026; listo para revisión, **incorporado al historial de Git mediante el commit `68c047f`**.
 > **Base documental verificada:** `0493958d5bba55e791ec3f5d606cef7da5f888ff` de `feature/h2b2a7-documentacion-cientifica`.
 > **Alcance:** reconstrucciones retrospectivas, sin reentrenar, sin consultar etiquetas ni `OUTER HOLD` en los verificadores aquí considerados.
 > **Advertencia metodológica:** las AUC enumeradas son **registros históricos de `INNER VAL`**, no un test independiente nuevo. Los informes de auditoría prueban identidades numéricas y correspondencia con checkpoints, no ausencia general de filtración en toda la cadena creadora.
 
 ## 1. Propósito y documentos relacionados
 
-Este informe sistematiza las decisiones y pruebas de **H2B2A0, A1, A2, A3, A4-0 y A4-1A**, sin confundir variantes exploratorias con el modelo final H2B2A7 o con los Student 1E/1F y las rutas SAFE/QWC documentadas en otras integraciones.
+Este informe sistematiza las decisiones y pruebas de **H2B2A0, A1, A2, A3, A4-0 y A4-1A–A4-1D2**, sin confundir variantes exploratorias con el modelo final H2B2A7 o con los Student 1E/1F y las rutas SAFE/QWC documentadas en otras integraciones.
 
 Documentos complementarios:
 
@@ -210,8 +210,59 @@ Las auditorías anteriores se ejecutaron fuera del repositorio Git y conservaron
 5. **Rango, capacidad y medición:** rango de la aproximación ALS R3, rango de un decodificador de características y rango matricial de un operador $B_5$ no son el mismo concepto.
 6. **No confundir objetos:** Student 1E/1F, SAFE/QWC y las rutas A0–A4 tienen diferencias en observables, preparación y protocolos. Comparar AUC de `OUTER HOLD` con `INNER VAL` sin muestras alineadas es inválido.
 
-## 11. Próxima revisión y alcance de corte
+## 11. Alcance del primer corte documental
 
-Este documento cubre **solo A0–A4-1A**. La extracción documental A4-1B/1C/1D ha reportado 32 fuentes y 21 artefactos, pero **la extracción por sí sola no certifica esos resultados**. Rangos 2/3, variantes posteriores, QPU y resultados 19X requieren sus propias referencias, protocolos y auditorías antes de incorporarse con el mismo nivel de respaldo.
+El primer corte documental cubría **A0–A4-1A**; esta revisión añade la auditoría específica y limitada de **A4-1B–A4-1D2**, detallada en §12. La extracción inicial reportó 32 fuentes y 21 artefactos, pero fueron las **cuatro verificaciones posteriores**, no la extracción, las que comprobaron SVD, geometría, Pauli y scores. Hardware/QPU, generalización, selección estadística independiente y convergencia del entrenamiento permanecen abiertos.
 
 **Regla para la tesis:** escribir por separado (i) identidad algebraica; (ii) fidelidad de implementación/checkpoint; (iii) métrica histórica exploratoria; (iv) inferencia estadística independiente y recursos físicos. Solo los dos primeros bloques han recibido certificaciones independientes nuevas en las auditorías sintetizadas aquí.
+
+## 12. A4-1B → A4-1D2: observables arbitrarios de rango reducido
+
+**Fuentes creadoras:** celdas C035–C038 de `ContinuacionnuevaModelosdataset2.ipynb`, SHA256 del notebook según extractor `706319a4375e37098bcd35ec08428fa30e551679f370015f53a5f6977f99c20c`. Se realizaron cuatro auditorías **de solo lectura**, sin recalcular AUC, utilizar etiquetas, consultar datos `OUTER HOLD` ni reentrenar. Cada una reproduce identidades específicas de los checkpoints archivados; el nivel de prueba no alcanza a la independencia global del pipeline.
+
+### 12.1. Comparación histórica de INNER VAL
+
+| Modelo / objeto | Rango de la corrección Pauli | AUC histórica INNER VAL | Alcance |
+|---|---:|---:|---|
+| Cuatro cabezales A2-1 | 0 | 0.846775462334 | Baseline congelado |
+| A4-1A, quinto observable general | 1 | 0.939362386830 | Optimización de una dirección, **no** truncamiento SVD |
+| A4-1B, SVD truncada | 1 | 0.908623081654 | Truncamiento del oráculo completo |
+| A4-1B, SVD truncada | 2 | 0.956843113978 | Truncamiento del oráculo completo |
+| A4-1C, ALS directo | 2 | 0.961331292819 | Dos observables optimizados para destilación |
+| A4-1D, task-aware | 2 | 0.951493914213 | Objetivo supervisado de ranking, no reconstruido en auditoría |
+| A4-1D2, SAFE local | 2 | **0.967329833946** | Mejor candidato de rango dos **entre estas variantes históricas** |
+| A4-1B, completo | 3 | 0.974961740349 | Oráculo lineal de tres direcciones |
+| Teacher R3 | Referencia distinta | 0.978803438363 | Teacher ya entrenado con `OUTER TRAIN`, **incluido INNER VAL** |
+
+Las diferencias son **descriptivas** y no permiten elegir ganador confirmatorio: se comparan modelos y decisiones desarrollados con métricas ya observadas. La palabra «rango» alude a $W$ o número de características Pauli nuevas, **no** al rango de matriz de los observables hermíticos individuales de $64\times64$.
+
+### 12.2. A4-1B: oráculo completo y compresión SVD (E28)
+
+Para la corrección $\widehat T=\widehat T_4+X_6W+\mathbf1d^\top$ con $W\in\mathbb R^{4095\times3}$, la auditoría verifica: $\|W-U\Sigma V^\top\|_{\max}=3.686\times10^{-17}$; tres valores singulares $(0.25192086,0.20450707,0.10428850)$; y RMSE relativo de rango 1/2/3 $(0.570964384590,0.324898634051,0.131596272700)$, iguales a CSV históricos. Reprodujo además las tres respuestas latentes en **todas** las muestras INNER, y expectativas Pauli desde PSI7 en submuestras. **Limitación:** CG `info != 0` en 9/9 búsquedas y residuo normal final $4.030598144341\times10^{-5}$. No declarar convergencia exacta u óptimo global.
+
+### 12.3. A4-1C: dos observables optimizados por ALS (E29)
+
+El checkpoint conserva $W_2=BC$, $B\in\mathbb R^{4095\times2}$, $C\in\mathbb R^{2\times3}$, $\|B^\top B-I\|_{\max}=4.441\times10^{-16}$ y $\|BC-W_2\|_{\max}=0$. Se reprodujeron las características y las salidas latentes en **todo** INNER y las matrices hermíticas de cada observable en submuestras. AUC histórica `0.961331292819`, mayor que el truncamiento posajuste `0.956843113978` por `0.004488179`. **Limitación:** tres ejecuciones ALS `converged=False`, residuo del bloque B final $1.143531272045\times10^{-2}$ y del bloque $(C,d)$ $5.470210571194\times10^{-16}$; el checkpoint es coherente, pero no está certificado como punto estacionario de $B$.
+
+### 12.4. A4-1D: optimización task-aware con pares (E30)
+
+El modelo de rango dos conserva $W=BC$ con error $2.099\times10^{-16}$, características físicas desde PSI7 y salidas latentes reproducidas sobre INNER. Su AUC histórica `0.951493914213` queda `0.009837379` **por debajo** de A4-1C. Esto **no demuestra** que todo entrenamiento de ranking sea peor: sólo describe esta selección histórica. Sin etiquetas ni pares, la auditoría no reprodujo la pérdida supervisada de ranking ni certificó su convergencia.
+
+### 12.5. A4-1D2: refinamiento SAFE de rango dos (E31)
+
+Se verificaron 2 `INIT_ONLY` y 24 configuraciones `REFINED`. Según el historial, el mejor `INIT_ONLY` (`POSTHOC_FULL`) obtuvo `AUC_TUNE=0.957825319116` y el mejor `REFINED` (`POSTHOC_FULL`) obtuvo `AUC_TUNE=0.966235217848`: diferencia `+0.008409898732`, mayor que el umbral `0.001`. Por ello, el checkpoint selecciona `REFINED`. Se verificó $\|W-W_{\rm init}\|_F/\|W_{\rm init}\|_F=0.060685650613$ dentro de la región local y su rango dos. La AUC **histórica de INNER VAL** es `0.967329833946` (**no** confundir con la AUC de TUNE). Se reprodujeron las dos características sobre todo INNER y se comprobaron las matrices desde PSI7 en submuestras. **Limitación:** no se archivó la trayectoria completa de los pasos finales; no se certifican monotonía, índices FIT/TUNE ni generalización independiente.
+
+### 12.6. Recursos físicos y límites comunes
+
+Los observables SAFE son hermíticos generales con norma espectral aproximadamente `2.4515` y `2.4320`, no tienen necesariamente espectro $\pm1$. Superan el umbral $|\beta|>10^{-3}$ en **3862** y **3874** términos Pauli, respectivamente. Disminuir de tres a dos direcciones no determina el número de bases QWC, shots, preparación de estados, profundidad transpilada ni fidelidad de medición. **La ganancia histórica de capacidad matemática no certifica un circuito eficiente ni ventaja cuántica.** A5-0 es una auditoría posterior específica de recursos y debe examinarse sin asumir como ejecutable la síntesis genérica de una unitaria $64\times64$.
+
+### 12.7. Trazabilidad de auditorías y alcance
+
+| Evidencia | Fuente histórica | Informe de auditoría local | Estado |
+|---|---|---|---|
+| E28 | C035 | `AUDITORIA_INDEPENDIENTE_A4_1B_V2.txt` | Identidad de oráculo/SVD, truncamientos, Pauli y residuos, con límite CG |
+| E29 | C036 | `AUDITORIA_INDEPENDIENTE_A4_1C.txt` | Geometría, puntuaciones, Pauli y diagnóstico no estacionario de B |
+| E30 | C037 | `AUDITORIA_INDEPENDIENTE_A4_1D.txt` | Geometría, puntuaciones y selección histórica, sin pérdida supervisada de pares |
+| E31 | C038 | `AUDITORIA_INDEPENDIENTE_A4_1D2.txt` | Regla SAFE, expectativa Pauli y rango, sin trayectoria final ni independencia de split |
+
+Las cuatro auditorías preservan los checks de hash de sus entradas históricas y no modificaron checkpoints. Sus informes completos permanecen fuera de Git; sólo se versiona aquí una síntesis con nombres y alcance. El paquete de revisión contiene un manifiesto SHA256 **de las copias recibidas** de los cuatro informes, para contrastar si sus archivos locales son idénticos antes de incorporarlos selectivamente en otra revisión. Nunca convertir `PASS` de consistencia en un certificado de predicción fuera de muestra.

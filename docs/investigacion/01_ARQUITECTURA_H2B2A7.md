@@ -1,6 +1,6 @@
 # Arquitectura física y matemática H2B2A7
 
-> - **Estado:** borrador científico v0.6 (documentación de estudiantes A0–A4-1A); incorporada la certificación numérica de origen H2-A4→H2-B0 y la reducción 21→8 por trazas parciales y la descomposición exacta 16→10 sobre la variedad B8, además de ALS R3; descripción de las piezas sustentadas por evidencia integrada, no especificación final certificada de extremo a extremo.
+> - **Estado:** borrador científico v0.7 (documentación de estudiantes A0–A4-1D2); incorporada la certificación numérica de origen H2-A4→H2-B0 y la reducción 21→8 por trazas parciales y la descomposición exacta 16→10 sobre la variedad B8, además de ALS R3; descripción de las piezas sustentadas por evidencia integrada, no especificación final certificada de extremo a extremo.
 > - **Rama documental:** `feature/h2b2a7-documentacion-cientifica`.
 > - **Procedencia:** documento derivado de `00_MAPA_CIENTIFICO.md`, INTEGRACIÓN-00, INTEGRACIÓN-01 y síntesis 3D.
 > - **Regla editorial:** separar identidades algebraicas, implementaciones verificadas, resultados retrospectivos y dependencias por verificar.
@@ -587,6 +587,25 @@ La renormalización de $\beta$ junto con la compensación inversa en el decodifi
 ### 6.5. Alcance de la nueva verificación de A0–A4-1A
 
 Los auditores contrastaron archivos con huellas SHA256, checkpoints, objetivos y ciertas expectativas reconstruidas desde `PSI7`. La certificación Fourier fue local sobre coordenadas y submuestras, no una repetición completa del proceso de optimización. Las **AUC solo se leyeron de los registros históricos de `INNER VAL`**, sin volver a utilizar etiquetas ni `OUTER HOLD`; no son un test confirmatorio. Véase [05: resultados y auditorías](05_RESULTADOS_Y_AUDITORIAS_H2B2.md), [03: evidencia](03_MATRIZ_DE_EVIDENCIA.md) (E22–E27) y [04: limitaciones](04_VALIDACION_Y_LIMITACIONES.md).
+
+### 6.6. Oráculos Pauli de rango reducido: A4-1B, A4-1C, A4-1D y A4-1D2
+
+Este bloque **compara modelos retrospectivos sobre el mismo `INNER VAL` histórico**, no una evaluación nueva independiente. Los cuatro cabezales de A2-1 permanecen congelados. Sea $X_6\in\mathbb R^{n\times4095}$ la matriz de expectativas de cadenas Pauli de seis qubits **sin la identidad**, y $\widehat T_4\in\mathbb R^{n\times3}$ la salida latente de los cuatro cabezales. La corrección lineal tiene la forma
+
+$$
+\widehat T=\widehat T_4+X_6W+\mathbf 1d^\top,
+\qquad W\in\mathbb R^{4095\times3},\quad d\in\mathbb R^3.
+$$
+
+**A4-1B (C035):** ajusta el oráculo lineal completo y descompone $W=U\Sigma V^\top$. Los tres valores singulares archivados son aproximadamente $(0.25192086,0.20450707,0.10428850)$, con fracciones de energía $(0.546335,0.360037,0.093628)$. La reconstrucción independiente de $W$ presenta error máximo $3.686\times10^{-17}$; los RMSE relativos `INNER VAL` de los truncamientos de rango 1/2/3 son $(0.570964,0.324899,0.131596)$. Sus AUC **históricas, no recalculadas**, son $(0.908623,0.956843,0.974962)$. Los nueve barridos de gradiente conjugado consignan `CG_info != 0`; el residuo final de ecuaciones normales reproducido es $4.030598\times10^{-5}$. **No se certifica convergencia estricta**.
+
+**A4-1C (C036):** busca directamente una corrección de rango dos $W_2=BC$, con $B\in\mathbb R^{4095\times2}$, $C\in\mathbb R^{2\times3}$ y $B^\top B\approx I_2$. Se reconstruyeron las características y salidas latentes de todo `INNER TRAIN/VAL`, con $\|BC-W_2\|_{\max}=0$ y rango numérico dos. AUC histórica `INNER VAL`: **0.9613312928186278**, frente a **0.9568431139780025** del truncamiento SVD de rango dos. Los tres ajustes ALS históricos figuran `converged=False`; el residuo del bloque $B$ final es $1.143531\times10^{-2}$, aunque el de $(C,d)$ es $5.470211\times10^{-16}$. **Reconstrucción correcta no significa estacionariedad del bloque $B$**.
+
+**A4-1D (C037):** usa una búsqueda *task-aware* con pérdida supervisada de clasificación/ranking. Su checkpoint también factoriza $W=BC$ con rango dos y reproduce las salidas internas. AUC histórica **0.9514939142125662**, inferior a A4-1C por **0.0098373786060616**. La auditoría, deliberadamente sin etiquetas ni pares supervisados, **no reconstruyó la pérdida de ranking ni certificó la convergencia**.
+
+**A4-1D2 (C038, SAFE):** examina dos inicializaciones y 24 refinamientos locales. El mejor `INIT_ONLY` histórico tiene AUC `TUNE=0.957825319116` y el mejor `REFINED`, `TUNE=0.966235217848`: la mejora $+0.008409898732$ supera el umbral $0.001$. El checkpoint `REFINED`, inicializado desde `POSTHOC_FULL`, respeta una desviación relativa $\|W-W_{\rm init}\|/\|W_{\rm init}\|=0.060685650613$. La AUC histórica de **`INNER VAL`, no de TUNE**, es **0.9673298339459646**. La auditoría verificó la regla de selección, la geometría de rango dos, el checkpoint, los scores internos y expectativas desde `PSI7` en submuestras, **pero no la trayectoria monotónica del refit final**. SAFE no es simplemente una continuación del checkpoint A4-1D.
+
+Cada columna de $B$ define una combinación hermítica de cadenas Pauli, **no necesariamente una medición binaria $U^\dagger ZU$**. En A4-1D2 sus normas espectrales son aproximadamente $2.4515$ y $2.4320$, con 3862 y 3874 coeficientes Pauli respectivos de magnitud mayor a $10^{-3}$. El número de observables o el rango de $W$ **no determinan** por sí solos bases de medición, shots ni coste QPU. El rango de $W$ no es el rango matricial de los operadores hermíticos de $64\times64$. Véanse [resultados §12](05_RESULTADOS_Y_AUDITORIAS_H2B2.md), evidencias E28–E31 y límites L10–L12.
 
 ## 7. Recursos y límites físicos
 

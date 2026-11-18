@@ -1,6 +1,6 @@
 # H2B2A7 — Matriz de evidencia y alcance de las afirmaciones
 
-> **Estado:** borrador documental v0.2, ampliado con E22–E27 para revisión científica. **No constituye una nueva evaluación, auditoría ejecutada ni certificación experimental.**
+> **Estado:** borrador documental v0.3, ampliado con E22–E31 para revisión científica. **No constituye una nueva evaluación, auditoría ejecutada ni certificación experimental.**
 >
 > **Base:** integraciones INTEGRACIÓN-00/01, síntesis 3D en `develop` y cierres de procedencia posteriores conservados fuera de Git.
 >
@@ -51,6 +51,10 @@ Una evidencia del primer o segundo tipo **no implica** automáticamente las del 
 | E25 | A3 anida A2 mediante RZ/Cartan, conserva los 84 parámetros antiguos y reconstruye checkpoints y expectativas. | `AUDITORIA_H2B2A3_RZ_CARTAN_V2.txt`; [resultados §7](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **CERTIFICADO NUMÉRICAMENTE en el alcance auditado** | El mejor RZ es el baseline; la mejora Cartan es diminuta; ciertas métricas son diagnósticos reconstruidos porque faltan columnas en el CSV. |
 | E26 | A4-0: quinto cabezal jerárquico H5 con cuatro cabezales base congelados; gana `DECODER_ONLY` inicial. | `AUDITORIA_INDEPENDIENTE_H2B2A4_H5.txt`; [resultados §8.1](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **CERTIFICADO NUMÉRICAMENTE en el alcance auditado** | No se atribuye la AUC al entrenamiento de H5; simulación y Fourier en submuestras; no hay `val_objective` histórico para cotejo. |
 | E27 | A4-1A reconstruye el quinto observable Pauli de 6q y su quinta expectativa desde los estados y una matriz hermítica. | `AUDITORIA_A4_1A_RESULTADO.txt`; [resultados §8.2](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **CERTIFICADO NUMÉRICAMENTE en Pauli, checkpoint y gauge** | 4095 Pauli; falta coste de medición y comprobación independiente de índices FIT/TUNE; AUC histórica de desarrollo no implica generalización ni ventaja física. |
+| E28 | A4-1B reconstruye el oráculo completo $W\in\mathbb R^{4095\times3}$, su SVD y los tres truncamientos sobre INNER. | `AUDITORIA_INDEPENDIENTE_A4_1B_V2.txt`; fuente C035; [resultados §12](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **VERIFICADO NUMÉRICAMENTE en SVD/checkpoint/INNER** | Nueve búsquedas CG con `info != 0`; residuo final $4.030598\times10^{-5}$, sin óptimo estricto ni AUC nueva. |
+| E29 | A4-1C tiene $W_2=BC$, $B^\top B\approx I$, rango dos, dos expectativas Pauli físicas y salidas INNER reproducidas. | `AUDITORIA_INDEPENDIENTE_A4_1C.txt`; fuente C036; [resultados §12](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **VERIFICADO NUMÉRICAMENTE en geometría/checkpoint/INNER** | ALS 3/3 no convergidos; residuo final bloque $B\approx0.0114353$; AUC histórica y costo físico no confirmados. |
+| E30 | A4-1D conserva rango dos y reproduce checkpoint/scores del modelo *task-aware*. | `AUDITORIA_INDEPENDIENTE_A4_1D.txt`; fuente C037; [resultados §12](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **VERIFICADO NUMÉRICAMENTE en geometría/checkpoint/INNER** | Pérdida supervisada de ranking no reconstruida sin etiquetas/pares; AUC histórica $0.951494$, menor que A4-1C. |
+| E31 | A4-1D2 SAFE reproduce el criterio de selección histórico entre INIT_ONLY/REFINED, rango dos, scores y expectativas desde PSI7. | `AUDITORIA_INDEPENDIENTE_A4_1D2.txt`; fuente C038; [resultados §12](05_RESULTADOS_Y_AUDITORIAS_H2B2.md). | **VERIFICADO NUMÉRICAMENTE en selección archivada/checkpoint/INNER** | Regla basada en TUNE histórico; no se auditaron índices FIT/TUNE ni trayectoria final de gradientes; AUC INNER VAL $0.967330$ no confirmatoria. |
 
 ## 3. Métricas que no deben mezclarse
 
@@ -108,6 +112,6 @@ Este protocolo es **una propuesta**, no un experimento ejecutado ni una reparaci
 
 ---
 
-**Próxima revisión de este documento:** reconciliar SHA256 verificables de las fuentes locales seleccionadas con un manifiesto publicable; E22–E27 describen el alcance auditado, no evaluaciones confirmatorias.
+**Próxima revisión de este documento:** reconciliar SHA256 verificables de las fuentes locales seleccionadas con un manifiesto publicable; E22–E31 describen el alcance auditado, no evaluaciones confirmatorias.
 
 **Actualización de procedencia v0.2:** hashes de los artefactos históricos y cuadro de errores por fold en la sección §4.2 del documento de arquitectura. La reconstrucción del observable queda certificada; la evaluación final del pipeline continúa siendo retrospectiva.

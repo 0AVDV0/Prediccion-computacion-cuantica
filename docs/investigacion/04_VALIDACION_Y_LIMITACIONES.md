@@ -1,6 +1,6 @@
 # H2B2A7 — Validación científica, amenazas a la validez y criterios de confirmación
 
-> **Estado:** borrador metodológico v0.3, actualizado el 18 de noviembre de 2026. **No describe una nueva evaluación ejecutada ni certifica generalización o ventaja cuántica.**
+> **Estado:** borrador metodológico v0.4, actualizado el 18 de noviembre de 2026. **No describe una nueva evaluación ejecutada ni certifica generalización o ventaja cuántica.**
 >
 > **Rama de destino:** `feature/h2b2a7-documentacion-cientifica`.
 >
@@ -8,7 +8,7 @@
 
 ## 1. Alcance y relación con la documentación existente
 
-Este documento complementa, sin sustituir, la [arquitectura](01_ARQUITECTURA_H2B2A7.md), el [linaje experimental](02_LINEAJE_EXPERIMENTAL.md) y la [matriz de evidencia](03_MATRIZ_DE_EVIDENCIA.md). Los identificadores `E01`–`E27` corresponden a la matriz; conservan sus reservas y no se elevan de categoría por estar mencionados aquí.
+Este documento complementa, sin sustituir, la [arquitectura](01_ARQUITECTURA_H2B2A7.md), el [linaje experimental](02_LINEAJE_EXPERIMENTAL.md) y la [matriz de evidencia](03_MATRIZ_DE_EVIDENCIA.md). Los identificadores `E01`–`E31` corresponden a la matriz; conservan sus reservas y no se elevan de categoría por estar mencionados aquí.
 
 Los procedimientos estudiados emplearon varias representaciones, particiones y estrategias de medición. **No existe una única AUC «de H2B2A7» que pueda agruparlas sin identificar el modelo, la fuente de supervisión, las muestras y el protocolo.**
 
@@ -175,12 +175,15 @@ El simple número de puertas de dos decodificadores, el número de bases QWC o l
 | L07 | Falta de recursos físicos end-to-end homogéneos | No afirmar menor costo QPU o ventaja física | Presupuesto y/o medición homologados |
 | L08 | Cotejo histórico QPY de 1F y ciertos artefactos incompleto | Limitar la afirmación de identidad histórica | Fuentes anteriores autenticadas o reserva permanente |
 | L09 | A4-1A: índices exactos FIT/TUNE y coste de medición del observable Pauli general no certificados | No declarar independencia FIT/TUNE demostrada por índices ni ventaja de recursos | Índices archivados o reserva explícita; protocolo de medición con shots/precisión |
+| L10 | A4-1B: las nueve búsquedas CG archivadas no declaran convergencia; el residuo final normal es $4.030598\times10^{-5}$ | Una SVD exacta de $W$ no prueba optimalidad de $W$ respecto al problema inicial | Reportar aproximación reproducible y residuo; no afirmar convergencia exigente ni óptimo global |
+| L11 | A4-1C: tres búsquedas ALS sin convergencia; residuo final del bloque $B$ $1.143531\times10^{-2}$; A4-1D: pérdida de pares supervisada no reconstruida; A4-1D2: faltan trayectorias finales | Evitar equiparar consistencia de checkpoints con estacionariedad o certificación de toda la selección | Reproducir registros históricos solo si existen y sin alterar el conjunto reservado; si no, conservar la reserva |
+| L12 | A4-1B–A4-1D2: índices FIT/TUNE no autenticados de forma independiente y observables hermíticos Pauli generales densos | AUC `INNER VAL` no confirmatorias; dos observables no garantizan medición eficiente ni ventaja cuántica | Evaluación agrupada nueva e inventario de bases, shots, compilación y preparación, bajo protocolo prospectivo |
 
 El objetivo no es abrir nuevas auditorías generales. Una dependencia irrecuperable se registra con una **limitación precisa**, y la documentación avanza.
 
 ## 8. Próxima decisión científica
 
-La base algebraica 21→8, los canales visibles y las ecuaciones ALS R3 están redactadas en `01`; las auditorías A0–A4-1A quedan documentadas como evidencia numérica retrospectiva en `05` y clasificadas en `03` como E22–E27. El siguiente avance exige reconciliar las variantes del sistema final y auditar selectivamente A4-1B/1C, sin dar por confirmatorios resultados de `INNER VAL` ni mezclar Student 1E/1F, SAFE y QWC. Antes de evaluar nueva generalización, se necesita un protocolo por composición previamente fijado. Las reservas L01–L09 siguen vigentes según su alcance actualizado.
+La arquitectura y los resultados de A0–A4-1A permanecen documentados; el bloque A4-1B–A4-1D2 cuenta ahora con auditorías de **consistencia y reconstrucción**, clasificadas en E28–E31. Sus AUC `INNER VAL` son históricas, sin nueva evaluación supervisada; los ajustes CG/ALS no tienen convergencia exigente certificada, ni se han autenticado índices FIT/TUNE o costes QPU. La siguiente fase es una auditoría **estructural de recursos A5-0**, separada de una futura validación prospectiva por grupos de composición. Tampoco debe identificarse automáticamente el modelo SAFE de A4-1D2 con las variantes Student 1E/1F o con SAFE/QWC de protocolos diferentes. Siguen vigentes las reservas L01–L12 según su alcance.
 
 ## 9. Fuentes versionadas
 
