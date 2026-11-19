@@ -1,0 +1,63 @@
+{
+  "tipo": "auditoria_cache_psi7_y_particiones_solo_lectura",
+  "archivos": {
+    "PSI7_ALL_3S.npy": "85761c0a7df704e46d5e75ff6ac858b7c8c8335dc84506bde5cc9d33d8ebe362",
+    "CACHE_PSI7_ALL_3S.npz": "d0ecf20f798512b70ce5c89a60b19ec1e5042bf8261bb000db26bd969b5b7797",
+    "transfer_splits_A4_AQ4.npz": "1f9eb162adaf0d10301f5b6deb761a15ba5ef9fbb231080e38f0902c826812ed"
+  },
+  "psi7_archivado": {
+    "forma": [
+      7483,
+      128
+    ],
+    "dtype": "complex64"
+  },
+  "cache": {
+    "clave_usada": "PSI7_ALL_3S",
+    "claves_en_npz": [
+      "PSI7_ALL_3S"
+    ],
+    "forma": [
+      7483,
+      128
+    ],
+    "dtype": "complex64"
+  },
+  "comparacion_cache": {
+    "n_filas_iguales_exactamente": 7483,
+    "n_filas_error_max_le_1e-6": 7483,
+    "error_max_amplitud": 0.0,
+    "error_rms_amplitud": 0.0,
+    "igualdad_exacta_de_valores": true,
+    "norma2_desviacion_max_psi7": 2.384185791015625e-07,
+    "norma2_desviacion_max_cache": 2.384185791015625e-07
+  },
+  "splits": {
+    "claves_en_npz": [
+      "idx_train",
+      "idx_val",
+      "idx_test"
+    ],
+    "tamanos": {
+      "idx_train": 7483,
+      "idx_val": 1069,
+      "idx_test": 2139
+    },
+    "intersecciones": {
+      "idx_train_x_idx_val": 0,
+      "idx_train_x_idx_test": 0,
+      "idx_val_x_idx_test": 0
+    },
+    "indices_unicos_total": 10691,
+    "n_filas_df_esperadas": 10691,
+    "particion_total_disjunta_y_completa": true
+  },
+  "conclusion": "cache_exacto",
+  "limitaciones": [
+    "No se valida fecha de generacion ni origen historico de cada artefacto.",
+    "La coincidencia entre cache y PSI7 no prueba etiquetas ni alineacion con C_ALL_3P/Y_ALL_3P.",
+    "No se comprueba construccion de matrices reducidas rho6/rho4.",
+    "No se exportan indices, composiciones, etiquetas, nombres ni estados individuales.",
+    "Se cargan solo NPZ/NPY con allow_pickle=False."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "tipo": "auditoria_independiente_estado_3S_solo_lectura",
+  "codificacion": "sqrt(p_i)*exp(i*pi*p_i); posiciones 0..83; 84..127=0",
+  "origen_codigo": "ModelosDataset2.ipynb celda 231 (base cero), funcion encode_sparse_composition_3s",
+  "n_filas_df": 10691,
+  "n_train": 7483,
+  "n_fracciones": 84,
+  "forma_estados_archivados": [
+    7483,
+    128
+  ],
+  "dtype_estados_archivados": "complex64",
+  "n_filas_iguales_exactamente_en_valor": 7483,
+  "n_filas_con_error_maximo_le_1e-6": 7483,
+  "diferencia_maxima_amplitud": 0.0,
+  "diferencia_rms_amplitud": 0.0,
+  "norma2_max_desviacion_archivados": 2.384185791015625e-07,
+  "norma2_max_desviacion_reconstruidos": 2.384185791015625e-07,
+  "max_amplitud_fuera_84_archivados": 0.0,
+  "hashes_sha256": {
+    "df_final.pkl": "42c0a2afc92c65b29a9f081bdff813362a8246f020e928bd634ed4a6599008f2",
+    "transfer_splits_A4_AQ4.npz": "1f9eb162adaf0d10301f5b6deb761a15ba5ef9fbb231080e38f0902c826812ed",
+    "PSI7_ALL_3S.npy": "85761c0a7df704e46d5e75ff6ac858b7c8c8335dc84506bde5cc9d33d8ebe362"
+  },
+  "conclusion_numerica": "coincidencia_a_1e-6",
+  "limites": [
+    "Coincidencia numerica no prueba por si sola procedencia historica o fecha de creacion",
+    "No se verifican las etiquetas ni la correspondencia con C_ALL_3P/Y_ALL_3P",
+    "No se comprueba la construccion de matrices rho6/rho4 ni su alineacion",
+    "No se ejecutan experimentos ni se consulta validacion/test",
+    "No se exportan filas, nombres quimicos ni estados individuales"
+  ]
+}
