@@ -1,0 +1,66 @@
+{
+  "tipo": "auditoria_agregada_y_local_13_extras_no_certifica_procedencia",
+  "filas_10678": 10678,
+  "filas_10691": 10691,
+  "mismas_84_columnas_p": true,
+  "filas_10678_ausentes_en_10691_por_composicion_y_etiqueta": 0,
+  "filas_excedentes_en_10691_por_composicion_y_etiqueta": 13,
+  "composiciones_nuevas_en_10691": 2,
+  "composiciones_perdidas_desde_10678": 0,
+  "cambio_por_etiqueta": {
+    "FM": 3,
+    "AFM": 10
+  },
+  "primeras_10678_filas_mismo_orden_de_firma_y_etiqueta": false,
+  "indices_posicionales_candidatos_extras_10691": [
+    2392,
+    3428,
+    3429,
+    4712,
+    4730,
+    4753,
+    7853,
+    7944,
+    8029,
+    9271,
+    9606,
+    10320,
+    10549
+  ],
+  "advertencia_indices": "Si existen duplicados por (p_X, etiqueta), los indices corresponden a UNA asignacion determinista y NO identifican univocamente que registro historico se agrego.",
+  "atributos_extra_agregados": {
+    "extras_con_Material_Name_no_vacio": 13,
+    "extras_con_Space_Group_no_vacio": 13,
+    "extras_con_Crystal_Structure_no_vacio": 13
+  },
+  "comparacion_columna_a_columna_aproximada": {
+    "esquema_mismas_columnas": true,
+    "mismo_orden_columnas": true,
+    "columnas_solo_10678": [],
+    "columnas_solo_10691": [],
+    "n_columnas_comparadas": 226,
+    "n_columnas_numericas_redondeadas_a_9_decimales": 221,
+    "filas_10678_no_presentes_en_10691_por_huella_de_todas_las_columnas": 67,
+    "filas_10691_excedentes_por_huella_de_todas_las_columnas": 80,
+    "10678_es_submulticonjunto_por_huella_de_226_columnas": false,
+    "advertencia": "Esta prueba compara numeros redondeados a 9 decimales y strings exactos; colisiones de hash muy improbables, no matematicamente imposibles. Un resultado negativo puede originarse en formato/tipos de lectura. No establece procedencia de filas."
+  },
+  "limitaciones": [
+    "No compara ID experimental unico ni autentica version generadora de los CSV/pickle",
+    "Las firmas composicionales estan redondeadas a 9 decimales",
+    "Las coincidencias de composicion no garantizan estructura cristalina identica",
+    "Se leen etiquetas solo para conteos; nunca se exportan filas, formulas ni nombres",
+    "No verifica aun alineacion de indices de 7483 muestras ni estados PSI7",
+    "Nunca cargar un pickle desconocido: la deserializacion puede ejecutar codigo"
+  ],
+  "fuentes": {
+    "10678": {
+      "nombre": "dataset_listo_opcion_A.csv",
+      "sha256": "0b417425a5d74ab7b86dff611431dc5fed1d814084e7eef353d152864e475b2d"
+    },
+    "10691": {
+      "nombre": "df_final.pkl",
+      "sha256": "42c0a2afc92c65b29a9f081bdff813362a8246f020e928bd634ed4a6599008f2"
+    }
+  }
+}

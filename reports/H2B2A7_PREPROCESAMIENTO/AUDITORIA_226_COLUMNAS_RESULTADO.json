@@ -1,0 +1,516 @@
+{
+  "tipo": "diagnostico_por_columna_condicionado_a_composicion_y_etiqueta",
+  "fuentes_n_filas": [
+    10678,
+    10691
+  ],
+  "columnas": 226,
+  "composiciones_etiquetadas_emparejadas_univocamente_1_a_1": 7284,
+  "diferencia_neta_13_verificada": true,
+  "resumen_por_grupo": {
+    "fracciones_p_X": {
+      "n_columnas": 84,
+      "n_columnas_con_diferencias_estrictas": 0,
+      "n_columnas_con_diferencias_tolerantes": 0
+    },
+    "magpie_derivado": {
+      "n_columnas": 130,
+      "n_columnas_con_diferencias_estrictas": 16,
+      "n_columnas_con_diferencias_tolerantes": 30
+    },
+    "identificacion_o_estructura": {
+      "n_columnas": 5,
+      "n_columnas_con_diferencias_estrictas": 0,
+      "n_columnas_con_diferencias_tolerantes": 0
+    },
+    "etiqueta": {
+      "n_columnas": 1,
+      "n_columnas_con_diferencias_estrictas": 0,
+      "n_columnas_con_diferencias_tolerantes": 0
+    },
+    "otros_descriptores": {
+      "n_columnas": 6,
+      "n_columnas_con_diferencias_estrictas": 2,
+      "n_columnas_con_diferencias_tolerantes": 3
+    }
+  },
+  "n_columnas_con_diferencias_estrictas": 18,
+  "n_columnas_con_diferencias_tolerantes": 33,
+  "columnas_con_diferencias_estrictas": [
+    {
+      "columna": "MagpieData avg_dev AtomicWeight",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 18,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 42,
+      "diferencias_1_a_1_estrictas": 13,
+      "diferencias_1_a_1_tolerantes": 25
+    },
+    {
+      "columna": "avg_atomic_weight",
+      "grupo": "otros_descriptores",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 15,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 114,
+      "diferencias_1_a_1_estrictas": 13,
+      "diferencias_1_a_1_tolerantes": 66
+    },
+    {
+      "columna": "MagpieData avg_dev GSmagmom",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 7,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 4,
+      "diferencias_1_a_1_estrictas": 5,
+      "diferencias_1_a_1_tolerantes": 2
+    },
+    {
+      "columna": "MagpieData avg_dev GSvolume_pa",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 6,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 2,
+      "diferencias_1_a_1_estrictas": 3,
+      "diferencias_1_a_1_tolerantes": 2
+    },
+    {
+      "columna": "MagpieData avg_dev Row",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 4,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 0,
+      "diferencias_1_a_1_estrictas": 2,
+      "diferencias_1_a_1_tolerantes": 0
+    },
+    {
+      "columna": "MagpieData mean GSvolume_pa",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 4,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 18,
+      "diferencias_1_a_1_estrictas": 4,
+      "diferencias_1_a_1_tolerantes": 14
+    },
+    {
+      "columna": "MagpieData mean GSmagmom",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 3,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 2,
+      "diferencias_1_a_1_estrictas": 3,
+      "diferencias_1_a_1_tolerantes": 2
+    },
+    {
+      "columna": "MagpieData avg_dev Electronegativity",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 2,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 10,
+      "diferencias_1_a_1_estrictas": 2,
+      "diferencias_1_a_1_tolerantes": 8
+    },
+    {
+      "columna": "MagpieData avg_dev GSbandgap",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData avg_dev MeltingT",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 14,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 14
+    },
+    {
+      "columna": "MagpieData avg_dev MendeleevNumber",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData avg_dev NUnfilled",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 7,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 5
+    },
+    {
+      "columna": "MagpieData avg_dev NdUnfilled",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 6,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 4
+    },
+    {
+      "columna": "MagpieData avg_dev NfUnfilled",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData avg_dev NsValence",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 2,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 2
+    },
+    {
+      "columna": "MagpieData avg_dev Number",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 3,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 3
+    },
+    {
+      "columna": "MagpieData avg_dev SpaceGroupNumber",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 0,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 0
+    },
+    {
+      "columna": "avg_electronegativity",
+      "grupo": "otros_descriptores",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 24,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 9
+    }
+  ],
+  "columnas_con_diferencias_tolerantes": [
+    {
+      "columna": "avg_atomic_weight",
+      "grupo": "otros_descriptores",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 15,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 114,
+      "diferencias_1_a_1_estrictas": 13,
+      "diferencias_1_a_1_tolerantes": 66
+    },
+    {
+      "columna": "MagpieData avg_dev AtomicWeight",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 18,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 42,
+      "diferencias_1_a_1_estrictas": 13,
+      "diferencias_1_a_1_tolerantes": 25
+    },
+    {
+      "columna": "avg_electronegativity",
+      "grupo": "otros_descriptores",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 24,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 9
+    },
+    {
+      "columna": "MagpieData mean GSvolume_pa",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 4,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 18,
+      "diferencias_1_a_1_estrictas": 4,
+      "diferencias_1_a_1_tolerantes": 14
+    },
+    {
+      "columna": "MagpieData avg_dev MeltingT",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 14,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 14
+    },
+    {
+      "columna": "MagpieData avg_dev Electronegativity",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 2,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 10,
+      "diferencias_1_a_1_estrictas": 2,
+      "diferencias_1_a_1_tolerantes": 8
+    },
+    {
+      "columna": "MagpieData avg_dev NValence",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 8,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 6
+    },
+    {
+      "columna": "L2_stoichiometry",
+      "grupo": "otros_descriptores",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 7,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 7
+    },
+    {
+      "columna": "MagpieData avg_dev NUnfilled",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 7,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 5
+    },
+    {
+      "columna": "MagpieData avg_dev NdUnfilled",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 6,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 4
+    },
+    {
+      "columna": "MagpieData mean GSbandgap",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 6,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 6
+    },
+    {
+      "columna": "MagpieData avg_dev Column",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 4,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 2
+    },
+    {
+      "columna": "MagpieData avg_dev GSmagmom",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 7,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 4,
+      "diferencias_1_a_1_estrictas": 5,
+      "diferencias_1_a_1_tolerantes": 2
+    },
+    {
+      "columna": "MagpieData avg_dev NdValence",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 4,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 2
+    },
+    {
+      "columna": "MagpieData avg_dev NsUnfilled",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 3,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 3
+    },
+    {
+      "columna": "MagpieData avg_dev Number",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 3,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 3
+    },
+    {
+      "columna": "MagpieData avg_dev GSvolume_pa",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 6,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 2,
+      "diferencias_1_a_1_estrictas": 3,
+      "diferencias_1_a_1_tolerantes": 2
+    },
+    {
+      "columna": "MagpieData avg_dev NpUnfilled",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 2,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 2
+    },
+    {
+      "columna": "MagpieData avg_dev NsValence",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 2,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 2
+    },
+    {
+      "columna": "MagpieData mean GSmagmom",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 3,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 2,
+      "diferencias_1_a_1_estrictas": 3,
+      "diferencias_1_a_1_tolerantes": 2
+    },
+    {
+      "columna": "MagpieData mean NUnfilled",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 2,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 2
+    },
+    {
+      "columna": "MagpieData avg_dev CovalentRadius",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData avg_dev GSbandgap",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData avg_dev MendeleevNumber",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData avg_dev NfUnfilled",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 1,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 1,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData avg_dev NfValence",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData avg_dev NpValence",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData mean CovalentRadius",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData mean NdUnfilled",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData mean NfUnfilled",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData mean NfValence",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData mean Number",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 1
+    },
+    {
+      "columna": "MagpieData mean SpaceGroupNumber",
+      "grupo": "magpie_derivado",
+      "tratada_como_numerica": true,
+      "faltantes_condicionados_a_p_y_etiqueta_estricto_9_decimales": 0,
+      "faltantes_condicionados_a_p_y_etiqueta_tolerante_6_decimales_o_texto_normalizado": 1,
+      "diferencias_1_a_1_estrictas": 0,
+      "diferencias_1_a_1_tolerantes": 1
+    }
+  ],
+  "notas": [
+    "Solo diferencias agregadas por columna; no se exportan formulas, nombres ni valores individuales.",
+    "Un deficit por columna es una cota inferior de incompatibilidad marginal, NO el numero exacto de filas diferentes.",
+    "Los grupos 1-a-1 por composicion y etiqueta tienen un emparejamiento unico, no necesariamente el mismo registro experimental.",
+    "Cero deficits en todas las columnas NO certifica la igualdad conjunta de las 226 columnas dentro de grupos duplicados.",
+    "Modo estricto: numeros redondeados a 9 decimales, texto exacto. Modo tolerante: numeros a 6 decimales, texto sin espacios extremos e indiferente a mayusculas.",
+    "La heuristica de columnas numericas puede interpretar textos numericos como cantidades; revisar campo tratada_como_numerica.",
+    "No comprueba el orden historico ni la alineacion con PSI7_ALL_3S.npy.",
+    "Deserializar .pkl desconocidos puede ejecutar codigo."
+  ],
+  "sha256_fuentes": {
+    "10678": "0b417425a5d74ab7b86dff611431dc5fed1d814084e7eef353d152864e475b2d",
+    "10691": "42c0a2afc92c65b29a9f081bdff813362a8246f020e928bd634ed4a6599008f2"
+  }
+}
