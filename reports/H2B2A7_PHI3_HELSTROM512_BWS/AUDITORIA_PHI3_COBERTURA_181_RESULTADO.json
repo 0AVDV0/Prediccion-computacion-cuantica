@@ -1,0 +1,176 @@
+{
+  "tipo": "H2B2A7_AUDITORIA_INDEPENDIENTE_COBERTURA_PHI3_VALIDACION",
+  "metodo": "solo_lectura_sin_etiquetas_sin_test_sin_entrenamiento",
+  "fuentes_sha256_verificadas": {
+    "df": "42c0a2afc92c65b29a9f081bdff813362a8246f020e928bd634ed4a6599008f2",
+    "splits": "1f9eb162adaf0d10301f5b6deb761a15ba5ef9fbb231080e38f0902c826812ed",
+    "phi_val": "010d7089bad3b8e204f7a0909985b0f402aec38a7d7079d2d06a40afb31f4051",
+    "soporte": "f3b232dde3865498a0a17a6d3ab9a6d23399e5e60c7b3ad4082cdb6aad73c2c5"
+  },
+  "dimensiones": {
+    "df_filas": 10691,
+    "columnas_p": 84,
+    "n_train": 7483,
+    "n_val": 1069,
+    "soporte_triples": 8399
+  },
+  "trazabilidad": {
+    "soporte_train_identico_al_archivado": true,
+    "orden_p": "numero_atomico_ascendente",
+    "umbral_presencia_elemento": 1e-14,
+    "criterio_cobertura_completa": 0.999999,
+    "tolerancia_balance_y_normas": 1e-06
+  },
+  "verificacion_analitica": {
+    "formula_retencion": "sum_(i<=j<=k in soporte) m_ijk*p_i*p_j*p_k",
+    "formula_perdida": "sum_(i<=j<=k fuera_soporte) m_ijk*p_i*p_j*p_k",
+    "error_maximo_norma2_phi3_vs_retencion": 6.222922477316928e-08,
+    "error_maximo_balance_retencion_mas_perdida": 1.1102230246251565e-15,
+    "norma2_phi3_val": {
+      "n": 1069,
+      "min": 0.24999999144286456,
+      "media": 0.9775562034464736,
+      "mediana": 1.0000000017542137,
+      "max": 1.0000000581980428
+    },
+    "masa_omitida_val": {
+      "n": 1069,
+      "min": 0.0,
+      "media": 0.02244380409156992,
+      "mediana": 0.0,
+      "max": 0.75
+    }
+  },
+  "subnormalizacion": {
+    "filas_con_cobertura_incompleta": 181,
+    "filas_con_cobertura_completa": 888,
+    "norma2_incompletas": {
+      "n": 181,
+      "min": 0.24999999144286456,
+      "media": 0.8674451707804939,
+      "mediana": 0.9012346091492275,
+      "max": 0.9998907462506956
+    },
+    "masa_omitida_incompletas": {
+      "n": 181,
+      "min": 0.00010923987255348204,
+      "media": 0.1325548429496588,
+      "mediana": 0.09876543209876541,
+      "max": 0.75
+    },
+    "triples_no_retenidos_incompletas": {
+      "n": 181,
+      "min": 1.0,
+      "media": 2.265193370165746,
+      "mediana": 1.0,
+      "max": 16.0
+    },
+    "incompletas_con_algun_elemento_no_visto_en_train": 0,
+    "incompletas_sin_elementos_nuevos": 181,
+    "masa_omitida_total_por_elementos_no_vistos": 0.0,
+    "masa_omitida_total_por_tripletas_nuevas_de_elementos_conocidos": 23.992426573888245
+  },
+  "cruce_composiciones_por_precision": {
+    "6": {
+      "validacion_con_composicion_en_train": 292,
+      "validacion_composicion_nueva": 777,
+      "vista_y_cobertura_completa": 292,
+      "vista_y_cobertura_incompleta": 0,
+      "nueva_y_cobertura_completa": 596,
+      "nueva_y_cobertura_incompleta": 181,
+      "norma2_nuevas": {
+        "n": 777,
+        "min": 0.24999999144286456,
+        "media": 0.9691217229340597,
+        "mediana": 0.9999999985029769,
+        "max": 1.0000000541133713
+      },
+      "norma2_vistas": {
+        "n": 292,
+        "min": 0.9999999475079622,
+        "media": 1.00000000946752,
+        "mediana": 1.000000004692512,
+        "max": 1.0000000581980428
+      }
+    },
+    "9": {
+      "validacion_con_composicion_en_train": 292,
+      "validacion_composicion_nueva": 777,
+      "vista_y_cobertura_completa": 292,
+      "vista_y_cobertura_incompleta": 0,
+      "nueva_y_cobertura_completa": 596,
+      "nueva_y_cobertura_incompleta": 181,
+      "norma2_nuevas": {
+        "n": 777,
+        "min": 0.24999999144286456,
+        "media": 0.9691217229340597,
+        "mediana": 0.9999999985029769,
+        "max": 1.0000000541133713
+      },
+      "norma2_vistas": {
+        "n": 292,
+        "min": 0.9999999475079622,
+        "media": 1.00000000946752,
+        "mediana": 1.000000004692512,
+        "max": 1.0000000581980428
+      }
+    },
+    "10": {
+      "validacion_con_composicion_en_train": 292,
+      "validacion_composicion_nueva": 777,
+      "vista_y_cobertura_completa": 292,
+      "vista_y_cobertura_incompleta": 0,
+      "nueva_y_cobertura_completa": 596,
+      "nueva_y_cobertura_incompleta": 181,
+      "norma2_nuevas": {
+        "n": 777,
+        "min": 0.24999999144286456,
+        "media": 0.9691217229340597,
+        "mediana": 0.9999999985029769,
+        "max": 1.0000000541133713
+      },
+      "norma2_vistas": {
+        "n": 292,
+        "min": 0.9999999475079622,
+        "media": 1.00000000946752,
+        "mediana": 1.000000004692512,
+        "max": 1.0000000581980428
+      }
+    },
+    "12": {
+      "validacion_con_composicion_en_train": 292,
+      "validacion_composicion_nueva": 777,
+      "vista_y_cobertura_completa": 292,
+      "vista_y_cobertura_incompleta": 0,
+      "nueva_y_cobertura_completa": 596,
+      "nueva_y_cobertura_incompleta": 181,
+      "norma2_nuevas": {
+        "n": 777,
+        "min": 0.24999999144286456,
+        "media": 0.9691217229340597,
+        "mediana": 0.9999999985029769,
+        "max": 1.0000000541133713
+      },
+      "norma2_vistas": {
+        "n": 292,
+        "min": 0.9999999475079622,
+        "media": 1.00000000946752,
+        "mediana": 1.000000004692512,
+        "max": 1.0000000581980428
+      }
+    }
+  },
+  "comparacion_con_auditoria_xv": {
+    "valor_historico_vistas_a_10_decimales": 292,
+    "replicado": true
+  },
+  "limitaciones": [
+    "Solo analiza cobertura de TRAIN y VAL; TEST no se carga.",
+    "No lee etiquetas, no reentrena, no ejecuta QPU ni recalcula BWS.",
+    "La comparacion composicional agrupa por fracciones atomicas, no por identidad cristalografica.",
+    "Una norma subunitaria implica proyeccion en soporte, no necesariamente error de construccion.",
+    "La certificacion de amplitudes Phi3 de todas las filas procede de auditoria previa separada.",
+    "La verificacion numerica no prueba cronologia exacta de los checkpoints.",
+    "No divulga indices de muestras, formulas, etiquetas ni vectores individuales."
+  ]
+}

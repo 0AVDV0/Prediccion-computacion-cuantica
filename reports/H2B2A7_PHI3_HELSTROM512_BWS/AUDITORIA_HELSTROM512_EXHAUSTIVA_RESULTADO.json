@@ -1,0 +1,146 @@
+{
+  "tipo": "H2B2A7_AUDITORIA_HELSTROM512_COORDENADAS_EXHAUSTIVAS_SOLO_LECTURA",
+  "fuentes_sha256": {
+    "phi_train": "6c2f514200cb806705663bfee928c438fa21ce83c57aadc949e17fcf0bde7af3",
+    "phi_val": "010d7089bad3b8e204f7a0909985b0f402aec38a7d7079d2d06a40afb31f4051",
+    "base": "1831b92ff336bb9aa86bc5850d48cab3f40bcabc42658ed58f9969a4a1e9c9b4",
+    "cache": "4a2ebcd6f1fc19663c68ae202eb9caca4a3d607a17dc410e2efaf5f7898f27d3"
+  },
+  "fuentes_nombres": {
+    "phi_train": "Phi3_train_exact.npy",
+    "phi_val": "Phi3_val_exact.npy",
+    "base": "HELSTROM512_EXT_BASIS_REBUILT.npz",
+    "cache": "HELSTROM512_COORDINATES_CACHE.npz"
+  },
+  "formula": "C = Phi3 @ conjugate(concatenate([Vplus,Vminus],axis=1))",
+  "modos_plus": 320,
+  "modos_minus": 192,
+  "ortogonalidad_muestra_48_modos_max_error": 3.2705432362334363e-08,
+  "tolerancia_max_error_amplitud": 1e-05,
+  "train": {
+    "filas": 7483,
+    "filas_coincidentes_tol": 7483,
+    "todas_coinciden_tol": true,
+    "max_error_amplitud": 4.78803488018021e-08,
+    "rms_error_amplitud": 1.3125310086337925e-09,
+    "norma2_phi3": {
+      "n": 7483,
+      "min": 0.9999999264852483,
+      "media": 1.0000000072737616,
+      "mediana": 1.000000004692512,
+      "max": 1.0000000664565631
+    },
+    "norma2_cache512": {
+      "n": 7483,
+      "min": 0.0778738613938826,
+      "media": 0.815427939155678,
+      "mediana": 0.8720248897504749,
+      "max": 0.9982092520751493
+    },
+    "masa_fuera_subespacio_512": {
+      "n": 7483,
+      "min": 0.0017907456882138018,
+      "media": 0.1845720681180838,
+      "mediana": 0.12797510900636566,
+      "max": 0.9221261432986293
+    },
+    "max_exceso_norma2_512_sobre_phi3": 0.0,
+    "max_error_por_fila": {
+      "n": 7483,
+      "min": 6.206335383118183e-17,
+      "media": 1.4570215302690612e-08,
+      "mediana": 1.3124249478856248e-08,
+      "max": 4.78803488018021e-08
+    }
+  },
+  "val": {
+    "filas": 1069,
+    "filas_coincidentes_tol": 1069,
+    "todas_coinciden_tol": true,
+    "max_error_amplitud": 4.602038053972967e-08,
+    "rms_error_amplitud": 1.2798690531392821e-09,
+    "norma2_phi3": {
+      "n": 1069,
+      "min": 0.24999999144286456,
+      "media": 0.9775562034464736,
+      "mediana": 1.0000000017542137,
+      "max": 1.0000000581980428
+    },
+    "norma2_cache512": {
+      "n": 1069,
+      "min": 0.04470668526936244,
+      "media": 0.7788475333638423,
+      "mediana": 0.8405335062682465,
+      "max": 0.9982092520751493
+    },
+    "masa_fuera_subespacio_512": {
+      "n": 1069,
+      "min": 0.0017907456882138018,
+      "media": 0.19870867008263146,
+      "mediana": 0.15296392263512137,
+      "max": 0.8231355891796733
+    },
+    "max_exceso_norma2_512_sobre_phi3": 0.0,
+    "max_error_por_fila": {
+      "n": 1069,
+      "min": 7.850462293418876e-17,
+      "media": 1.4134734069568073e-08,
+      "mediana": 1.2768341343565249e-08,
+      "max": 4.602038053972967e-08
+    },
+    "val_subnormalizadas_phi3": {
+      "n": 181,
+      "error_proyeccion_incompletas": {
+        "n": 181,
+        "min": 2.2455028147797755e-09,
+        "media": 1.1204467925140098e-08,
+        "mediana": 9.685877449049849e-09,
+        "max": 4.070599519051098e-08
+      },
+      "error_proyeccion_completas": {
+        "n": 888,
+        "min": 7.850462293418876e-17,
+        "media": 1.4732006785943599e-08,
+        "mediana": 1.3435569059299338e-08,
+        "max": 4.602038053972967e-08
+      },
+      "norma2_512_incompletas": {
+        "n": 181,
+        "min": 0.04470668526936244,
+        "media": 0.5507569875949481,
+        "mediana": 0.5562537642164342,
+        "max": 0.9794541145039966
+      },
+      "norma2_512_completas": {
+        "n": 888,
+        "min": 0.17686445406334447,
+        "media": 0.8253389621748444,
+        "mediana": 0.8756633971024981,
+        "max": 0.9982092520751493
+      },
+      "masa_fuera_512_incompletas": {
+        "n": 181,
+        "min": 0.01834590896828403,
+        "media": 0.31668818318554565,
+        "mediana": 0.2891166056465705,
+        "max": 0.7535053777487231
+      },
+      "masa_fuera_512_completas": {
+        "n": 888,
+        "min": 0.0017907456882138018,
+        "media": 0.174661044101069,
+        "mediana": 0.12433663562192848,
+        "max": 0.8231355891796733
+      }
+    }
+  },
+  "todas_8552_coinciden": true,
+  "limitaciones": [
+    "Verifica coordenadas a partir de Phi3 y la base archivada, no su origen desde df_final.",
+    "No reconstruye el operador Helstrom ni su entrenamiento historico.",
+    "La subnormalizacion composicional se audito previamente por separado.",
+    "No inspecciona etiquetas, TEST, resultados de clasificacion ni QPU.",
+    "No demuestra cronologia de creacion de los artefactos.",
+    "Solo exporta estadisticas agregadas sin indices ni composiciones por fila."
+  ]
+}

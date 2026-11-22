@@ -1,0 +1,52 @@
+{
+  "tipo": "certificacion_exhaustiva_de_coordenadas_Phi3_desde_df_train_y_val_solo_lectura",
+  "fuentes_sha256": {
+    "df": "42c0a2afc92c65b29a9f081bdff813362a8246f020e928bd634ed4a6599008f2",
+    "splits": "1f9eb162adaf0d10301f5b6deb761a15ba5ef9fbb231080e38f0902c826812ed",
+    "phi_train": "6c2f514200cb806705663bfee928c438fa21ce83c57aadc949e17fcf0bde7af3",
+    "phi_val": "010d7089bad3b8e204f7a0909985b0f402aec38a7d7079d2d06a40afb31f4051",
+    "support": "f3b232dde3865498a0a17a6d3ab9a6d23399e5e60c7b3ad4082cdb6aad73c2c5"
+  },
+  "orden_columnas": "numero_atomico_ascendente",
+  "orden_dataframe_igual_atomico": false,
+  "soporte_archivado_igual_al_recalculado_en_orden": true,
+  "soporte_triples": 8399,
+  "criterio_no_nulo": 1e-14,
+  "formula": "sqrt(p_i)*exp(1j*pi*p_i) y factores simetricos 1/sqrt(3)/sqrt(6)",
+  "train": {
+    "filas_total": 7483,
+    "filas_comparadas": 7483,
+    "filas_error_max_le_1e-6": 7483,
+    "filas_error_max_le_1e-5": 7483,
+    "todas_coinciden_tol_1e-6": true,
+    "error_maximo_amplitud": 1.0745380149674385e-07,
+    "error_rms_amplitud": 4.782179757985374e-10,
+    "max_diferencia_norma2_recalculada_vs_archivada": 2.384185791015625e-07,
+    "norma2_archivada_min": 0.9999998807907104,
+    "norma2_archivada_media": 0.9999999984626893,
+    "norma2_archivada_max": 1.0000001192092896,
+    "filas_norma2_archivada_menor_0p999999": 0
+  },
+  "val": {
+    "filas_total": 1069,
+    "filas_comparadas": 1069,
+    "filas_error_max_le_1e-6": 1069,
+    "filas_error_max_le_1e-5": 1069,
+    "todas_coinciden_tol_1e-6": true,
+    "error_maximo_amplitud": 8.600167012613263e-08,
+    "error_rms_amplitud": 4.787246457539139e-10,
+    "max_diferencia_norma2_recalculada_vs_archivada": 1.7881393432617188e-07,
+    "norma2_archivada_min": 0.2499999850988388,
+    "norma2_archivada_media": 0.9775561962565938,
+    "norma2_archivada_max": 1.0000001192092896,
+    "filas_norma2_archivada_menor_0p999999": 181
+  },
+  "limitaciones": [
+    "Certifica las amplitudes almacenadas de Phi3 frente a la reconstruccion desde df_final y los splits identificados, dentro de tolerancia numerica; no demuestra cronologia de ejecucion.",
+    "No reconstruye los autovectores BWS, los parametros de ETA o pesos ni las coordenadas del Teacher.",
+    "Los splits originales comparten composiciones. Su independencia composicional debe evaluarse por separado.",
+    "No carga test ni usa etiquetas para reconstruir Phi3.",
+    "No divulga composiciones, indices de filas ni vectores complejos individuales."
+  ],
+  "todas_8552_filas_coinciden_tol_1e-6": true
+}

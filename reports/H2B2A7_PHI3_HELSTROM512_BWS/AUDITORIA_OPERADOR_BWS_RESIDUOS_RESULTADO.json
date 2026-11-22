@@ -1,0 +1,106 @@
+{
+  "tipo": "H2B2A7_AUDITORIA_MUESTRAL_INDEPENDIENTE_OPERADOR_BWS_RESIDUOS",
+  "metodo": "solo_lectura_train_sin_eigsh_sin_fit_sin_test_sin_val",
+  "fuentes_sha256_verificadas": {
+    "phi_train": "6c2f514200cb806705663bfee928c438fa21ce83c57aadc949e17fcf0bde7af3",
+    "base": "1831b92ff336bb9aa86bc5850d48cab3f40bcabc42658ed58f9969a4a1e9c9b4",
+    "cache": "4a2ebcd6f1fc19663c68ae202eb9caca4a3d607a17dc410e2efaf5f7898f27d3"
+  },
+  "pesos": {
+    "nombre": "EXT_WEIGHT_train_weights.npy",
+    "ruta": "[RUTA_LOCAL_OMITIDA]/EXT_WEIGHT_train_weights.npy",
+    "sha256": "d4b79177d23db03270dd480a5d94bd41a52c2fcf2d24c1a87a16388f7179b4c6",
+    "control_sha256_historico_disponible": false,
+    "advertencia": "Corroborar procedencia de pesos para interpretar residuos; la coincidencia no demuestra cronologia."
+  },
+  "eta": 0.5,
+  "formula": "Delta v = eta * X_FM.T @ diag(w_FM/sum_w_FM) @ conjugate(X_FM) @ v - (1-eta) * X_AFM.T @ diag(w_AFM/sum_w_AFM) @ conjugate(X_AFM) @ v",
+  "n_train": 7483,
+  "dimension": 8399,
+  "conteos_y_train": {
+    "AFM_0": 3144,
+    "FM_1": 4339
+  },
+  "pesos_resumen_global": {
+    "min": 1.0149991444668225,
+    "media": 1.4994225512787596,
+    "max": 2.9828134262383657
+  },
+  "modos_evaluados": 6,
+  "max_error_ortogonalidad_modos_seleccionados": 3.0354518898434435e-08,
+  "max_residuo_absoluto": 7.880643761771254e-10,
+  "max_residuo_relativo": 1.0533646011923495e-07,
+  "resultados": [
+    {
+      "sector": "positivo",
+      "indice_dentro_sector": 0,
+      "autovalor_archivado": 0.03643543702151535,
+      "norma_autovector": 0.9999999925089669,
+      "rayleigh_recalculado": 0.036435437021515485,
+      "error_autovalor_rayleigh": 1.3183898417423734e-16,
+      "residuo_absoluto_l2": 7.880643761771254e-10,
+      "residuo_relativo_l2": 2.1629063529969012e-08
+    },
+    {
+      "sector": "positivo",
+      "indice_dentro_sector": 159,
+      "autovalor_archivado": 0.0003383527450274104,
+      "norma_autovector": 0.9999999995308798,
+      "rayleigh_recalculado": 0.00033835274502740684,
+      "error_autovalor_rayleigh": 3.577867169202165e-18,
+      "residuo_absoluto_l2": 1.5110338725378972e-11,
+      "residuo_relativo_l2": 4.46585374421698e-08
+    },
+    {
+      "sector": "positivo",
+      "indice_dentro_sector": 319,
+      "autovalor_archivado": 0.0001439036277031292,
+      "norma_autovector": 0.9999999997300164,
+      "rayleigh_recalculado": 0.00014390362770312913,
+      "error_autovalor_rayleigh": 5.421010862427522e-20,
+      "residuo_absoluto_l2": 1.515829873647146e-11,
+      "residuo_relativo_l2": 1.0533646011923495e-07
+    },
+    {
+      "sector": "negativo",
+      "indice_dentro_sector": 0,
+      "autovalor_archivado": -0.010692636145797412,
+      "norma_autovector": 0.9999999848227393,
+      "rayleigh_recalculado": -0.010692636145797506,
+      "error_autovalor_rayleigh": 9.367506770274758e-17,
+      "residuo_absoluto_l2": 5.391658093637989e-10,
+      "residuo_relativo_l2": 5.042403109908165e-08
+    },
+    {
+      "sector": "negativo",
+      "indice_dentro_sector": 95,
+      "autovalor_archivado": -0.0006151503612227195,
+      "norma_autovector": 0.9999999988512943,
+      "rayleigh_recalculado": -0.0006151503612227152,
+      "error_autovalor_rayleigh": 4.228388472693467e-18,
+      "residuo_absoluto_l2": 2.4497768728249062e-11,
+      "residuo_relativo_l2": 3.982403376581974e-08
+    },
+    {
+      "sector": "negativo",
+      "indice_dentro_sector": 191,
+      "autovalor_archivado": -0.0003211892539965834,
+      "norma_autovector": 0.999999999601223,
+      "rayleigh_recalculado": -0.0003211892539965826,
+      "error_autovalor_rayleigh": 8.131516293641283e-19,
+      "residuo_absoluto_l2": 2.5085160493672193e-11,
+      "residuo_relativo_l2": 7.810087103332029e-08
+    }
+  ],
+  "limitaciones": [
+    "Los autovectores son los archivados: se evalua la ecuacion propia, no se ejecuta un eigensolver nuevo.",
+    "La prueba es muestral sobre modos, no certifica los 512 ni la optimalidad espectral global.",
+    "El archivo de pesos solo queda identificado por huella calculada ahora: no se ha autenticado su origen temporal.",
+    "No demuestra la procedencia historica de los pesos ni de la base; se necesita trazabilidad adicional.",
+    "Usa y_train del cache certificado previamente. No accede a y_val, TEST, predicciones ni QPU.",
+    "No modifica archivos de fuente ni exporta amplitudes o etiquetas por fila."
+  ],
+  "notas_publicacion": [
+    "Copia publicable derivada: la ruta absoluta local del archivo de pesos se reemplazo por un marcador; los resultados numericos y los SHA-256 de las fuentes se conservaron."
+  ]
+}
